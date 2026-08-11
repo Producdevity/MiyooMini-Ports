@@ -1,0 +1,124 @@
+{
+  "$schema": "./ports.schema.json",
+  "ports": [
+    {
+      "name": "Stardew Valley",
+      "category": "RPG",
+      "status": "experimental",
+      "assets": "owned",
+      "upstream": "https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases",
+      "image": "https://github.com/user-attachments/assets/607e7608-37ee-4dbe-b394-92888a6438b6",
+      "notes": "Mono6 + Docker prepare step. ~5–10 FPS. Mini v4 only; Plus/Flip untested."
+    },
+    {
+      "name": "Undertale",
+      "category": "RPG",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/cobaltgit/Butterscotch/releases/tag/onion-port",
+      "image": "https://github.com/user-attachments/assets/6651cc2e-0d6d-4354-b98d-081e84a981df",
+      "notes": "GameMaker runner (\"Butterscotch\"). onion-port tag."
+    },
+    {
+      "name": "Half-Life",
+      "category": "FPS",
+      "status": "prerelease",
+      "assets": "owned",
+      "upstream": "https://github.com/IC-0n417/half-life-miyoo-mini-plus/releases",
+      "notes": "Xash3D FWGS. Add your Steam valve/ folder. Onion-ready zip."
+    },
+    {
+      "name": "Quake II",
+      "category": "FPS",
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/Apaczer/quake2-miyoo/releases",
+      "notes": "Yamagi. Ships an .ipk, place manually. Q1 is in Onion."
+    },
+    {
+      "name": "POSTAL",
+      "category": "Shooter",
+      "status": "experimental",
+      "assets": "owned",
+      "upstream": "https://github.com/bostrt/POSTAL-miyoo/releases",
+      "notes": "Release tarball is a build artifact; README has the Docker build."
+    },
+    {
+      "name": "OpenRCT2",
+      "category": "Simulation",
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/scheeseman486/OpenRCT2mini/releases",
+      "image": "https://github.com/user-attachments/assets/fa893cc8-1484-4751-94be-4ead00a6c8f9",
+      "notes": "Low-spec build. Add your RCT2 install. Archive merges onto SD."
+    },
+    {
+      "name": "Elasto Mania",
+      "category": "Racing",
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/neri-rnd/elma-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/neri-rnd/elma-miyoo/057bce3e9a705486ff9daddb4f49576217856345/docs/screenshot.png",
+      "notes": "Supply elma.res and .lgr."
+    },
+    {
+      "name": "Frozen Bubble",
+      "category": "Puzzle",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/mehdisadeghi/frozen-bubble-onion/releases",
+      "notes": "Self-contained, nothing to supply."
+    },
+    {
+      "name": "SuperTux",
+      "category": "Platform",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/andrigamerita/supertux/releases",
+      "notes": "0.1.3. Ships gmenu2x layout, place manually. Last release 2021."
+    },
+    {
+      "name": "Super Haxagon",
+      "category": "Reflex",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/RedTopper/Super-Haxagon/releases",
+      "image": "https://raw.githubusercontent.com/RedTopper/Super-Haxagon/88a8f6c3e0a40cb015b5055d5212c3abec1f279d/driver/SDL2-PortMaster/resources/screenshot.png",
+      "notes": "Two zips to combine; App-folder layout."
+    },
+    {
+      "name": "joyrider3774 games",
+      "category": "Arcade",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/joyrider3774/miyoo_mini_games/releases",
+      "image": "https://raw.githubusercontent.com/joyrider3774/blockdude_funkey/de20a6c0ba54ddd64465c6b09924e566f4bd4457/metadata/screenshot-miyoo.png",
+      "notes": "6 games: Blockdude, Blips, F1 Game & Watch, Rubido, Sokoban, Znax."
+    },
+    {
+      "name": "crisp-game-lib",
+      "category": "Arcade",
+      "status": "source only",
+      "assets": "free",
+      "upstream": "https://github.com/joyrider3774/crisp-game-lib-portable-sdl",
+      "image": "https://raw.githubusercontent.com/joyrider3774/crisp-game-lib-portable-sdl/04bc2c4cfc2853628eda25a46190bb7ac6fe216a/metadata/cglpsdl1-preview.png",
+      "notes": "No Miyoo binary — cross-compile."
+    },
+    {
+      "name": "ONScripter-jh",
+      "category": "Engine",
+      "status": "source only",
+      "assets": "owned",
+      "upstream": "https://github.com/weimingtom/onscripter-jh-miyoo-mini-plus",
+      "notes": "Visual-novel engine. WIP, no binary."
+    },
+    {
+      "name": "FreeJ2ME",
+      "category": "Engine",
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/aweigit/freej2me-miyoomini/releases",
+      "notes": "Java/J2ME emulator. Supply .jar games."
+    }
+  ]
+}

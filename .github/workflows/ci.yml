@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Format and lint (Biome)
+        run: pnpm check
+
+      - name: Validate ports.json against the TS schema
+        run: pnpm validate
+
+      - name: Typecheck
+        run: tsc && tsc -p tsconfig.scripts.json
+
+      - name: README in sync with ports.json
+        run: |
+          pnpm gen:readme
+          if ! git diff --exit-code README.md; then
+            echo "README.md is out of sync with ports.json."
+            echo "Run 'pnpm gen:readme' locally and commit the result."
+            exit 1
+          fi
+
+      - name: Build
+        run: pnpm build

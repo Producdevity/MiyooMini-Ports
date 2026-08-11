@@ -1,0 +1,4 @@
+{
+  "ports.json": "pnpm gen:readme",
+  "*": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+}

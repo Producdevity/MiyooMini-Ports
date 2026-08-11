@@ -1,0 +1,25 @@
+{
+  "name": "miyoomini-ports",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && tsc -p tsconfig.scripts.json && vite build",
+    "preview": "vite preview",
+    "check": "biome check .",
+    "format": "biome check --write .",
+    "validate": "tsx scripts/validate-ports.ts",
+    "gen:readme": "tsx scripts/gen-readme.ts",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.6",
+    "@types/node": "^26.1.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.3.0",
+    "tsx": "^4.23.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

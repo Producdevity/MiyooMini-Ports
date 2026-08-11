@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Producdevity/MiyooMini-Ports/ports.schema.json",
+  "title": "MiyooMini-Ports catalog",
+  "description": "Port entries for the Miyoo Mini family (SigmaStar SSD202D).",
+  "type": "object",
+  "required": ["ports"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "category",
+          "status",
+          "assets",
+          "upstream",
+          "notes"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Display name shown in the catalog and README."
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Genre. Free-form, but reuse an existing one if it fits."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["playable", "experimental", "prerelease", "source only"],
+            "description": "playable: runs well. experimental: runs but rough. prerelease: upstream author labels it pre-release. source only: no binary, user builds it."
+          },
+          "assets": {
+            "type": "string",
+            "enum": ["free", "owned"],
+            "description": "free: nothing to supply. owned: user supplies game data."
+          },
+          "upstream": {
+            "type": "string",
+            "pattern": "^https://",
+            "format": "uri",
+            "description": "Link the /releases page (not a pinned version). Source-only ports with no releases link the repo root."
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "Optional stable screenshot URL. GitHub user-attachment URLs are permanent."
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Setup gotchas, device caveats, what to supply. Keep it short."
+          }
+        }
+      }
+    }
+  }
+}
