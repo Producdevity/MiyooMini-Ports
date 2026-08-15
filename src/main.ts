@@ -1,3 +1,8 @@
+import "@fontsource/archivo/latin-400.css";
+import "@fontsource/archivo/latin-700.css";
+import "@fontsource/archivo/latin-900.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-600.css";
 import portsData from "../ports.json";
 import { filterPorts } from "./filter";
 import { renderChips, renderCount, renderList } from "./render";
