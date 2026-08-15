@@ -112,7 +112,7 @@ function parsePorterEntry(handle: string, value: unknown): Porter {
   if (!isObject(value)) {
     throw new Error(`porters.json["${handle}"]: expected an object`);
   }
-  const { github, social, website, donate, bio } = value;
+  const { name, github, social, website, donate, bio, image } = value;
 
   if (!isNonEmptyString(github) || !isHttpsUrl(github)) {
     throw new Error(
@@ -121,10 +121,19 @@ function parsePorterEntry(handle: string, value: unknown): Porter {
   }
 
   const porter: Porter = { github };
+  if (name !== undefined) {
+    if (!isNonEmptyString(name)) {
+      throw new Error(
+        `porters.json["${handle}"].name: expected non-empty string`,
+      );
+    }
+    porter.name = name;
+  }
   const links: [string, unknown, keyof Porter][] = [
     ["social", social, "social"],
     ["website", website, "website"],
     ["donate", donate, "donate"],
+    ["image", image, "image"],
   ];
   for (const [field, raw, key] of links) {
     if (raw === undefined) continue;

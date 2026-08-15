@@ -3,10 +3,12 @@ import "@fontsource/archivo/latin-700.css";
 import "@fontsource/archivo/latin-900.css";
 import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-600.css";
+import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { filterPorts } from "./filter";
 import { renderChips, renderCount, renderList } from "./render";
-import { parsePorts } from "./schema";
+import { parsePorters, parsePorts } from "./schema";
+import { initThemeToggle } from "./theme";
 import {
   ASSETS_VALUES,
   CATEGORY_VALUES,
@@ -16,6 +18,7 @@ import {
 } from "./types";
 
 const ports = parsePorts(portsData);
+const porters = parsePorters(portersData);
 
 function querySelector<T extends HTMLElement>(selector: string): T {
   const el = document.querySelector<T>(selector);
@@ -38,7 +41,7 @@ const filterGroups: { key: FilterKey; values: readonly string[] }[] = [
 
 function rerender(): void {
   const list = filterPorts(ports, state);
-  renderList(list, main, !state.active.category);
+  renderList(list, main, !state.active.category, porters);
   renderCount(list.length, ports.length, count);
   renderChips(filterGroups, state, chips, onToggle, onClear);
 }
@@ -62,4 +65,5 @@ search.addEventListener("input", (event) => {
   }
 });
 
+initThemeToggle();
 rerender();

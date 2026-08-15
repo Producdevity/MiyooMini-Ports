@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Miyoo Mini Ports</title>
     <link rel="stylesheet" href="/style.css" />
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
   </head>
   <body>
     <header>
@@ -18,6 +23,14 @@
             <a href="https://github.com/OnionUI/Ports-Collection">Onion's Ports-Collection</a>.
           </p>
           <a class="nav-link" href="./porters.html">Porters →</a>
+          <button
+            id="theme-toggle"
+            class="chip theme-toggle"
+            type="button"
+            aria-label="Switch color theme"
+          >
+            Dark
+          </button>
         </div>
       </div>
     </header>
@@ -40,8 +53,7 @@
         </p>
         <p>
           SigmaStar Mini Flip only. Miyoo Flip (RK3566) and Miyoo A30 are
-          different hardwareand are not supported by these ports.
-
+          different hardware.
           <a href="https://github.com/Producdevity/MiyooMini-Ports">GitHub</a>.
         </p>
       </div>

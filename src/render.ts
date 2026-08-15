@@ -1,5 +1,5 @@
 import { el } from "./dom";
-import type { Category, FilterKey, FilterState, Port } from "./types";
+import type { Category, FilterKey, FilterState, Port, Porters } from "./types";
 import {
   ASSETS_LABELS,
   CATEGORY_LABELS,
@@ -9,6 +9,9 @@ import {
 } from "./types";
 
 const statusTagClass = (s: string): string => `st-${s}`;
+
+const porterNames = (handles: string[], porters: Porters): string =>
+  handles.map((h) => porters[h]?.name ?? h).join(", ");
 
 function renderThumbnail(port: Port): Node {
   if (!port.image) {
@@ -29,7 +32,7 @@ function renderThumbnail(port: Port): Node {
   return img;
 }
 
-export function renderRow(port: Port, index: number): Node {
+export function renderRow(port: Port, index: number, porters: Porters): Node {
   const nameLink = el("a", {
     attrs: { href: port.upstream, target: "_blank", rel: "noopener" },
     children: [port.name],
@@ -56,7 +59,7 @@ export function renderRow(port: Port, index: number): Node {
           el("div", { class: "name", children: [nameLink] }),
           el("div", {
             class: "by",
-            children: [`by ${port.porter.join(", ")}`],
+            children: [`by ${porterNames(port.porter, porters)}`],
           }),
           el("div", {
             class: "tags",
@@ -99,6 +102,7 @@ export function renderList(
   list: Port[],
   container: HTMLElement,
   grouped: boolean,
+  porters: Porters,
 ): void {
   container.replaceChildren();
 
@@ -114,7 +118,7 @@ export function renderList(
 
   if (!grouped) {
     const flat = [...list].sort(sortByCategoryThenName);
-    container.append(...flat.map((p, i) => renderRow(p, i)));
+    container.append(...flat.map((p, i) => renderRow(p, i, porters)));
     return;
   }
 
@@ -139,7 +143,7 @@ export function renderList(
           el("span", { class: "n", children: [String(items.length)] }),
         ],
       }),
-      ...items.map((p) => renderRow(p, index++)),
+      ...items.map((p) => renderRow(p, index++, porters)),
     );
   }
 }

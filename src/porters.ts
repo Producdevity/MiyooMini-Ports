@@ -7,6 +7,7 @@ import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { el } from "./dom";
 import { parsePorters, parsePorts } from "./schema";
+import { initThemeToggle } from "./theme";
 import type { Port, Porter } from "./types";
 import { STATUS_LABELS } from "./types";
 
@@ -19,6 +20,28 @@ const LINK_LABELS: [keyof Porter, string][] = [
   ["social", "Social"],
   ["donate", "Donate"],
 ];
+
+function renderAvatar(handle: string, porter: Porter): Node {
+  if (porter.image === undefined) {
+    return el("div", {
+      class: "avatar ph",
+      attrs: { "aria-hidden": "true" },
+      children: [handle.charAt(0).toUpperCase()],
+    });
+  }
+  const img = el("img", {
+    class: "avatar",
+    attrs: { src: porter.image, alt: "", loading: "lazy" },
+  });
+  img.addEventListener("error", () => {
+    const ph = el("div", {
+      class: "avatar ph",
+      children: [handle.charAt(0).toUpperCase()],
+    });
+    img.replaceWith(ph);
+  });
+  return img;
+}
 
 function renderPorter(handle: string, porter: Porter, index: number): Node {
   const owned = ports
@@ -35,8 +58,16 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
   );
 
   const infoChildren: (Node | string)[] = [
-    el("h2", { class: "porter-name", children: [handle] }),
+    el("h2", {
+      class: "porter-name",
+      children: [porter.name ?? handle],
+    }),
   ];
+  if (porter.name !== undefined) {
+    infoChildren.push(
+      el("p", { class: "porter-handle", children: [`@${handle}`] }),
+    );
+  }
   if (porter.bio !== undefined) {
     infoChildren.push(el("p", { class: "porter-bio", children: [porter.bio] }));
   }
@@ -68,6 +99,7 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
         class: "idx",
         children: [String(index + 1).padStart(3, "0")],
       }),
+      renderAvatar(handle, porter),
       el("div", {
         class: "porter-info",
         children: [...infoChildren, portsList],
@@ -91,4 +123,5 @@ function main(): void {
   );
 }
 
+initThemeToggle();
 main();

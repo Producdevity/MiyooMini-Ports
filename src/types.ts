@@ -15,11 +15,13 @@ export type Category =
   | "simulation";
 
 export interface Porter {
+  name?: string;
   github: string;
   social?: string;
   website?: string;
   donate?: string;
   bio?: string;
+  image?: string;
 }
 
 export type Porters = Record<string, Porter>;

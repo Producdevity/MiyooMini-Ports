@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { parsePorts } from "../src/schema";
-import type { Port } from "../src/types";
+import { parsePorters, parsePorts } from "../src/schema";
+import type { Port, Porters } from "../src/types";
 import {
   ASSETS_LABELS,
   CATEGORY_LABELS,
@@ -12,6 +12,7 @@ import {
 const ROOT = resolve(import.meta.dirname, "..");
 const README_PATH = resolve(ROOT, "README.md");
 const PORTS_PATH = resolve(ROOT, "ports.json");
+const PORTERS_PATH = resolve(ROOT, "porters.json");
 const BEGIN = "<!-- BEGIN PORTS -->";
 const END = "<!-- END PORTS -->";
 
@@ -20,12 +21,20 @@ function loadPorts(): Port[] {
   return parsePorts(raw);
 }
 
-function renderTable(ports: Port[]): string {
+function loadPorters(): Porters {
+  const raw: unknown = JSON.parse(readFileSync(PORTERS_PATH, "utf8"));
+  return parsePorters(raw);
+}
+
+function renderTable(ports: Port[], porters: Porters): string {
   const sorted = [...ports].sort(sortByCategoryThenName);
+
+  const porterNames = (handles: string[]): string =>
+    handles.map((h) => porters[h]?.name ?? h).join(", ");
 
   const rows = sorted.map(
     (p) =>
-      `| [${p.name}](${p.upstream}) | ${CATEGORY_LABELS[p.category]} | ${STATUS_LABELS[p.status]} | ${ASSETS_LABELS[p.assets]} | ${p.porter.join(", ")} |`,
+      `| [${p.name}](${p.upstream}) | ${CATEGORY_LABELS[p.category]} | ${STATUS_LABELS[p.status]} | ${ASSETS_LABELS[p.assets]} | ${porterNames(p.porter)} |`,
   );
 
   return [
@@ -51,7 +60,8 @@ function spliceTable(readme: string, table: string): string {
 
 function main(): void {
   const ports = loadPorts();
-  const table = renderTable(ports);
+  const porters = loadPorters();
+  const table = renderTable(ports, porters);
   const readme = readFileSync(README_PATH, "utf8");
   const next = spliceTable(readme, table);
   writeFileSync(README_PATH, next);
