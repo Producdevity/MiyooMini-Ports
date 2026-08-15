@@ -33,15 +33,16 @@ The Miyoo Mini (v1–v4), Mini Plus, and Mini Flip share one board family:
 SigmaStar SSD202D, ARMv7-A hard-float + NEON, 128 MB RAM. One build runs on
 all three.
 
-The Mini Flip is the SigmaStar clamshell. The Miyoo Flip (Rockchip RK3566)
+The *Miyoo Mini Flip* is the SigmaStar clamshell. The Miyoo Flip (Rockchip RK3566)
 and the Miyoo A30 (Allwinner A33) are different hardware and are not
 supported by these ports.
 
 ## Install a port
 
-Download the release, copy its `Roms/` folder to your SD card, then run
-`~Import ports` in Onion's Ports list. Ports that need owned game data stay
-hidden until you add that data.
+Install steps differ per port. Many ship an OnionOS-ready `Roms/` folder you
+extract to your SD card root, then run `~Import ports` in Onion's Ports list;
+others need manual placement or owned game files. Follow the link to the
+port's release page and use its instructions.
 
 ## Develop
 
