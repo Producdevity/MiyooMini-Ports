@@ -181,7 +181,6 @@ h1 {
   gap: 8px;
   padding-top: 16px;
   padding-bottom: 4px;
-  padding-left: 4px;
 }
 
 .chips-group {
@@ -270,7 +269,7 @@ main.wrap {
   gap: 16px;
   align-items: start;
   border-bottom: 1px solid var(--line);
-  padding: 16px 0;
+  padding: 16px 0 16px 8px;
   cursor: pointer;
   animation: rise 0.35s ease both;
 }
