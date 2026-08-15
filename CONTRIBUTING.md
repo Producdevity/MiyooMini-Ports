@@ -24,8 +24,8 @@ Append an object to the `ports` array:
 | Field | Required | Value |
 | --- | --- | --- |
 | `name` | yes | Display name. |
-| `category` | yes | One of: `Arcade`, `Engine`, `FPS`, `Platform`, `Puzzle`, `Racing`, `Reflex`, `RPG`, `Shooter`, `Simulation`. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
-| `status` | yes | `playable`, `experimental`, `prerelease`, or `source only` (see below). |
+| `category` | yes | One of: `arcade`, `engine`, `fps`, `platform`, `puzzle`, `racing`, `reflex`, `rpg`, `shooter`, `simulation`. The site and README show display names. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
+| `status` | yes | `playable`, `experimental`, `prerelease`, or `source-only` (see below). |
 | `assets` | yes | `free` if nothing is required, `owned` if the user supplies game data. |
 | `upstream` | yes | The `/releases` page. Use the repo root only if there are no releases. Don't link a specific tag. |
 | `notes` | yes | What to supply, device caveats, performance. Keep it short. |
@@ -36,7 +36,7 @@ Append an object to the `ports` array:
 - `playable` — runs well
 - `experimental` — runs, but rough (low FPS, crashes, untested hardware)
 - `prerelease` — labeled pre-release upstream
-- `source only` — no binary, built by the user
+- `source-only` — no binary, built by the user
 
 ## Rules
 
