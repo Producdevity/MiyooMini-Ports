@@ -1,14 +1,12 @@
-<!-- What port(s) does this add or change? -->
-
 ## Port
 
 - Name:
 - Upstream:
-- Target device(s) tested on:
+- Tested on:
 
 ## Checklist
 
-- [ ] Entry added/updated in `ports.json`
-- [ ] `upstream` links the `/releases` page (not a pinned version), or the repo root if there are no releases
+- [ ] Added/updated in `ports.json`
+- [ ] `upstream` points to `/releases` (or the repo root if there are none)
 - [ ] Not already in [OnionUI/Ports-Collection](https://github.com/OnionUI/Ports-Collection) or Onion's Package Manager
-- [ ] README table regenerated (`pnpm gen:readme`) if edited outside the pre-commit hook
+- [ ] If edited outside the pre-commit hook: ran `pnpm gen:readme`
