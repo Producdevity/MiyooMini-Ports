@@ -10,9 +10,10 @@ Append an object to the `ports` array:
 ```json
 {
   "name": "Stardew Valley",
-  "category": "RPG",
+  "category": "rpg",
   "status": "experimental",
   "assets": "owned",
+  "porter": ["Producdevity"],
   "upstream": "https://github.com/.../releases",
   "image": "https://...",
   "notes": "Short setup notes for the user."
@@ -27,9 +28,33 @@ Append an object to the `ports` array:
 | `category` | yes | One of: `arcade`, `engine`, `fps`, `platform`, `puzzle`, `racing`, `reflex`, `rpg`, `shooter`, `simulation`. The site and README show display names. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
 | `status` | yes | `playable`, `experimental`, `prerelease`, or `source-only` (see below). |
 | `assets` | yes | `free` if nothing is required, `owned` if the user supplies game data. |
+| `porter` | yes | Handles of whoever built the port. Each handle needs a matching entry in `porters.json` (below). |
 | `upstream` | yes | The `/releases` page. Use the repo root only if there are no releases. Don't link a specific tag. |
 | `notes` | yes | What to supply, device caveats, performance. Keep it short. |
 | `image` | no | Stable screenshot URL. GitHub user-attachment URLs work. |
+
+## Porters
+
+`porters.json` holds one profile per porter, keyed by handle:
+
+```json
+{
+  "$schema": "./porters.schema.json",
+  "porters": {
+    "Producdevity": {
+      "github": "https://github.com/Producdevity",
+      "social": "https://...",
+      "website": "https://...",
+      "donate": "https://...",
+      "bio": "Short bio."
+    }
+  }
+}
+```
+
+Only `github` is required; omit the rest if not wanted. Porters linking their
+own work can PR their profile directly. CI rejects handles referenced in
+`ports.json` that have no profile, and profiles with no ports.
 
 ### Status values
 
