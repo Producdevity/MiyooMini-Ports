@@ -13,10 +13,10 @@ Append an object to the `ports` array:
   "category": "rpg",
   "status": "experimental",
   "assets": "owned",
-  "porter": ["Producdevity"],
   "upstream": "https://github.com/.../releases",
   "image": "https://...",
-  "notes": "Short setup notes for the user."
+  "notes": "Short (setup) notes for the user.",
+  "porter": ["Producdevity"]
 }
 ```
 
