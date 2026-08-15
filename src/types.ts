@@ -42,7 +42,7 @@ export type FilterKey = "status" | "assets" | "category";
 
 export interface FilterState {
   q: string;
-  active: Partial<Record<FilterKey, string>>;
+  active: Record<FilterKey, string[]>;
 }
 
 // Chip order follows these arrays; don't reorder.
