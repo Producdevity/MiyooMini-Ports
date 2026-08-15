@@ -32,22 +32,22 @@
           "category": {
             "type": "string",
             "enum": [
-              "Arcade",
-              "Engine",
-              "FPS",
-              "Platform",
-              "Puzzle",
-              "Racing",
-              "Reflex",
-              "RPG",
-              "Shooter",
-              "Simulation"
+              "arcade",
+              "engine",
+              "fps",
+              "platform",
+              "puzzle",
+              "racing",
+              "reflex",
+              "rpg",
+              "shooter",
+              "simulation"
             ],
             "description": "Genre. Reuse an existing value; add a new one only if nothing fits."
           },
           "status": {
             "type": "string",
-            "enum": ["playable", "experimental", "prerelease", "source only"],
+            "enum": ["playable", "experimental", "prerelease", "source-only"],
             "description": "playable: runs well. experimental: runs but rough. prerelease: upstream author labels it pre-release. source only: no binary, user builds it."
           },
           "assets": {

@@ -1,10 +1,22 @@
-export type Status = "playable" | "experimental" | "prerelease" | "source only";
+export type Status = "playable" | "experimental" | "prerelease" | "source-only";
 
 export type Assets = "free" | "owned";
 
+export type Category =
+  | "arcade"
+  | "engine"
+  | "fps"
+  | "platform"
+  | "puzzle"
+  | "racing"
+  | "reflex"
+  | "rpg"
+  | "shooter"
+  | "simulation";
+
 export interface Port {
   name: string;
-  category: string;
+  category: Category;
   status: Status;
   assets: Assets;
   upstream: string;
@@ -19,16 +31,64 @@ export interface FilterState {
   active: Partial<Record<FilterKey, string>>;
 }
 
-// Display order is significant — chips render in this order.
+// Chip order follows these arrays; don't reorder.
 export const STATUS_VALUES = [
   "playable",
   "experimental",
   "prerelease",
-  "source only",
+  "source-only",
 ] as const;
 
 export const ASSETS_VALUES = ["free", "owned"] as const;
 
-export function categoryValues(ports: Port[]): string[] {
-  return [...new Set(ports.map((p) => p.category))].sort();
+export const CATEGORY_VALUES = [
+  "arcade",
+  "engine",
+  "fps",
+  "platform",
+  "puzzle",
+  "racing",
+  "reflex",
+  "rpg",
+  "shooter",
+  "simulation",
+] as const;
+
+export const STATUS_LABELS: Record<Status, string> = {
+  playable: "Playable",
+  experimental: "Experimental",
+  prerelease: "Prerelease",
+  "source-only": "Source only",
+};
+
+export const ASSETS_LABELS: Record<Assets, string> = {
+  free: "Free",
+  owned: "Owned data",
+};
+
+export const CATEGORY_LABELS: Record<Category, string> = {
+  arcade: "Arcade",
+  engine: "Engine",
+  fps: "FPS",
+  platform: "Platform",
+  puzzle: "Puzzle",
+  racing: "Racing",
+  reflex: "Reflex",
+  rpg: "RPG",
+  shooter: "Shooter",
+  simulation: "Simulation",
+};
+
+const LABELS: Record<FilterKey, Record<string, string>> = {
+  status: STATUS_LABELS,
+  assets: ASSETS_LABELS,
+  category: CATEGORY_LABELS,
+};
+
+export function labelFor(key: FilterKey, value: string): string {
+  return LABELS[key][value] ?? value;
+}
+
+export function sortByCategoryThenName(a: Port, b: Port): number {
+  return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
 }

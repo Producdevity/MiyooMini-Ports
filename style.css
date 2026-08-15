@@ -338,7 +338,7 @@ main.wrap {
   border-color: var(--warn);
 }
 
-.tag.st-source {
+.tag.st-source-only {
   color: var(--ink-dim);
   border-color: var(--ink-dim);
 }
