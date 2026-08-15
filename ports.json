@@ -27,9 +27,9 @@
       "status": "prerelease",
       "assets": "owned",
       "upstream": "https://github.com/IC-0n417/half-life-miyoo-mini-plus/releases",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/70/header.jpg",
       "notes": "Xash3D FWGS. Add your Steam valve/ folder. Onion-ready zip.",
-      "porter": ["IC-0n417"],
-      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/70/header.jpg"
+      "porter": ["IC-0n417"]
     },
     {
       "name": "Quake II",
@@ -37,9 +37,9 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/Apaczer/quake2-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/Apaczer/quake2-miyoo/HEAD/quake2.png",
       "notes": "Yamagi. Ships an .ipk, place manually. Q1 is in Onion.",
-      "porter": ["Apaczer"],
-      "image": "https://raw.githubusercontent.com/Apaczer/quake2-miyoo/HEAD/quake2.png"
+      "porter": ["Apaczer"]
     },
     {
       "name": "POSTAL",
@@ -47,9 +47,9 @@
       "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/bostrt/POSTAL-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/bostrt/POSTAL-miyoo/HEAD/keys.png",
       "notes": "Release tarball is a build artifact; README has the Docker build.",
-      "porter": ["bostrt"],
-      "image": "https://raw.githubusercontent.com/bostrt/POSTAL-miyoo/HEAD/keys.png"
+      "porter": ["bostrt"]
     },
     {
       "name": "OpenRCT2",
@@ -77,9 +77,9 @@
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/mehdisadeghi/frozen-bubble-onion/releases",
+      "image": "https://github.com/user-attachments/assets/c68db5c9-7e72-4d19-8e98-c598a3f5e54e",
       "notes": "Self-contained, nothing to supply.",
-      "porter": ["mehdisadeghi"],
-      "image": "https://github.com/user-attachments/assets/c68db5c9-7e72-4d19-8e98-c598a3f5e54e"
+      "porter": ["mehdisadeghi"]
     },
     {
       "name": "SuperTux",
@@ -87,9 +87,9 @@
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/andrigamerita/supertux/releases",
+      "image": "https://www.supertux.org/images/0_7_0/github_preview.png",
       "notes": "0.1.3. Ships gmenu2x layout, place manually. Last release 2021.",
-      "porter": ["andrigamerita"],
-      "image": "https://www.supertux.org/images/0_7_0/github_preview.png"
+      "porter": ["andrigamerita"]
     },
     {
       "name": "Super Haxagon",
@@ -136,9 +136,9 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/aweigit/freej2me-miyoomini/releases",
+      "image": "https://raw.githubusercontent.com/aweigit/freej2me-miyoomini/HEAD/img/ubuntu18.png",
       "notes": "Java/J2ME emulator. Supply .jar games.",
-      "porter": ["aweigit"],
-      "image": "https://raw.githubusercontent.com/aweigit/freej2me-miyoomini/HEAD/img/ubuntu18.png"
+      "porter": ["aweigit"]
     }
   ]
 }
