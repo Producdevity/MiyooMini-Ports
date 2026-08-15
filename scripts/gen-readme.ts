@@ -2,6 +2,12 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parsePorts } from "../src/schema";
 import type { Port } from "../src/types";
+import {
+  ASSETS_LABELS,
+  CATEGORY_LABELS,
+  STATUS_LABELS,
+  sortByCategoryThenName,
+} from "../src/types";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const README_PATH = resolve(ROOT, "README.md");
@@ -9,32 +15,23 @@ const PORTS_PATH = resolve(ROOT, "ports.json");
 const BEGIN = "<!-- BEGIN PORTS -->";
 const END = "<!-- END PORTS -->";
 
-const assetsLabel: Readonly<Record<Port["assets"], string>> = {
-  free: "free",
-  owned: "owned data",
-};
-
 function loadPorts(): Port[] {
   const raw: unknown = JSON.parse(readFileSync(PORTS_PATH, "utf8"));
   return parsePorts(raw);
 }
 
 function renderTable(ports: Port[]): string {
-  const sorted = [...ports].sort(
-    (a, b) =>
-      a.category.localeCompare(b.category) || a.name.localeCompare(b.name),
+  const sorted = [...ports].sort(sortByCategoryThenName);
+
+  const rows = sorted.map(
+    (p) =>
+      `| [${p.name}](${p.upstream}) | ${CATEGORY_LABELS[p.category]} | ${STATUS_LABELS[p.status]} | ${ASSETS_LABELS[p.assets]} | ${p.porter.join(", ")} |`,
   );
 
-  const rows = sorted.map((p) =>
-    [
-      `[${p.name}](${p.upstream})`,
-      p.category,
-      p.status,
-      assetsLabel[p.assets],
-    ].join(" | "),
-  );
-
-  return [`| Port | Category | Status | Assets |`, `| --- | --- | --- | --- |`]
+  return [
+    `| Port | Category | Status | Assets | Porter |`,
+    `| --- | --- | --- | --- | --- |`,
+  ]
     .concat(rows)
     .join("\n");
 }
