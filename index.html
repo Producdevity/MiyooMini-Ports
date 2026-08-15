@@ -8,36 +8,41 @@
   </head>
   <body>
     <header>
-      <h1>Miyoo Mini Ports</h1>
-      <p>
-        Native game ports for the Miyoo Mini, Mini Plus, and Mini Flip
-        (SigmaStar SSD202D) that aren't in
-        <a href="https://github.com/OnionUI/Ports-Collection">OnionUI/Ports-Collection</a>.
-        Each entry links to the port's own releases, so versions are always the
-        author's latest.
-      </p>
+      <div class="wrap">
+        <p class="kicker">Catalog · SigmaStar SSD202D</p>
+        <h1>Miyoo Mini<br />Ports</h1>
+        <div class="header-sub">
+          <p>
+            For the Miyoo Mini, Mini Plus, and Mini Flip. Everything here is
+            outside
+            <a href="https://github.com/OnionUI/Ports-Collection">Onion's Ports-Collection</a>.
+          </p>
+        </div>
+      </div>
     </header>
 
     <div class="bar">
-      <div class="bar-inner">
-        <input id="search" type="search" placeholder="Search by name, category, notes…" autocomplete="off" />
+      <div class="wrap bar-inner">
+        <input id="search" type="search" placeholder="Search ports" autocomplete="off" />
         <span id="count" class="count"></span>
       </div>
     </div>
-    <div class="chips-row" id="chips"></div>
-    <main id="main"></main>
-    <footer>
-      <p>
-        Each port ships its own package; this site only links out. Most
-        releases drop a <code>Roms/</code> folder on your SD card, then you run
-        <code>~Import ports</code> in Onion's Ports list. Ports that need owned
-        data stay hidden until that data is present.
-      </p>
-      <p>
-        Miyoo Flip (RK3566) and Miyoo A30 are different devices and not listed
-        here. Source and contributing on
-        <a href="https://github.com/Producdevity/MiyooMini-Ports">GitHub</a>.
-      </p>
+    <div class="wrap chips-row" id="chips"></div>
+    <main class="wrap" id="main"></main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          Each port links to its own releases. Copy the
+          <code>Roms/</code> folder to your SD card, then run
+          <code>~Import ports</code> in Onion.
+        </p>
+        <p>
+          SigmaStar Mini Flip only. Miyoo Flip (RK3566) and Miyoo A30 are
+          different hardwareand are not supported by these ports.
+
+          <a href="https://github.com/Producdevity/MiyooMini-Ports">GitHub</a>.
+        </p>
+      </div>
     </footer>
 
     <script type="module" src="/src/main.ts"></script>
