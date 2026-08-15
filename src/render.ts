@@ -1,4 +1,11 @@
-import type { FilterKey, FilterState, Port } from "./types";
+import type { Category, FilterKey, FilterState, Port } from "./types";
+import {
+  ASSETS_LABELS,
+  CATEGORY_LABELS,
+  labelFor,
+  STATUS_LABELS,
+  sortByCategoryThenName,
+} from "./types";
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -20,7 +27,7 @@ function el<K extends keyof HTMLElementTagNameMap>(
   return node;
 }
 
-const statusTagClass = (s: string): string => `st-${s.replace(/\s+/g, "-")}`;
+const statusTagClass = (s: string): string => `st-${s}`;
 
 function renderThumbnail(port: Port): Node {
   if (!port.image) {
@@ -41,38 +48,45 @@ function renderThumbnail(port: Port): Node {
   return img;
 }
 
-export function renderRow(port: Port): Node {
+export function renderRow(port: Port, index: number): Node {
   const nameLink = el("a", {
     attrs: { href: port.upstream, target: "_blank", rel: "noopener" },
     children: [port.name],
   });
   nameLink.addEventListener("click", (e) => e.stopPropagation());
 
-  return el("div", {
+  const row = el("div", {
     class: "row",
-    attrs: { role: "button", tabindex: "0" },
+    attrs: {
+      role: "button",
+      tabindex: "0",
+      "aria-label": `Open ${port.name} releases`,
+      style: `animation-delay: ${Math.min(index * 30, 420)}ms`,
+    },
     children: [
+      el("span", {
+        class: "idx",
+        children: [String(index + 1).padStart(3, "0")],
+      }),
       renderThumbnail(port),
       el("div", {
         class: "info",
         children: [
-          el("div", {
-            class: "top",
-            children: [
-              el("span", { class: "name", children: [nameLink] }),
-              el("span", { class: "cat", children: [port.category] }),
-            ],
-          }),
+          el("div", { class: "name", children: [nameLink] }),
           el("div", {
             class: "tags",
             children: [
               el("span", {
+                class: "tag",
+                children: [CATEGORY_LABELS[port.category]],
+              }),
+              el("span", {
                 class: ["tag", statusTagClass(port.status)].join(" "),
-                children: [port.status],
+                children: [STATUS_LABELS[port.status]],
               }),
               el("span", {
                 class: ["tag", port.assets].join(" "),
-                children: [port.assets === "owned" ? "owned data" : "free"],
+                children: [ASSETS_LABELS[port.assets]],
               }),
             ],
           }),
@@ -81,6 +95,19 @@ export function renderRow(port: Port): Node {
       }),
     ],
   });
+
+  const open = (): void => {
+    window.open(port.upstream, "_blank", "noopener");
+  };
+  row.addEventListener("click", open);
+  row.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      open();
+    }
+  });
+
+  return row;
 }
 
 export function renderList(
@@ -94,18 +121,19 @@ export function renderList(
     container.append(
       el("div", {
         class: "empty",
-        children: ["No ports match these filters."],
+        children: ["Nothing matches."],
       }),
     );
     return;
   }
 
   if (!grouped) {
-    container.append(...list.map(renderRow));
+    const flat = [...list].sort(sortByCategoryThenName);
+    container.append(...flat.map((p, i) => renderRow(p, i)));
     return;
   }
 
-  const byCategory = new Map<string, Port[]>();
+  const byCategory = new Map<Category, Port[]>();
   for (const p of list) {
     const arr = byCategory.get(p.category) ?? [];
     arr.push(p);
@@ -114,17 +142,19 @@ export function renderList(
   const sorted = [...byCategory.entries()].sort(([a], [b]) =>
     a.localeCompare(b),
   );
+  let index = 0;
   for (const [category, items] of sorted) {
+    items.sort((a, b) => a.name.localeCompare(b.name));
     container.append(
       el("div", {
         class: "group-label",
         children: [
-          category,
+          CATEGORY_LABELS[category],
           " ",
           el("span", { class: "n", children: [String(items.length)] }),
         ],
       }),
-      ...items.map(renderRow),
+      ...items.map((p) => renderRow(p, index++)),
     );
   }
 }
@@ -153,7 +183,7 @@ export function renderChips(
       const chip = el("span", {
         class: "chip",
         attrs: { role: "button", tabindex: "0" },
-        children: [value],
+        children: [labelFor(g.key, value)],
       });
       if (state.active[g.key] === value) chip.classList.add("active");
       const toggle = () => onToggle(g.key, value);
