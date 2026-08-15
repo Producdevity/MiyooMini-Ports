@@ -27,11 +27,11 @@ jobs:
       - name: Format and lint (Biome)
         run: pnpm check
 
-      - name: Validate ports.json against the TS schema
+      - name: Validate ports.json against the schema
         run: pnpm validate
 
       - name: Typecheck
-        run: tsc && tsc -p tsconfig.scripts.json
+        run: pnpm typecheck
 
       - name: README in sync with ports.json
         run: |
@@ -44,3 +44,21 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
