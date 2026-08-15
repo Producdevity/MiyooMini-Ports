@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/Producdevity/MiyooMini-Ports/ports.schema.json",
+  "$id": "https://raw.githubusercontent.com/Producdevity/MiyooMini-Ports/master/ports.schema.json",
   "title": "MiyooMini-Ports catalog",
   "description": "Port entries for the Miyoo Mini family (SigmaStar SSD202D).",
   "type": "object",
@@ -8,8 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "type": "string",
-      "format": "uri"
+      "type": "string"
     },
     "ports": {
       "type": "array",
@@ -28,12 +27,23 @@
           "name": {
             "type": "string",
             "minLength": 1,
-            "description": "Display name shown in the catalog and README."
+            "description": "Display name."
           },
           "category": {
             "type": "string",
-            "minLength": 1,
-            "description": "Genre. Free-form, but reuse an existing one if it fits."
+            "enum": [
+              "Arcade",
+              "Engine",
+              "FPS",
+              "Platform",
+              "Puzzle",
+              "Racing",
+              "Reflex",
+              "RPG",
+              "Shooter",
+              "Simulation"
+            ],
+            "description": "Genre. Reuse an existing value; add a new one only if nothing fits."
           },
           "status": {
             "type": "string",
@@ -54,12 +64,12 @@
           "image": {
             "type": "string",
             "format": "uri",
-            "description": "Optional stable screenshot URL. GitHub user-attachment URLs are permanent."
+            "description": "Stable screenshot URL. GitHub user-attachment URLs are permanent."
           },
           "notes": {
             "type": "string",
             "minLength": 1,
-            "description": "Setup gotchas, device caveats, what to supply. Keep it short."
+            "description": "What to supply, device caveats, performance."
           }
         }
       }
