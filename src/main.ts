@@ -4,7 +4,7 @@ import { renderChips, renderCount, renderList } from "./render";
 import { parsePorts } from "./schema";
 import {
   ASSETS_VALUES,
-  categoryValues,
+  CATEGORY_VALUES,
   type FilterKey,
   type FilterState,
   STATUS_VALUES,
@@ -28,7 +28,7 @@ const state: FilterState = { q: "", active: {} };
 const filterGroups: { key: FilterKey; values: readonly string[] }[] = [
   { key: "status", values: STATUS_VALUES },
   { key: "assets", values: ASSETS_VALUES },
-  { key: "category", values: categoryValues(ports) },
+  { key: "category", values: CATEGORY_VALUES },
 ];
 
 function rerender(): void {
