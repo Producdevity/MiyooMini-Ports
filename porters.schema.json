@@ -18,6 +18,11 @@
         "required": ["github"],
         "additionalProperties": false,
         "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Display name, if different from the handle."
+          },
           "github": {
             "type": "string",
             "pattern": "^https://",
@@ -26,12 +31,12 @@
           "social": {
             "type": "string",
             "pattern": "^https://",
-            "description": "Social profile the porter wants listed."
+            "description": "Social profile; YouTube, Reddit, Twitter, whatever."
           },
           "website": {
             "type": "string",
             "pattern": "^https://",
-            "description": "Personal site."
+            "description": "Personal site; can be anything you want."
           },
           "donate": {
             "type": "string",
@@ -41,7 +46,12 @@
           "bio": {
             "type": "string",
             "minLength": 1,
-            "description": "Short bio."
+            "description": "Short bio. (Or long)"
+          },
+          "image": {
+            "type": "string",
+            "pattern": "^https://",
+            "description": "Avatar or profile image URL."
           }
         }
       }

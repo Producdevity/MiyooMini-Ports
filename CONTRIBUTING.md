@@ -42,15 +42,21 @@ Append an object to the `ports` array:
   "$schema": "./porters.schema.json",
   "porters": {
     "Producdevity": {
+      "name": "Producdevity | EmuReady",
       "github": "https://github.com/Producdevity",
       "social": "https://...",
       "website": "https://...",
       "donate": "https://...",
-      "bio": "Short bio."
+      "bio": "Yeah man, I wanna do it",
+      "image": "https://..."
     }
   }
 }
 ```
+
+`name` is a display name for when the handle isn't how someone wants to be
+listed. `image` is an avatar; GitHub avatar URLs
+(`https://avatars.githubusercontent.com/u/<id>?v=4`) work well.
 
 Only `github` is required; omit the rest if not wanted. Porters linking their
 own work can PR their profile directly. CI rejects handles referenced in

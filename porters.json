@@ -2,10 +2,13 @@
   "$schema": "./porters.schema.json",
   "porters": {
     "Producdevity": {
+      "name": "Producdevity | EmuReady",
       "github": "https://github.com/Producdevity",
       "social": "https://x.com/Producdevity",
+      "website": "https://www.emuready.com",
       "donate": "https://www.patreon.com/cw/Producdevity",
-      "bio": "EmuReady, Emulation, Ports, FOSS"
+      "bio": "EmuReady, Emulation, Ports, FOSS",
+      "image": "https://avatars.githubusercontent.com/u/15906337?v=4"
     },
     "cobaltgit": {
       "github": "https://github.com/cobaltgit"
@@ -35,7 +38,13 @@
       "github": "https://github.com/RedTopper"
     },
     "joyrider3774": {
-      "github": "https://github.com/joyrider3774"
+      "name": "Willems Davy",
+      "github": "https://github.com/joyrider3774",
+      "social": "https://twitter.com/joyrider3774",
+      "website": "https://www.willemssoft.be",
+      "donate": "https://ko-fi.com/joyrider3774",
+      "bio": "Programmer and tinkerer with all kind of devices and software.",
+      "image": "https://avatars.githubusercontent.com/u/10714776?v=4"
     },
     "weimingtom": {
       "github": "https://github.com/weimingtom"
