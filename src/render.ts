@@ -10,7 +10,21 @@ import {
   sortByCategoryThenName,
 } from "./types";
 
-export function renderRow(port: Port, index: number, porters: Porters): Node {
+const valueClass = (key: FilterKey, value: string): string => {
+  if (key === "category") return `cat-${value}`;
+  if (key === "assets") return value;
+  return `st-${value}`;
+};
+
+const isHit = (key: FilterKey, value: string, state: FilterState): boolean =>
+  state.active[key].includes(value);
+
+export function renderRow(
+  port: Port,
+  index: number,
+  porters: Porters,
+  state: FilterState,
+): Node {
   const detail = portUrl(port.name);
   const nameLink = el("a", {
     attrs: { href: detail },
@@ -47,12 +61,18 @@ export function renderRow(port: Port, index: number, porters: Porters): Node {
           el("div", {
             class: "tags",
             children: [
-              renderTag(CATEGORY_LABELS[port.category]),
+              renderTag(
+                CATEGORY_LABELS[port.category],
+                `tag cat-${port.category}${isHit("category", port.category, state) ? " hit" : ""}`,
+              ),
               renderTag(
                 STATUS_LABELS[port.status],
-                `tag ${statusTagClass(port.status)}`,
+                `tag ${statusTagClass(port.status)}${isHit("status", port.status, state) ? " hit" : ""}`,
               ),
-              renderTag(ASSETS_LABELS[port.assets], `tag ${port.assets}`),
+              renderTag(
+                ASSETS_LABELS[port.assets],
+                `tag ${port.assets}${isHit("assets", port.assets, state) ? " hit" : ""}`,
+              ),
             ],
           }),
           el("div", { class: "notes", children: [port.notes] }),
@@ -75,6 +95,7 @@ export function renderList(
   container: HTMLElement,
   grouped: boolean,
   porters: Porters,
+  state: FilterState,
 ): void {
   container.replaceChildren();
 
@@ -91,7 +112,7 @@ export function renderList(
 
   if (!grouped) {
     const flat = [...list].sort(sortByCategoryThenName);
-    container.append(...flat.map((p, i) => renderRow(p, i, porters)));
+    container.append(...flat.map((p, i) => renderRow(p, i, porters, state)));
     return;
   }
 
@@ -111,12 +132,14 @@ export function renderList(
       el("div", {
         class: "group-label",
         children: [
-          CATEGORY_LABELS[category],
-          " ",
+          el("span", {
+            class: `group-cat cat-${category}`,
+            children: [CATEGORY_LABELS[category]],
+          }),
           el("span", { class: "n", children: [String(items.length)] }),
         ],
       }),
-      ...items.map((p) => renderRow(p, index++, porters)),
+      ...items.map((p) => renderRow(p, index++, porters, state)),
     );
   }
 }
@@ -142,16 +165,15 @@ export function renderChips(
     const row = el("div", { class: "chips-group" });
     row.append(el("span", { class: "lbl", children: [g.key] }));
     for (const value of g.values) {
-      const active = state.active[g.key] === value;
+      const active = state.active[g.key].includes(value);
       const chip = el("button", {
-        class: "chip",
+        class: `chip ${valueClass(g.key, value)}${active ? " active" : ""}`,
         attrs: {
           type: "button",
           "aria-pressed": active ? "true" : "false",
         },
         children: [labelFor(g.key, value)],
       });
-      if (active) chip.classList.add("active");
       chip.addEventListener("click", () => onToggle(g.key, value));
       row.append(chip);
     }

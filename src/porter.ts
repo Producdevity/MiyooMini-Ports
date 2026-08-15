@@ -12,9 +12,9 @@ import {
   renderNotFound,
 } from "./components";
 import { el } from "./dom";
+import { mountSiteNav } from "./nav";
 import { parsePorters, parsePorts } from "./schema";
 import { portUrl } from "./slug";
-import { initThemeToggle } from "./theme";
 import type { Port, Porter } from "./types";
 import { STATUS_LABELS } from "./types";
 
@@ -113,5 +113,5 @@ function main(): void {
   }
 }
 
-initThemeToggle();
+mountSiteNav(null);
 main();

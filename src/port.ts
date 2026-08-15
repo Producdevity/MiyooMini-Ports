@@ -7,9 +7,9 @@ import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { renderImage, renderNotFound } from "./components";
 import { el } from "./dom";
+import { mountSiteNav } from "./nav";
 import { parsePorters, parsePorts } from "./schema";
 import { porterUrl, slugify } from "./slug";
-import { initThemeToggle } from "./theme";
 import type { Port } from "./types";
 import {
   ASSETS_LABELS,
@@ -140,5 +140,5 @@ function main(): void {
   }
 }
 
-initThemeToggle();
+mountSiteNav(null);
 main();

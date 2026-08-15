@@ -6,10 +6,10 @@ import "@fontsource/ibm-plex-mono/latin-600.css";
 import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { PORTER_LINK_LABELS, renderImage, renderLinkTag } from "./components";
-import { el } from "./dom";
+import { el, querySelector } from "./dom";
+import { mountSiteNav } from "./nav";
 import { parsePorters, parsePorts } from "./schema";
 import { porterUrl, portUrl } from "./slug";
-import { initThemeToggle } from "./theme";
 import type { Port, Porter } from "./types";
 import { STATUS_LABELS } from "./types";
 
@@ -99,8 +99,9 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
 }
 
 function main(): void {
-  const container = document.getElementById("porters");
-  if (!container) throw new Error("missing element: #porters");
+  const container = querySelector<HTMLElement>("#porters");
+  const search = document.getElementById("porter-search");
+  const count = document.getElementById("count");
 
   const sorted = Object.entries(porters).sort((a, b) => {
     const countA = ports.filter((p) => p.porter.includes(a[0])).length;
@@ -108,10 +109,45 @@ function main(): void {
     return countB - countA || a[0].localeCompare(b[0]);
   });
 
-  container.replaceChildren(
-    ...sorted.map(([h, p], i) => renderPorter(h, p, i)),
-  );
+  function render(q: string): void {
+    const needle = q.trim().toLowerCase();
+    const shown = sorted.filter(([handle, porter]) => {
+      if (!needle) return true;
+      const owned = ports
+        .filter((p) => p.porter.includes(handle))
+        .map((p) => p.name)
+        .join(" ");
+      const haystack = [handle, porter.name ?? "", porter.bio ?? "", owned]
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(needle);
+    });
+    if (shown.length === 0) {
+      container.append(
+        el("div", {
+          class: "empty",
+          attrs: { role: "status" },
+          children: ["Nobody matches."],
+        }),
+      );
+    } else {
+      container.append(...shown.map(([h, p], i) => renderPorter(h, p, i)));
+    }
+    if (count) {
+      count.textContent = `${shown.length} / ${sorted.length}`;
+    }
+  }
+
+  if (search instanceof HTMLInputElement) {
+    search.addEventListener("input", (event) => {
+      if (event.target instanceof HTMLInputElement) {
+        render(event.target.value);
+      }
+    });
+  }
+
+  render("");
 }
 
-initThemeToggle();
+mountSiteNav("porters");
 main();

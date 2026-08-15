@@ -19,27 +19,24 @@
         <h1>Porters</h1>
         <div class="header-sub">
           <p>The people who built the ports in this catalog.</p>
-          <a class="nav-link" href="./index.html">← All ports</a>
-          <button
-            id="theme-toggle"
-            class="chip theme-toggle"
-            type="button"
-            aria-label="Switch color theme"
-          >
-            Dark
-          </button>
         </div>
+        <nav class="site-nav" id="site-nav" aria-label="Main"></nav>
       </div>
     </header>
 
-    <main class="wrap" id="porters"></main>
-
+    <div class="bar">
+      <div class="wrap bar-inner">
+        <label class="sr-only" for="porter-search">Search porters</label>
+        <input id="porter-search" type="search" placeholder="Search porters" autocomplete="off" />
+        <span id="count" class="count" aria-live="polite"></span>
+      </div>
+    </div>
+    <main class="wrap porters-main" id="porters"></main>
     <footer class="site-footer">
       <div class="wrap">
         <p>
           Porters: to add or update your links and bio, edit
-          <code>porters.json</code> and
-          <a href="https://github.com/Producdevity/MiyooMini-Ports" title="Open a PR on the Miyoo Mini Ports GitHub">open a PR</a>.
+          <code>porters.json</code> and open a PR.
         </p>
       </div>
     </footer>

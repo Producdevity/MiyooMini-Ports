@@ -17,3 +17,9 @@ export function el<K extends keyof HTMLElementTagNameMap>(
   }
   return node;
 }
+
+export function querySelector<T extends HTMLElement>(selector: string): T {
+  const node = document.querySelector<T>(selector);
+  if (!node) throw new Error(`missing element: ${selector}`);
+  return node;
+}

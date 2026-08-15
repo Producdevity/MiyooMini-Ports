@@ -164,6 +164,39 @@ h1 {
   text-underline-offset: 3px;
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  border-top: 3px solid var(--rule);
+  margin-top: 24px;
+  padding: 12px 0;
+}
+
+.site-nav a {
+  font: 600 12px / 1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.site-nav .theme-toggle {
+  margin-left: auto;
+}
+
 .nav-link {
   font: 600 12px / 1 var(--font-mono);
   letter-spacing: 0.1em;
@@ -193,7 +226,7 @@ h1 {
   padding-bottom: 12px;
 }
 
-#search {
+.bar-inner input[type="search"] {
   flex: 1;
   min-width: 180px;
   font: 400 14px / 1 var(--font-mono);
@@ -203,11 +236,11 @@ h1 {
   padding: 8px 12px;
 }
 
-#search::placeholder {
+.bar-inner input[type="search"]::placeholder {
   color: var(--ink-dim);
 }
 
-#search:focus {
+.bar-inner input[type="search"]:focus {
   outline: 2px solid var(--accent);
   outline-offset: -1px;
 }
@@ -290,6 +323,10 @@ h1 {
 main.wrap {
   padding-top: 8px;
   padding-bottom: 72px;
+}
+
+.porters-main {
+  padding-top: 20px;
 }
 
 .group-label {
@@ -392,30 +429,163 @@ main.wrap {
   color: var(--ink-dim);
 }
 
-.tag.st-playable {
-  color: var(--good);
-  border-color: var(--good);
+/* Value colors: one --c per semantic class, shared by tags, chips,
+   group labels, and filled states. */
+.st-playable,
+.free {
+  --c: var(--good);
 }
 
+.st-experimental,
+.st-prerelease {
+  --c: var(--warn);
+}
+
+.st-source-only {
+  --c: var(--ink-dim);
+}
+
+.owned {
+  --c: var(--bad);
+}
+
+.cat-app {
+  --c: #0f766e;
+}
+
+.cat-arcade {
+  --c: #6b21a8;
+}
+
+.cat-engine {
+  --c: #57534e;
+}
+
+.cat-fps {
+  --c: #9a3412;
+}
+
+.cat-platform {
+  --c: #1d4ed8;
+}
+
+.cat-puzzle {
+  --c: #44700d;
+}
+
+.cat-racing {
+  --c: #9c4707;
+}
+
+.cat-reflex {
+  --c: #9d174d;
+}
+
+.cat-rpg {
+  --c: #991b1b;
+}
+
+.cat-shooter {
+  --c: #334155;
+}
+
+:root[data-theme="dark"] .cat-app {
+  --c: #53c4b4;
+}
+
+:root[data-theme="dark"] .cat-arcade {
+  --c: #b791e8;
+}
+
+:root[data-theme="dark"] .cat-engine {
+  --c: #a8a29e;
+}
+
+:root[data-theme="dark"] .cat-fps {
+  --c: #e29a72;
+}
+
+:root[data-theme="dark"] .cat-platform {
+  --c: #86a8f8;
+}
+
+:root[data-theme="dark"] .cat-puzzle {
+  --c: #a9c86b;
+}
+
+:root[data-theme="dark"] .cat-racing {
+  --c: #e5a54d;
+}
+
+:root[data-theme="dark"] .cat-reflex {
+  --c: #e893b4;
+}
+
+:root[data-theme="dark"] .cat-rpg {
+  --c: #ef8080;
+}
+
+:root[data-theme="dark"] .cat-shooter {
+  --c: #94a3b8;
+}
+
+.tag.st-playable,
 .tag.st-experimental,
-.tag.st-prerelease {
-  color: var(--warn);
-  border-color: var(--warn);
+.tag.st-prerelease,
+.tag.st-source-only,
+.tag.owned,
+.tag.free,
+.tag[class*="cat-"] {
+  color: var(--c);
+  border-color: var(--c);
 }
 
-.tag.st-source-only {
-  color: var(--ink-dim);
-  border-color: var(--ink-dim);
+.tag.st-playable.hit,
+.tag.st-experimental.hit,
+.tag.st-prerelease.hit,
+.tag.st-source-only.hit,
+.tag.owned.hit,
+.tag.free.hit,
+.tag[class*="cat-"].hit {
+  background: var(--c);
+  color: var(--paper);
 }
 
-.tag.owned {
-  color: var(--bad);
-  border-color: var(--bad);
+.chip.st-playable,
+.chip.st-experimental,
+.chip.st-prerelease,
+.chip.st-source-only,
+.chip.owned,
+.chip.free,
+.chip[class*="cat-"] {
+  color: var(--c);
+  border-color: var(--c);
+  background: var(--paper);
 }
 
-.tag.free {
-  color: var(--good);
-  border-color: var(--good);
+.chip.st-playable.active,
+.chip.st-experimental.active,
+.chip.st-prerelease.active,
+.chip.st-source-only.active,
+.chip.owned.active,
+.chip.free.active,
+.chip[class*="cat-"].active {
+  background: var(--c);
+  color: var(--paper);
+}
+
+.chip.st-playable.active:hover,
+.chip.st-experimental.active:hover,
+.chip.st-prerelease.active:hover,
+.chip.st-source-only.active:hover,
+.chip.owned.active:hover,
+.chip.free.active:hover,
+.chip[class*="cat-"].active:hover {
+  background: var(--c);
+}
+
+.group-cat {
+  color: var(--c);
 }
 
 .notes {
@@ -534,7 +704,7 @@ main.wrap {
 
 .detail-head,
 .not-found-title {
-  padding-top: 48px;
+  padding-top: 8px;
 }
 
 .empty-left {
@@ -692,7 +862,7 @@ main.wrap {
   grid-template-columns: 96px 1fr;
   gap: 24px;
   align-items: start;
-  padding-top: 48px;
+  padding-top: 8px;
 }
 
 .avatar-lg {
