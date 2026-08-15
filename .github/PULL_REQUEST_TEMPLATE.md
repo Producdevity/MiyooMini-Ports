@@ -7,6 +7,7 @@
 
 ## Checklist
 
+- [ ] The port does not distribute any copyrighted or proprietary material.
 - [ ] Added/updated in `ports.json`
 - [ ] Porter(s) have a profile in `porters.json`
 - [ ] `upstream` points to `/releases` (or the repo root if there are none)
