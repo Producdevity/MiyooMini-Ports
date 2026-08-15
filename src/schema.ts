@@ -98,8 +98,7 @@ interface CatalogFile {
 
 const isCatalogFile = (value: unknown): value is CatalogFile => {
   if (!isObject(value)) return false;
-  if (!Array.isArray(value.ports)) return false;
-  return true;
+  return Array.isArray(value.ports);
 };
 
 export function parsePorts(value: unknown): Port[] {
@@ -154,8 +153,7 @@ interface PortersFile {
 
 const isPortersFile = (value: unknown): value is PortersFile => {
   if (!isObject(value)) return false;
-  if (!isObject(value.porters)) return false;
-  return true;
+  return isObject(value.porters);
 };
 
 export function parsePorters(value: unknown): Porters {
