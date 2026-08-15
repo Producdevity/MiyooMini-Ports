@@ -25,7 +25,7 @@ Append an object to the `ports` array:
 | Field | Required | Value |
 | --- | --- | --- |
 | `name` | yes | Display name. |
-| `category` | yes | One of: `arcade`, `engine`, `fps`, `platform`, `puzzle`, `racing`, `reflex`, `rpg`, `shooter`, `simulation`. The site and README show display names. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
+| `category` | yes | One of: `app` (non-game software), `arcade`, `engine`, `fps`, `platform`, `puzzle`, `racing`, `reflex`, `rpg`, `shooter`, `simulation`. The site and README show display names. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
 | `status` | yes | `playable`, `experimental`, `prerelease`, or `source-only` (see below). |
 | `assets` | yes | `free` if nothing is required, `owned` if the user supplies game data. |
 | `porter` | yes | Handles of whoever built the port. Each handle needs a matching entry in `porters.json` (below). |

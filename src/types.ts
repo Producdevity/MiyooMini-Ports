@@ -3,6 +3,7 @@ export type Status = "playable" | "experimental" | "prerelease" | "source-only";
 export type Assets = "free" | "owned";
 
 export type Category =
+  | "app"
   | "arcade"
   | "engine"
   | "fps"
@@ -55,6 +56,7 @@ export const STATUS_VALUES = [
 export const ASSETS_VALUES = ["free", "owned"] as const;
 
 export const CATEGORY_VALUES = [
+  "app",
   "arcade",
   "engine",
   "fps",
@@ -80,6 +82,7 @@ export const ASSETS_LABELS: Record<Assets, string> = {
 };
 
 export const CATEGORY_LABELS: Record<Category, string> = {
+  app: "App",
   arcade: "Arcade",
   engine: "Engine",
   fps: "FPS",

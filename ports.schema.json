@@ -33,6 +33,7 @@
           "category": {
             "type": "string",
             "enum": [
+              "app",
               "arcade",
               "engine",
               "fps",
