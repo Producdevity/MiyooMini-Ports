@@ -1,12 +1,11 @@
 # Contributing
 
-All port data lives in `ports.json`. The README table and the live site both
-build from it, so don't edit the README table by hand. To add or update a port,
-edit `ports.json` and open a PR.
+Edit `ports.json` and open a PR. The README table and the live site both build
+from it; the table regenerates on commit, so leave it alone.
 
 ## Adding a port
 
-Append an object to the array in `ports.json`:
+Append an object to the `ports` array:
 
 ```json
 {
@@ -16,7 +15,7 @@ Append an object to the array in `ports.json`:
   "assets": "owned",
   "upstream": "https://github.com/.../releases",
   "image": "https://...",
-  "notes": "Setup gotchas and caveats."
+  "notes": "Short setup notes for the user."
 }
 ```
 
@@ -25,45 +24,42 @@ Append an object to the array in `ports.json`:
 | Field | Required | Value |
 | --- | --- | --- |
 | `name` | yes | Display name. |
-| `category` | yes | Genre. Free-form, but reuse an existing one if it fits. |
-| `status` | yes | `playable` \| `experimental` \| `prerelease` \| `source only` |
-| `assets` | yes | `free` (nothing to supply) \| `owned` (user supplies game data) |
-| `upstream` | yes | Link the `/releases` page, not a pinned version, so this never goes stale. If the port has no releases, link the repo root. |
-| `notes` | yes | Setup gotchas, device caveats, what to supply. Keep it short. |
-| `image` | no | Stable screenshot URL (GitHub user-attachments URLs work). Omit if there's no good screenshot. |
+| `category` | yes | One of: `Arcade`, `Engine`, `FPS`, `Platform`, `Puzzle`, `Racing`, `Reflex`, `RPG`, `Shooter`, `Simulation`. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
+| `status` | yes | `playable`, `experimental`, `prerelease`, or `source only` (see below). |
+| `assets` | yes | `free` if nothing is required, `owned` if the user supplies game data. |
+| `upstream` | yes | The `/releases` page. Use the repo root only if there are no releases. Don't link a specific tag. |
+| `notes` | yes | What to supply, device caveats, performance. Keep it short. |
+| `image` | no | Stable screenshot URL. GitHub user-attachment URLs work. |
 
 ### Status values
 
-- **playable** — runs well, with any caveats noted in `notes`
-- **experimental** — runs but rough (low FPS, crashes, untested on some devices)
-- **prerelease** — the upstream author labels it pre-release
-- **source only** — no binary, the user builds it
+- `playable` — runs well
+- `experimental` — runs, but rough (low FPS, crashes, untested hardware)
+- `prerelease` — labeled pre-release upstream
+- `source only` — no binary, built by the user
 
 ## Rules
 
-- Don't list ports already in [OnionUI/Ports-Collection](https://github.com/OnionUI/Ports-Collection)
+- No ports that are already in [OnionUI/Ports-Collection](https://github.com/OnionUI/Ports-Collection)
   or Onion's Package Manager (OpenBOR, PICO-8/fake-08, ScummVM).
-- Link out, don't host. No binaries or game data in this repo; point at the
-  port's own releases.
-- Link `/releases`, not a pinned version, unless the port has no releases.
-- If you have a screenshot, use a stable URL. GitHub user-attachment URLs
+- Link to upstream releases. Don't commit binaries or game data.
+- Screenshot URLs must be stable. GitHub user-attachment URLs
   (`https://github.com/user-attachments/assets/<id>`) are permanent.
 
 ## Local checks
 
 ```sh
 pnpm install
-pnpm check     # biome lint + format
-pnpm build     # tsc typecheck + vite build
+pnpm check      # biome lint + format
+pnpm build      # vite build
+pnpm validate   # ports.json against the schema
 ```
 
-The pre-commit hook runs Biome on staged files and regenerates the README table
-when `ports.json` is staged. If you edit `ports.json` from the GitHub web UI,
-CI will fail if the README table is out of sync. Run `pnpm gen:readme` locally
-and commit the result.
+The pre-commit hook formats staged files and regenerates the README table when
+`ports.json` is staged. Web edits skip the hook, so a web-only PR may fail CI
+on a stale table. Run `pnpm gen:readme` and push, or ask a maintainer to.
 
 ## Scope
 
-Miyoo Mini, Mini Plus, and Mini Flip (SigmaStar SSD202D, ARMv7-A hf + NEON).
-The Miyoo Flip (Rockchip RK3566) and Miyoo A30 (Allwinner A33) are different
-devices; their ports don't belong here.
+Miyoo Mini, Mini Plus, Mini Flip (SigmaStar SSD202D). The Miyoo Flip (RK3566)
+and Miyoo A30 (A33) are different hardware and don't belong in this collection.
