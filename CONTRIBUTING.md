@@ -31,7 +31,7 @@ Append an object to the `ports` array:
 | `porter` | yes | Handles of whoever built the port. Each handle needs a matching entry in `porters.json` (below). |
 | `upstream` | yes | The `/releases` page. Use the repo root only if there are no releases. Don't link a specific tag. |
 | `notes` | yes | What to supply, device caveats, performance. Keep it short. |
-| `image` | no | Stable screenshot URL. GitHub user-attachment URLs work. |
+| `image` | yes | Stable image URL: a screenshot, app icon, or artwork. Repo files (raw.githubusercontent), GitHub user-attachment URLs, and Wikimedia all work. |
 
 ## Porters
 

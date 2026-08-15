@@ -21,6 +21,7 @@
           "assets",
           "porter",
           "upstream",
+          "image",
           "notes"
         ],
         "additionalProperties": false,
