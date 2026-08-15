@@ -7,7 +7,7 @@
       "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases",
-      "image": "https://github.com/user-attachments/assets/607e7608-37ee-4dbe-b394-92888a6438b6",
+      "image": "https://raw.githubusercontent.com/Producdevity/stardew-valley-miyoo-mini-port/refs/heads/master/setup-app/src/assets/stardew-cover.png",
       "notes": "Mono6 + Docker prepare step. ~5–10 FPS. Mini v4 only; Plus/Flip untested."
     },
     {
