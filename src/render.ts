@@ -1,4 +1,6 @@
+import { renderImage, renderTag, statusTagClass } from "./components";
 import { el } from "./dom";
+import { porterUrl, portUrl } from "./slug";
 import type { Category, FilterKey, FilterState, Port, Porters } from "./types";
 import {
   ASSETS_LABELS,
@@ -8,43 +10,27 @@ import {
   sortByCategoryThenName,
 } from "./types";
 
-const statusTagClass = (s: string): string => `st-${s}`;
-
-const porterNames = (handles: string[], porters: Porters): string =>
-  handles.map((h) => porters[h]?.name ?? h).join(", ");
-
-function renderThumbnail(port: Port): Node {
-  if (!port.image) {
-    return el("div", { class: "thumb ph", children: ["⬚"] });
-  }
-  const img = el("img", {
-    class: "thumb",
-    attrs: {
-      src: port.image,
-      alt: "",
-      loading: "lazy",
-    },
-  });
-  img.addEventListener("error", () => {
-    const ph = el("div", { class: "thumb ph", children: ["⬚"] });
-    img.replaceWith(ph);
-  });
-  return img;
-}
-
 export function renderRow(port: Port, index: number, porters: Porters): Node {
+  const detail = portUrl(port.name);
   const nameLink = el("a", {
-    attrs: { href: port.upstream, target: "_blank", rel: "noopener" },
+    attrs: { href: detail },
     children: [port.name],
   });
-  nameLink.addEventListener("click", (e) => e.stopPropagation());
+
+  const byLine = el("div", { class: "by", children: ["by "] });
+  port.porter.forEach((handle, i) => {
+    if (i > 0) byLine.append(", ");
+    byLine.append(
+      el("a", {
+        attrs: { href: porterUrl(handle) },
+        children: [porters[handle]?.name ?? handle],
+      }),
+    );
+  });
 
   const row = el("div", {
     class: "row",
     attrs: {
-      role: "button",
-      tabindex: "0",
-      "aria-label": `Open ${port.name} releases`,
       style: `animation-delay: ${Math.min(index * 30, 420)}ms`,
     },
     children: [
@@ -52,30 +38,21 @@ export function renderRow(port: Port, index: number, porters: Porters): Node {
         class: "idx",
         children: [String(index + 1).padStart(3, "0")],
       }),
-      renderThumbnail(port),
+      renderImage(port.image, "thumb"),
       el("div", {
         class: "info",
         children: [
           el("div", { class: "name", children: [nameLink] }),
-          el("div", {
-            class: "by",
-            children: [`by ${porterNames(port.porter, porters)}`],
-          }),
+          byLine,
           el("div", {
             class: "tags",
             children: [
-              el("span", {
-                class: "tag",
-                children: [CATEGORY_LABELS[port.category]],
-              }),
-              el("span", {
-                class: ["tag", statusTagClass(port.status)].join(" "),
-                children: [STATUS_LABELS[port.status]],
-              }),
-              el("span", {
-                class: ["tag", port.assets].join(" "),
-                children: [ASSETS_LABELS[port.assets]],
-              }),
+              renderTag(CATEGORY_LABELS[port.category]),
+              renderTag(
+                STATUS_LABELS[port.status],
+                `tag ${statusTagClass(port.status)}`,
+              ),
+              renderTag(ASSETS_LABELS[port.assets], `tag ${port.assets}`),
             ],
           }),
           el("div", { class: "notes", children: [port.notes] }),
@@ -84,15 +61,10 @@ export function renderRow(port: Port, index: number, porters: Porters): Node {
     ],
   });
 
-  const open = (): void => {
-    window.open(port.upstream, "_blank", "noopener");
-  };
-  row.addEventListener("click", open);
-  row.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      open();
-    }
+  row.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLElement && target.closest("a")) return;
+    window.location.assign(detail);
   });
 
   return row;
@@ -110,6 +82,7 @@ export function renderList(
     container.append(
       el("div", {
         class: "empty",
+        attrs: { role: "status" },
         children: ["Nothing matches."],
       }),
     );
@@ -169,20 +142,17 @@ export function renderChips(
     const row = el("div", { class: "chips-group" });
     row.append(el("span", { class: "lbl", children: [g.key] }));
     for (const value of g.values) {
-      const chip = el("span", {
+      const active = state.active[g.key] === value;
+      const chip = el("button", {
         class: "chip",
-        attrs: { role: "button", tabindex: "0" },
+        attrs: {
+          type: "button",
+          "aria-pressed": active ? "true" : "false",
+        },
         children: [labelFor(g.key, value)],
       });
-      if (state.active[g.key] === value) chip.classList.add("active");
-      const toggle = () => onToggle(g.key, value);
-      chip.addEventListener("click", toggle);
-      chip.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggle();
-        }
-      });
+      if (active) chip.classList.add("active");
+      chip.addEventListener("click", () => onToggle(g.key, value));
       row.append(chip);
     }
     container.append(row);
@@ -190,7 +160,11 @@ export function renderChips(
 
   const clearRow = el("div", { class: "chips-group" });
   clearRow.append(el("span", { class: "lbl" }));
-  const clear = el("span", { class: "clear", children: ["clear filters"] });
+  const clear = el("button", {
+    class: "clear",
+    attrs: { type: "button" },
+    children: ["clear filters"],
+  });
   clear.addEventListener("click", onClear);
   clearRow.append(clear);
   container.append(clearRow);

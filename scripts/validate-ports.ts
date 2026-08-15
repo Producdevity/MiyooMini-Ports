@@ -5,6 +5,7 @@ import addFormats from "ajv-formats";
 import portersSchema from "../porters.schema.json";
 import portsSchema from "../ports.schema.json";
 import { parsePorters, parsePorts } from "../src/schema";
+import { slugify } from "../src/slug";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const PORTS_PATH = resolve(ROOT, "ports.json");
@@ -78,6 +79,26 @@ function main(): void {
   if (unused.length > 0) {
     console.error(
       `validation failed: porters.json entries with no ports:\n  ${unused.join("\n  ")}`,
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  // Detail-page routing is by slug; two ports slugging identically would
+  // make one page unreachable.
+  const bySlug = new Map<string, string[]>();
+  for (const port of ports) {
+    const slug = slugify(port.name);
+    const names = bySlug.get(slug) ?? [];
+    names.push(port.name);
+    bySlug.set(slug, names);
+  }
+  const collisions = [...bySlug.entries()]
+    .filter(([, names]) => names.length > 1)
+    .map(([slug, names]) => `  ${slug}: ${names.join(" / ")}`);
+  if (collisions.length > 0) {
+    console.error(
+      `validation failed: port names collide in URLs:\n${collisions.join("\n")}`,
     );
     process.exitCode = 1;
     return;

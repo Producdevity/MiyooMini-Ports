@@ -5,8 +5,10 @@ import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-600.css";
 import portersData from "../porters.json";
 import portsData from "../ports.json";
+import { PORTER_LINK_LABELS, renderImage, renderLinkTag } from "./components";
 import { el } from "./dom";
 import { parsePorters, parsePorts } from "./schema";
+import { porterUrl, portUrl } from "./slug";
 import { initThemeToggle } from "./theme";
 import type { Port, Porter } from "./types";
 import { STATUS_LABELS } from "./types";
@@ -14,53 +16,33 @@ import { STATUS_LABELS } from "./types";
 const ports = parsePorts(portsData);
 const porters = parsePorters(portersData);
 
-const LINK_LABELS: [keyof Porter, string][] = [
-  ["github", "GitHub"],
-  ["website", "Website"],
-  ["social", "Social"],
-  ["donate", "Donate"],
-];
-
-function renderAvatar(handle: string, porter: Porter): Node {
-  if (porter.image === undefined) {
-    return el("div", {
-      class: "avatar ph",
-      attrs: { "aria-hidden": "true" },
-      children: [handle.charAt(0).toUpperCase()],
-    });
-  }
-  const img = el("img", {
-    class: "avatar",
-    attrs: { src: porter.image, alt: "", loading: "lazy" },
-  });
-  img.addEventListener("error", () => {
-    const ph = el("div", {
-      class: "avatar ph",
-      children: [handle.charAt(0).toUpperCase()],
-    });
-    img.replaceWith(ph);
-  });
-  return img;
-}
-
 function renderPorter(handle: string, porter: Porter, index: number): Node {
   const owned = ports
     .filter((p: Port) => p.porter.includes(handle))
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  const links = LINK_LABELS.filter(([key]) => porter[key] !== undefined).map(
-    ([key, label]) =>
-      el("a", {
-        class: "tag link",
-        attrs: { href: porter[key], target: "_blank", rel: "noopener" },
-        children: [label],
-      }),
-  );
+  const links = PORTER_LINK_LABELS.flatMap(([key, label]) => {
+    const url = porter[key];
+    return url === undefined ? [] : [renderLinkTag(label, url)];
+  });
+
+  const avatar = porter.image
+    ? renderImage(porter.image, "avatar", `Avatar of ${porter.name ?? handle}`)
+    : el("div", {
+        class: "avatar ph",
+        attrs: { "aria-hidden": "true" },
+        children: [handle.charAt(0).toUpperCase()],
+      });
 
   const infoChildren: (Node | string)[] = [
     el("h2", {
       class: "porter-name",
-      children: [porter.name ?? handle],
+      children: [
+        el("a", {
+          attrs: { href: porterUrl(handle) },
+          children: [porter.name ?? handle],
+        }),
+      ],
     }),
   ];
   if (porter.name !== undefined) {
@@ -79,7 +61,7 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
       el("li", {
         children: [
           el("a", {
-            attrs: { href: p.upstream, target: "_blank", rel: "noopener" },
+            attrs: { href: portUrl(p.name) },
             children: [p.name],
           }),
           el("span", {
@@ -99,7 +81,15 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
         class: "idx",
         children: [String(index + 1).padStart(3, "0")],
       }),
-      renderAvatar(handle, porter),
+      el("a", {
+        class: "porter-avatar-link",
+        attrs: {
+          href: porterUrl(handle),
+          "aria-hidden": "true",
+          tabindex: "-1",
+        },
+        children: [avatar],
+      }),
       el("div", {
         class: "porter-info",
         children: [...infoChildren, portsList],
