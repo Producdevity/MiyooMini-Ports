@@ -35,8 +35,7 @@
       "correctness": {
         "recommended": true,
         "noUnusedImports": "error",
-        "noUnusedVariables": "error",
-        "useExhaustiveDependencies": "error"
+        "noUnusedVariables": "error"
       },
       "performance": {
         "recommended": true
