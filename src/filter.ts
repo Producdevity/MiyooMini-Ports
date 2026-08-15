@@ -1,7 +1,7 @@
-import type { FilterState, Port } from "./types";
+import type { FilterKey, FilterState, Port } from "./types";
 import { CATEGORY_LABELS, STATUS_LABELS } from "./types";
 
-const FILTER_KEYS = ["status", "assets", "category"] as const;
+const FILTER_KEYS: readonly FilterKey[] = ["status", "assets", "category"];
 
 export function matches(port: Port, state: FilterState): boolean {
   const q = state.q.trim().toLowerCase();
@@ -21,7 +21,7 @@ export function matches(port: Port, state: FilterState): boolean {
   }
   for (const key of FILTER_KEYS) {
     const want = state.active[key];
-    if (want !== undefined && want !== port[key]) return false;
+    if (want.length > 0 && !want.includes(port[key])) return false;
   }
   return true;
 }
