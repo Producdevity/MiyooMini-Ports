@@ -1,8 +1,8 @@
 # MiyooMini-Ports
 
 Game ports for the Miyoo Mini, Mini Plus, and Mini Flip that aren't in
-[OnionUI/Ports-Collection](https://github.com/OnionUI/Ports-Collection). That
-collection stopped updating in May 2024. This list covers what's landed since.
+[OnionUI/Ports-Collection](https://github.com/OnionUI/Ports-Collection). 
+That collection stopped updating in May 2024. This list covers what's landed since.
 
 Live site: <https://producedevity.github.io/MiyooMini-Ports/>
 
@@ -85,16 +85,15 @@ Node 22, pnpm 11.
 
 ## Project layout
 
-| Path | Purpose |
-| --- | --- |
-| `ports.json` | catalog data |
-| `ports.schema.json` | JSON schema for ports.json |
-| `index.html` | page shell |
-| `style.css` | styles |
-| `src/` | the site (types, schema, filter, render, main) |
-| `scripts/` | gen-readme, validate-ports |
-| `biome.json` | formatter and linter |
-| `.husky/pre-commit` | formats staged files, regenerates the table when ports.json changes |
+Catalog data lives in `ports.json`, porter profiles in `porters.json`.
+Everything else builds from those two.
+
+### Status values
+
+- `playable` — runs well
+- `experimental` — runs, but rough (low FPS, crashes, untested hardware)
+- `prerelease` — labeled pre-release upstream
+- `source-only` — no binary, built by the user
 
 ## Contributing
 
