@@ -8,7 +8,7 @@
       "assets": "owned",
       "upstream": "https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases",
       "image": "https://raw.githubusercontent.com/Producdevity/stardew-valley-miyoo-mini-port/refs/heads/master/setup-app/src/assets/stardew-cover.png",
-      "notes": "Mono6 + Docker prepare step. ~5–10 FPS. Mini v4 only; Plus/Flip untested."
+      "notes": "Setup takes some time, use the Setup App or the prepare script and instructions on the repo."
     },
     {
       "name": "Undertale",
