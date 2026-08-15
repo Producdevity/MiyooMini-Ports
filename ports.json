@@ -3,7 +3,7 @@
   "ports": [
     {
       "name": "Stardew Valley",
-      "category": "RPG",
+      "category": "rpg",
       "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases",
@@ -12,16 +12,16 @@
     },
     {
       "name": "Undertale",
-      "category": "RPG",
+      "category": "rpg",
       "status": "playable",
-      "assets": "free",
-      "upstream": "https://github.com/cobaltgit/Butterscotch/releases/tag/onion-port",
+      "assets": "owned",
+      "upstream": "https://github.com/cobaltgit/Butterscotch/releases",
       "image": "https://github.com/user-attachments/assets/6651cc2e-0d6d-4354-b98d-081e84a981df",
-      "notes": "GameMaker runner (\"Butterscotch\"). onion-port tag."
+      "notes": "GameMaker runner (\"Butterscotch\"). Supply your Undertale game data; use the onion-port release."
     },
     {
       "name": "Half-Life",
-      "category": "FPS",
+      "category": "fps",
       "status": "prerelease",
       "assets": "owned",
       "upstream": "https://github.com/IC-0n417/half-life-miyoo-mini-plus/releases",
@@ -29,7 +29,7 @@
     },
     {
       "name": "Quake II",
-      "category": "FPS",
+      "category": "fps",
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/Apaczer/quake2-miyoo/releases",
@@ -37,7 +37,7 @@
     },
     {
       "name": "POSTAL",
-      "category": "Shooter",
+      "category": "shooter",
       "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/bostrt/POSTAL-miyoo/releases",
@@ -45,7 +45,7 @@
     },
     {
       "name": "OpenRCT2",
-      "category": "Simulation",
+      "category": "simulation",
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/scheeseman486/OpenRCT2mini/releases",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Elasto Mania",
-      "category": "Racing",
+      "category": "racing",
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/neri-rnd/elma-miyoo/releases",
@@ -63,7 +63,7 @@
     },
     {
       "name": "Frozen Bubble",
-      "category": "Puzzle",
+      "category": "puzzle",
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/mehdisadeghi/frozen-bubble-onion/releases",
@@ -71,7 +71,7 @@
     },
     {
       "name": "SuperTux",
-      "category": "Platform",
+      "category": "platform",
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/andrigamerita/supertux/releases",
@@ -79,7 +79,7 @@
     },
     {
       "name": "Super Haxagon",
-      "category": "Reflex",
+      "category": "reflex",
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/RedTopper/Super-Haxagon/releases",
@@ -88,7 +88,7 @@
     },
     {
       "name": "joyrider3774 games",
-      "category": "Arcade",
+      "category": "arcade",
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/joyrider3774/miyoo_mini_games/releases",
@@ -97,8 +97,8 @@
     },
     {
       "name": "crisp-game-lib",
-      "category": "Arcade",
-      "status": "source only",
+      "category": "arcade",
+      "status": "source-only",
       "assets": "free",
       "upstream": "https://github.com/joyrider3774/crisp-game-lib-portable-sdl",
       "image": "https://raw.githubusercontent.com/joyrider3774/crisp-game-lib-portable-sdl/04bc2c4cfc2853628eda25a46190bb7ac6fe216a/metadata/cglpsdl1-preview.png",
@@ -106,15 +106,15 @@
     },
     {
       "name": "ONScripter-jh",
-      "category": "Engine",
-      "status": "source only",
+      "category": "engine",
+      "status": "source-only",
       "assets": "owned",
       "upstream": "https://github.com/weimingtom/onscripter-jh-miyoo-mini-plus",
       "notes": "Visual-novel engine. WIP, no binary."
     },
     {
       "name": "FreeJ2ME",
-      "category": "Engine",
+      "category": "engine",
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/aweigit/freej2me-miyoomini/releases",
