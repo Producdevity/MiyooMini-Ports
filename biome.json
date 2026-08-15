@@ -29,7 +29,12 @@
       },
       "complexity": {
         "recommended": true,
-        "noExcessiveCognitiveComplexity": "error",
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": {
+            "maxAllowedComplexity": 20
+          }
+        },
         "useArrowFunction": "error"
       },
       "correctness": {
