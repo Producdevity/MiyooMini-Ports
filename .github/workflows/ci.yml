@@ -6,18 +6,17 @@ on:
   push:
     branches: [master]
 
-permissions:
-  contents: read
-
 jobs:
   check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: pnpm
@@ -33,19 +32,29 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      - name: README in sync with ports.json
+      # GitHub web edits can't run local hooks; regenerate the table and push
+      # it to the branch. Skipped for forks, which lack push access.
+      - name: Regenerate README table
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false
         run: |
           pnpm gen:readme
           if ! git diff --exit-code README.md; then
-            echo "README.md is out of sync with ports.json."
-            echo "Run 'pnpm gen:readme' locally and commit the result."
-            exit 1
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "Regenerate README table"
+            git push
           fi
+
+      - name: README in sync with ports.json
+        run: |
+          pnpm gen:readme
+          git diff --exit-code README.md
 
       - name: Build
         run: pnpm build
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -54,6 +63,7 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:

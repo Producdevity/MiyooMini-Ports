@@ -1,1 +1,6 @@
+if git diff --cached --name-only | grep -q '^ports.json$'; then
+  pnpm gen:readme
+  git add README.md
+fi
+
 pnpm exec lint-staged
