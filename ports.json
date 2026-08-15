@@ -137,7 +137,7 @@
       "status": "experimental",
       "assets": "free",
       "upstream": "https://github.com/IC-0n417/PocketStream/releases",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg",
+      "image": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.28.0/icons/youtube.svg",
       "notes": "YouTube client. Mini Plus/Flip (WiFi): feed, search, 144-480p; no login. Needs Onion's FFplay package.",
       "porter": ["IC-0n417"]
     },
@@ -147,7 +147,7 @@
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/IC-0n417/PocketFeeds/releases",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Reddit_logo.svg",
+      "image": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.28.0/icons/reddit.svg",
       "notes": "Read-only Reddit client. Mini Plus/Flip (WiFi): feeds, search, comments; no account.",
       "porter": ["IC-0n417"]
     },
@@ -257,7 +257,7 @@
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/josegonzalez/miyoo-speedtest/releases",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Speedtest.net_logo.png",
+      "image": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.28.0/icons/speedtest.svg",
       "notes": "Internet speed test. Mini Plus (WiFi).",
       "porter": ["josegonzalez"]
     },
