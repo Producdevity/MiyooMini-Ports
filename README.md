@@ -40,6 +40,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [ONScripter-jh](https://github.com/weimingtom/onscripter-jh-miyoo-mini-plus) | Engine | Source only | Owned data | weimingtom |
 | [Half-Life](https://github.com/IC-0n417/half-life-miyoo-mini-plus/releases) | FPS | Prerelease | Owned data | IC-0n417 |
 | [Quake II](https://github.com/Apaczer/quake2-miyoo/releases) | FPS | Playable | Owned data | Apaczer |
+| [Captain Claw](https://github.com/ArticlessCZ-Coder/captain-claw-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
 | [SuperTux](https://github.com/andrigamerita/supertux/releases) | Platform | Playable | Free | andrigamerita |
 | [Frozen Bubble](https://github.com/mehdisadeghi/frozen-bubble-onion/releases) | Puzzle | Playable | Free | mehdisadeghi |
 | [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing | Playable | Owned data | neri-rnd |
