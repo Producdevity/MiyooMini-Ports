@@ -4,7 +4,7 @@ Game ports for the Miyoo Mini, Mini Plus, and Mini Flip that aren't in
 [OnionUI/Ports-Collection](https://github.com/OnionUI/Ports-Collection). 
 That collection stopped updating in May 2024. This list covers what's landed since.
 
-Live site: <https://producedevity.github.io/MiyooMini-Ports/>
+Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 
 <!-- BEGIN PORTS -->
 
@@ -98,9 +98,3 @@ Everything else builds from those two.
 ## Contributing
 
 To add or update a port, see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Deploy
-
-Pushes to `master` build and publish to GitHub Pages via
-`.github/workflows/ci.yml`. Pull requests run the same checks without
-deploying.
