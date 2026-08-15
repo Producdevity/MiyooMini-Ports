@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Producdevity/MiyooMini-Ports/master/porters.schema.json",
+  "title": "MiyooMini-Ports porters",
+  "description": "Porter profiles. Keys are the handles used in ports.json porter arrays.",
+  "type": "object",
+  "required": ["porters"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "porters": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["github"],
+        "additionalProperties": false,
+        "properties": {
+          "github": {
+            "type": "string",
+            "pattern": "^https://",
+            "description": "GitHub profile URL."
+          },
+          "social": {
+            "type": "string",
+            "pattern": "^https://",
+            "description": "Social profile the porter wants listed."
+          },
+          "website": {
+            "type": "string",
+            "pattern": "^https://",
+            "description": "Personal site."
+          },
+          "donate": {
+            "type": "string",
+            "pattern": "^https://",
+            "description": "Donation link (Patreon, Ko-fi, etc.)."
+          },
+          "bio": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Short bio."
+          }
+        }
+      }
+    }
+  }
+}

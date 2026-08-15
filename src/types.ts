@@ -14,11 +14,22 @@ export type Category =
   | "shooter"
   | "simulation";
 
+export interface Porter {
+  github: string;
+  social?: string;
+  website?: string;
+  donate?: string;
+  bio?: string;
+}
+
+export type Porters = Record<string, Porter>;
+
 export interface Port {
   name: string;
   category: Category;
   status: Status;
   assets: Assets;
+  porter: string[];
   upstream: string;
   image?: string;
   notes: string;

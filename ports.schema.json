@@ -19,6 +19,7 @@
           "category",
           "status",
           "assets",
+          "porter",
           "upstream",
           "notes"
         ],
@@ -54,6 +55,16 @@
             "type": "string",
             "enum": ["free", "owned"],
             "description": "free: nothing to supply. owned: user supplies game data."
+          },
+          "porter": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Porter handles, as keyed in porters.json."
           },
           "upstream": {
             "type": "string",

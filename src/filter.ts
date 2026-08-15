@@ -11,6 +11,7 @@ export function matches(port: Port, state: FilterState): boolean {
       port.category,
       CATEGORY_LABELS[port.category],
       port.notes,
+      port.porter.join(" "),
       port.status,
       STATUS_LABELS[port.status],
     ]

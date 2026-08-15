@@ -5,5 +5,8 @@ export default defineConfig({
   base: "./",
   build: {
     outDir: "dist",
+    rollupOptions: {
+      input: ["index.html", "porters.html"],
+    },
   },
 });

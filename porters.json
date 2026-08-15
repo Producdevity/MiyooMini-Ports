@@ -1,0 +1,47 @@
+{
+  "$schema": "./porters.schema.json",
+  "porters": {
+    "Producdevity": {
+      "github": "https://github.com/Producdevity",
+      "social": "https://x.com/Producdevity",
+      "donate": "https://www.patreon.com/cw/Producdevity",
+      "bio": "EmuReady, Emulation, Ports, FOSS"
+    },
+    "cobaltgit": {
+      "github": "https://github.com/cobaltgit"
+    },
+    "IC-0n417": {
+      "github": "https://github.com/IC-0n417"
+    },
+    "Apaczer": {
+      "github": "https://github.com/Apaczer"
+    },
+    "bostrt": {
+      "github": "https://github.com/bostrt"
+    },
+    "scheeseman486": {
+      "github": "https://github.com/scheeseman486"
+    },
+    "neri-rnd": {
+      "github": "https://github.com/neri-rnd"
+    },
+    "mehdisadeghi": {
+      "github": "https://github.com/mehdisadeghi"
+    },
+    "andrigamerita": {
+      "github": "https://github.com/andrigamerita"
+    },
+    "RedTopper": {
+      "github": "https://github.com/RedTopper"
+    },
+    "joyrider3774": {
+      "github": "https://github.com/joyrider3774"
+    },
+    "weimingtom": {
+      "github": "https://github.com/weimingtom"
+    },
+    "aweigit": {
+      "github": "https://github.com/aweigit"
+    }
+  }
+}
