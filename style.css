@@ -120,6 +120,17 @@ h1 {
   text-underline-offset: 3px;
 }
 
+.nav-link {
+  font: 600 11px / 1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
 /* ---------- toolbar ---------- */
 
 .bar {
@@ -366,6 +377,78 @@ main.wrap {
   text-align: center;
 }
 
+.by {
+  font: 400 11px / 1.4 var(--font-mono);
+  color: var(--ink-dim);
+  margin: 4px 0 0;
+}
+
+.tag.link {
+  color: var(--ink);
+  border-color: var(--ink);
+  cursor: pointer;
+}
+
+.tag.link:hover {
+  background: var(--rule);
+  color: var(--paper);
+}
+
+/* ---------- porters page ---------- */
+
+.porter {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0;
+  animation: rise 0.35s ease both;
+}
+
+.porter-name {
+  font: 700 20px / 1.2 var(--font-display);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.porter-bio {
+  color: var(--ink-dim);
+  font-size: 13px;
+  margin: 8px 0 0;
+  max-width: 560px;
+}
+
+.porter .tags {
+  margin: 10px 0 0;
+}
+
+.porter-ports {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.porter-ports li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.porter-ports a {
+  font: 700 15px / 1.3 var(--font-display);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.porter-ports a:hover {
+  color: var(--accent);
+}
+
 /* ---------- footer ---------- */
 
 .site-footer {
@@ -403,7 +486,8 @@ main.wrap {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .row {
+  .row,
+  .porter {
     animation: none;
   }
 }
