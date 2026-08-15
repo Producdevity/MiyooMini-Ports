@@ -10,7 +10,31 @@ Live site: <https://producedevity.github.io/MiyooMini-Ports/>
 
 | Port | Category | Status | Assets | Porter |
 | --- | --- | --- | --- | --- |
-| [crisp-game-lib](https://github.com/joyrider3774/crisp-game-lib-portable-sdl) | Arcade | Source only | Free | Willems Davy |
+| [bible.sh](https://github.com/likeich/bible-sh/releases) | App | Playable | Free | likeich |
+| [Cloud Saves](https://github.com/hotcereal/cloud-saves-miyoo-mini-plus) | App | Playable | Free | hotcereal |
+| [dpad-chat](https://github.com/SartajBhuvaji/dpad-chat/releases) | App | Playable | Free | SartajBhuvaji |
+| [guardianplay](https://github.com/mkl159/guardianplay-onion/releases) | App | Playable | Free | mkl159 |
+| [guide-watch](https://github.com/djaysan/guide-watch/releases) | App | Playable | Free | djaysan |
+| [HYPR Radio](https://github.com/zoitrok/hypr-miyoo/releases) | App | Experimental | Free | zoitrok |
+| [Lynx](https://github.com/tailtwo/lynx-miyoo/releases) | App | Playable | Free | tailtwo |
+| [Miyonos](https://github.com/ElijahTowers/Miyonos/releases) | App | Experimental | Free | ElijahTowers |
+| [miyoo-htop](https://github.com/allanxp4/miyoo-htop/releases) | App | Playable | Free | allanxp4 |
+| [MiyooAudiobook](https://github.com/smonbon/MiyooAudiobook/releases) | App | Playable | Free | smonbon |
+| [miyoodeck](https://github.com/mkl159/miyoodeck/releases) | App | Playable | Free | mkl159 |
+| [MiyooFin](https://github.com/S3ggie/MiyooFin/releases) | App | Experimental | Free | S3ggie |
+| [MiyooPod](https://github.com/danfragoso/miyoopod/releases) | App | Playable | Free | danfragoso |
+| [MiyooThemeDownloader](https://github.com/SebastianMaung/MiyooThemeDownloader/releases) | App | Playable | Free | SebastianMaung |
+| [Moonlight](https://github.com/XK9274/moonlight-app-miyoo) | App | Playable | Free | XK9274 |
+| [onion-kids-mode](https://github.com/daverad/onion-kids-mode/releases) | App | Playable | Free | daverad |
+| [PocketFeeds](https://github.com/IC-0n417/PocketFeeds/releases) | App | Playable | Free | IC-0n417 |
+| [PocketFlex](https://github.com/jackharvest/PocketFlex/releases) | App | Experimental | Free | jackharvest |
+| [PocketStream](https://github.com/IC-0n417/PocketStream/releases) | App | Experimental | Free | IC-0n417 |
+| [retsend](https://github.com/mxmgorin/retsend/releases) | App | Playable | Free | mxmgorin |
+| [Speed Test](https://github.com/josegonzalez/miyoo-speedtest/releases) | App | Playable | Free | josegonzalez |
+| [storii](https://github.com/pcorbel/storii/releases) | App | Playable | Free | pcorbel |
+| [Syncthing](https://github.com/XK9274/syncthing-app-miyoo) | App | Playable | Free | XK9274 |
+| [Time Quick Fix](https://github.com/hotcereal/time-quick-fix) | App | Playable | Free | hotcereal |
+| [wthr](https://github.com/trashplusplus/wthr/releases) | App | Playable | Free | trashplusplus |
 | [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade | Playable | Free | Willems Davy |
 | [FreeJ2ME](https://github.com/aweigit/freej2me-miyoomini/releases) | Engine | Playable | Owned data | aweigit |
 | [ONScripter-jh](https://github.com/weimingtom/onscripter-jh-miyoo-mini-plus) | Engine | Source only | Owned data | weimingtom |

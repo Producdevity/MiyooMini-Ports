@@ -112,21 +112,12 @@
       "porter": ["joyrider3774"]
     },
     {
-      "name": "crisp-game-lib",
-      "category": "arcade",
-      "status": "source-only",
-      "assets": "free",
-      "upstream": "https://github.com/joyrider3774/crisp-game-lib-portable-sdl",
-      "image": "https://raw.githubusercontent.com/joyrider3774/crisp-game-lib-portable-sdl/04bc2c4cfc2853628eda25a46190bb7ac6fe216a/metadata/cglpsdl1-preview.png",
-      "notes": "No Miyoo binary — cross-compile.",
-      "porter": ["joyrider3774"]
-    },
-    {
       "name": "ONScripter-jh",
       "category": "engine",
       "status": "source-only",
       "assets": "owned",
       "upstream": "https://github.com/weimingtom/onscripter-jh-miyoo-mini-plus",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8d/ONScripter_Snake.png",
       "notes": "Visual-novel engine. WIP, no binary.",
       "porter": ["weimingtom"]
     },
@@ -139,6 +130,256 @@
       "image": "https://raw.githubusercontent.com/aweigit/freej2me-miyoomini/HEAD/img/ubuntu18.png",
       "notes": "Java/J2ME emulator. Supply .jar games.",
       "porter": ["aweigit"]
+    },
+    {
+      "name": "PocketStream",
+      "category": "app",
+      "status": "experimental",
+      "assets": "free",
+      "upstream": "https://github.com/IC-0n417/PocketStream/releases",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg",
+      "notes": "YouTube client. Mini Plus/Flip (WiFi): feed, search, 144-480p; no login. Needs Onion's FFplay package.",
+      "porter": ["IC-0n417"]
+    },
+    {
+      "name": "PocketFeeds",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/IC-0n417/PocketFeeds/releases",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Reddit_logo.svg",
+      "notes": "Read-only Reddit client. Mini Plus/Flip (WiFi): feeds, search, comments; no account.",
+      "porter": ["IC-0n417"]
+    },
+    {
+      "name": "MiyooFin",
+      "category": "app",
+      "status": "experimental",
+      "assets": "free",
+      "upstream": "https://github.com/S3ggie/MiyooFin/releases",
+      "image": "https://raw.githubusercontent.com/S3ggie/MiyooFin/HEAD/assets/icon.png",
+      "notes": "Jellyfin client. Mini Plus (WiFi): streams from your server, caches art to SD.",
+      "porter": ["S3ggie"]
+    },
+    {
+      "name": "PocketFlex",
+      "category": "app",
+      "status": "experimental",
+      "assets": "free",
+      "upstream": "https://github.com/jackharvest/PocketFlex/releases",
+      "image": "https://raw.githubusercontent.com/jackharvest/PocketFlex/HEAD/docs/screens/home.png",
+      "notes": "Plex client with a text UI. Mini Plus (WiFi): stream or download for offline.",
+      "porter": ["jackharvest"]
+    },
+    {
+      "name": "dpad-chat",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/SartajBhuvaji/dpad-chat/releases",
+      "image": "https://raw.githubusercontent.com/SartajBhuvaji/dpad-chat/HEAD/docs/img/app.png",
+      "notes": "ChatGPT client using Onion's on-screen keyboard; keeps chat history. Mini Plus (WiFi).",
+      "porter": ["SartajBhuvaji"]
+    },
+    {
+      "name": "MiyooPod",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/danfragoso/miyoopod/releases",
+      "image": "https://raw.githubusercontent.com/danfragoso/miyoopod/HEAD/screenshots/hero.png",
+      "notes": "Music player: MP3/FLAC/OGG, lyrics, OTA self-update (OTA needs WiFi: Plus/Flip).",
+      "porter": ["danfragoso"]
+    },
+    {
+      "name": "Moonlight",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/XK9274/moonlight-app-miyoo",
+      "image": "https://github.com/user-attachments/assets/f688bbb9-4619-4f54-b7d7-ef3c8b520e7f",
+      "notes": "Stream PC games from Sunshine/Apollo. Mini Plus (WiFi). Best for slower-paced games.",
+      "porter": ["XK9274"]
+    },
+    {
+      "name": "Lynx",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/tailtwo/lynx-miyoo/releases",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Lynx_%28web_browser%29.png",
+      "notes": "Terminal web browser. Mini Plus (WiFi).",
+      "porter": ["tailtwo"]
+    },
+    {
+      "name": "wthr",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/trashplusplus/wthr/releases",
+      "image": "https://github.com/user-attachments/assets/521d182f-fbd3-4c7a-a59d-3bf1af38fa34",
+      "notes": "Weather forecast. Mini Plus/Flip (WiFi).",
+      "porter": ["trashplusplus"]
+    },
+    {
+      "name": "HYPR Radio",
+      "category": "app",
+      "status": "experimental",
+      "assets": "free",
+      "upstream": "https://github.com/zoitrok/hypr-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/zoitrok/hypr-miyoo/HEAD/docs/screenshot-now-playing.png",
+      "notes": "Demoscene radio (Nectar Radio) player. Mini Plus (WiFi).",
+      "porter": ["zoitrok"]
+    },
+    {
+      "name": "Miyonos",
+      "category": "app",
+      "status": "experimental",
+      "assets": "free",
+      "upstream": "https://github.com/ElijahTowers/Miyonos/releases",
+      "image": "https://raw.githubusercontent.com/ElijahTowers/Miyonos/HEAD/docs/images/now-playing.png",
+      "notes": "Sonos speaker remote. Mini Plus (WiFi).",
+      "porter": ["ElijahTowers"]
+    },
+    {
+      "name": "retsend",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/mxmgorin/retsend/releases",
+      "image": "https://raw.githubusercontent.com/mxmgorin/retsend/HEAD/resources/retsend_receive.png",
+      "notes": "LocalSend-compatible file transfer with phones and PCs. Mini Plus/Flip (WiFi).",
+      "porter": ["mxmgorin"]
+    },
+    {
+      "name": "Speed Test",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/josegonzalez/miyoo-speedtest/releases",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Speedtest.net_logo.png",
+      "notes": "Internet speed test. Mini Plus (WiFi).",
+      "porter": ["josegonzalez"]
+    },
+    {
+      "name": "guide-watch",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/djaysan/guide-watch/releases",
+      "image": "https://raw.githubusercontent.com/djaysan/guide-watch/HEAD/docs/images/banner.png",
+      "notes": "Downloads GameFAQs walkthroughs for your ROMs; read them over a paused game. Mini Plus (WiFi).",
+      "porter": ["djaysan"]
+    },
+    {
+      "name": "MiyooThemeDownloader",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/SebastianMaung/MiyooThemeDownloader/releases",
+      "image": "https://raw.githubusercontent.com/SebastianMaung/MiyooThemeDownloader/HEAD/ThemeStore/advmenu/im1.png",
+      "notes": "On-device Onion theme browser and downloader. Mini Plus (WiFi). Archived upstream, still works.",
+      "porter": ["SebastianMaung"]
+    },
+    {
+      "name": "MiyooAudiobook",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/smonbon/MiyooAudiobook/releases",
+      "image": "https://raw.githubusercontent.com/smonbon/MiyooAudiobook/HEAD/assets/icon.png",
+      "notes": "Audiobook player: resume, variable speed, cover art, sleep timer. All devices.",
+      "porter": ["smonbon"]
+    },
+    {
+      "name": "bible.sh",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/likeich/bible-sh/releases",
+      "image": "https://raw.githubusercontent.com/likeich/bible-sh/main/screenshots/MainUI.png",
+      "notes": "KJV Bible reader. All devices.",
+      "porter": ["likeich"]
+    },
+    {
+      "name": "storii",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/pcorbel/storii/releases",
+      "image": "https://raw.githubusercontent.com/pcorbel/storii/HEAD/.github/docs/menus/storiies.png",
+      "notes": "Kids' MP3 player with story/chapter menus. All devices.",
+      "porter": ["pcorbel"]
+    },
+    {
+      "name": "miyoo-htop",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/allanxp4/miyoo-htop/releases",
+      "image": "https://raw.githubusercontent.com/allanxp4/miyoo-htop/HEAD/.github/miyoo.jpg",
+      "notes": "htop task manager port. All devices.",
+      "porter": ["allanxp4"]
+    },
+    {
+      "name": "miyoodeck",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/mkl159/miyoodeck/releases",
+      "image": "https://raw.githubusercontent.com/mkl159/miyoodeck/HEAD/docs/preview.png",
+      "notes": "Web dashboard for the handheld: controller, game launcher, file manager, live screen. Mini Plus (WiFi).",
+      "porter": ["mkl159"]
+    },
+    {
+      "name": "guardianplay",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/mkl159/guardianplay-onion/releases",
+      "image": "https://raw.githubusercontent.com/mkl159/guardianplay-onion/HEAD/docs/screenshots/banner.png",
+      "notes": "Parental controls: PIN, play-time limits, stats. All devices.",
+      "porter": ["mkl159"]
+    },
+    {
+      "name": "onion-kids-mode",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/daverad/onion-kids-mode/releases",
+      "image": "https://raw.githubusercontent.com/daverad/onion-kids-mode/HEAD/docs/screenshots/carousel.png",
+      "notes": "Kid-friendly UI: curated games, timer, PIN lock. All devices.",
+      "porter": ["daverad"]
+    },
+    {
+      "name": "Syncthing",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/XK9274/syncthing-app-miyoo",
+      "image": "https://raw.githubusercontent.com/syncthing/syncthing/main/assets/logo-128.png",
+      "notes": "File sync with PC/phone via Syncthing, wired into Onion. Mini Plus (WiFi).",
+      "porter": ["XK9274"]
+    },
+    {
+      "name": "Cloud Saves",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/hotcereal/cloud-saves-miyoo-mini-plus",
+      "image": "https://raw.githubusercontent.com/hotcereal/files/main/Unknown-3.png",
+      "notes": "Upload/download saves to any cloud storage via rclone. Mini Plus (WiFi).",
+      "porter": ["hotcereal"]
+    },
+    {
+      "name": "Time Quick Fix",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/hotcereal/time-quick-fix",
+      "image": "https://raw.githubusercontent.com/hotcereal/files/main/TimeQuickFix.png",
+      "notes": "Sets system time via NTP/Cloudflare. Mini Plus (WiFi).",
+      "porter": ["hotcereal"]
     }
   ]
 }

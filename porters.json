@@ -1,6 +1,15 @@
 {
   "$schema": "./porters.schema.json",
   "porters": {
+    "Apaczer": {
+      "github": "https://github.com/Apaczer"
+    },
+    "ElijahTowers": {
+      "github": "https://github.com/ElijahTowers"
+    },
+    "IC-0n417": {
+      "github": "https://github.com/IC-0n417"
+    },
     "Producdevity": {
       "name": "Producdevity | EmuReady",
       "github": "https://github.com/Producdevity",
@@ -10,32 +19,53 @@
       "bio": "EmuReady, Emulation, Ports, FOSS",
       "image": "https://avatars.githubusercontent.com/u/15906337?v=4"
     },
-    "cobaltgit": {
-      "github": "https://github.com/cobaltgit"
+    "RedTopper": {
+      "github": "https://github.com/RedTopper"
     },
-    "IC-0n417": {
-      "github": "https://github.com/IC-0n417"
+    "S3ggie": {
+      "github": "https://github.com/S3ggie"
     },
-    "Apaczer": {
-      "github": "https://github.com/Apaczer"
+    "SartajBhuvaji": {
+      "github": "https://github.com/SartajBhuvaji"
     },
-    "bostrt": {
-      "github": "https://github.com/bostrt"
+    "SebastianMaung": {
+      "github": "https://github.com/SebastianMaung"
     },
-    "scheeseman486": {
-      "github": "https://github.com/scheeseman486"
+    "XK9274": {
+      "github": "https://github.com/XK9274"
     },
-    "neri-rnd": {
-      "github": "https://github.com/neri-rnd"
-    },
-    "mehdisadeghi": {
-      "github": "https://github.com/mehdisadeghi"
+    "allanxp4": {
+      "github": "https://github.com/allanxp4"
     },
     "andrigamerita": {
       "github": "https://github.com/andrigamerita"
     },
-    "RedTopper": {
-      "github": "https://github.com/RedTopper"
+    "aweigit": {
+      "github": "https://github.com/aweigit"
+    },
+    "bostrt": {
+      "github": "https://github.com/bostrt"
+    },
+    "cobaltgit": {
+      "github": "https://github.com/cobaltgit"
+    },
+    "danfragoso": {
+      "github": "https://github.com/danfragoso"
+    },
+    "daverad": {
+      "github": "https://github.com/daverad"
+    },
+    "djaysan": {
+      "github": "https://github.com/djaysan"
+    },
+    "hotcereal": {
+      "github": "https://github.com/hotcereal"
+    },
+    "jackharvest": {
+      "github": "https://github.com/jackharvest"
+    },
+    "josegonzalez": {
+      "github": "https://github.com/josegonzalez"
     },
     "joyrider3774": {
       "name": "Willems Davy",
@@ -46,11 +76,41 @@
       "bio": "Programmer and tinkerer with all kind of devices and software.",
       "image": "https://avatars.githubusercontent.com/u/10714776?v=4"
     },
+    "likeich": {
+      "github": "https://github.com/likeich"
+    },
+    "mehdisadeghi": {
+      "github": "https://github.com/mehdisadeghi"
+    },
+    "mkl159": {
+      "github": "https://github.com/mkl159"
+    },
+    "mxmgorin": {
+      "github": "https://github.com/mxmgorin"
+    },
+    "neri-rnd": {
+      "github": "https://github.com/neri-rnd"
+    },
+    "pcorbel": {
+      "github": "https://github.com/pcorbel"
+    },
+    "scheeseman486": {
+      "github": "https://github.com/scheeseman486"
+    },
+    "smonbon": {
+      "github": "https://github.com/smonbon"
+    },
+    "tailtwo": {
+      "github": "https://github.com/tailtwo"
+    },
+    "trashplusplus": {
+      "github": "https://github.com/trashplusplus"
+    },
     "weimingtom": {
       "github": "https://github.com/weimingtom"
     },
-    "aweigit": {
-      "github": "https://github.com/aweigit"
+    "zoitrok": {
+      "github": "https://github.com/zoitrok"
     }
   }
 }
