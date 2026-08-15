@@ -34,7 +34,7 @@ export interface Port {
   assets: Assets;
   porter: string[];
   upstream: string;
-  image?: string;
+  image: string;
   notes: string;
 }
 

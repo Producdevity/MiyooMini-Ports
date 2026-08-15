@@ -74,21 +74,20 @@ function parsePort(value: unknown, index: number): Port {
       `ports.json[${index}].assets: "${assets}" is not one of ${ASSETS_VALUES.join(", ")}`,
     );
   }
-  if (image !== undefined && (!isString(image) || !isHttpsUrl(image))) {
+  if (!isNonEmptyString(image) || !isHttpsUrl(image)) {
     throw new Error(`ports.json[${index}].image: expected an https:// URL`);
   }
 
-  const port: Port = {
+  return {
     name,
     category,
     status,
     assets,
     porter,
     upstream,
+    image,
     notes,
   };
-  if (image !== undefined) port.image = image;
-  return port;
 }
 
 interface CatalogFile {
