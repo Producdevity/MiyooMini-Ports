@@ -1,5 +1,7 @@
 import { el } from "./dom";
-import type { Porter } from "./types";
+import { portUrl } from "./slug";
+import type { Port, Porter } from "./types";
+import { CATEGORY_LABELS, STATUS_LABELS } from "./types";
 
 export const PORTER_LINK_LABELS: [keyof Porter, string][] = [
   ["github", "GitHub"],
@@ -67,4 +69,23 @@ export function renderNotFound(
       children: [backLabel],
     }),
   );
+}
+
+export function renderPortListItem(port: Port): HTMLElementTagNameMap["li"] {
+  return el("li", {
+    children: [
+      el("a", {
+        attrs: { href: portUrl(port.name) },
+        children: [port.name],
+      }),
+      el("span", {
+        class: `tag cat-${port.category}`,
+        children: [CATEGORY_LABELS[port.category]],
+      }),
+      el("span", {
+        class: `tag st-${port.status}`,
+        children: [STATUS_LABELS[port.status]],
+      }),
+    ],
+  });
 }

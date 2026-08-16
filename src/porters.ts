@@ -5,13 +5,17 @@ import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-600.css";
 import portersData from "../porters.json";
 import portsData from "../ports.json";
-import { PORTER_LINK_LABELS, renderImage, renderLinkTag } from "./components";
+import {
+  PORTER_LINK_LABELS,
+  renderImage,
+  renderLinkTag,
+  renderPortListItem,
+} from "./components";
 import { el, querySelector } from "./dom";
 import { mountSiteNav } from "./nav";
 import { parsePorters, parsePorts } from "./schema";
-import { porterUrl, portUrl } from "./slug";
+import { porterUrl } from "./slug";
 import type { Port, Porter } from "./types";
-import { STATUS_LABELS } from "./types";
 
 const ports = parsePorts(portsData);
 const porters = parsePorters(portersData);
@@ -34,6 +38,19 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
         children: [handle.charAt(0).toUpperCase()],
       });
 
+  const countLine = el("p", {
+    class: "porter-handle",
+    children: [
+      el("span", {
+        class: "porter-count",
+        children: [`${owned.length} ${owned.length === 1 ? "port" : "ports"}`],
+      }),
+    ],
+  });
+  if (porter.name !== undefined) {
+    countLine.prepend(`@${handle}`);
+  }
+
   const infoChildren: (Node | string)[] = [
     el("h2", {
       class: "porter-name",
@@ -44,12 +61,8 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
         }),
       ],
     }),
+    countLine,
   ];
-  if (porter.name !== undefined) {
-    infoChildren.push(
-      el("p", { class: "porter-handle", children: [`@${handle}`] }),
-    );
-  }
   if (porter.bio !== undefined) {
     infoChildren.push(el("p", { class: "porter-bio", children: [porter.bio] }));
   }
@@ -57,23 +70,10 @@ function renderPorter(handle: string, porter: Porter, index: number): Node {
 
   const portsList = el("ul", {
     class: "porter-ports",
-    children: owned.map((p) =>
-      el("li", {
-        children: [
-          el("a", {
-            attrs: { href: portUrl(p.name) },
-            children: [p.name],
-          }),
-          el("span", {
-            class: "tag",
-            children: [STATUS_LABELS[p.status]],
-          }),
-        ],
-      }),
-    ),
+    children: owned.map((p) => renderPortListItem(p)),
   });
 
-  return el("div", {
+  return el("article", {
     class: "porter",
     attrs: { style: `animation-delay: ${Math.min(index * 40, 400)}ms` },
     children: [
@@ -110,6 +110,7 @@ function main(): void {
   });
 
   function render(q: string): void {
+    container.replaceChildren();
     const needle = q.trim().toLowerCase();
     const shown = sorted.filter(([handle, porter]) => {
       if (!needle) return true;
@@ -131,7 +132,12 @@ function main(): void {
         }),
       );
     } else {
-      container.append(...shown.map(([h, p], i) => renderPorter(h, p, i)));
+      container.append(
+        el("div", {
+          class: "porters-grid",
+          children: shown.map(([h, p], i) => renderPorter(h, p, i)),
+        }),
+      );
     }
     if (count) {
       count.textContent = `${shown.length} / ${sorted.length}`;

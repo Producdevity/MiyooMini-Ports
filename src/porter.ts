@@ -10,13 +10,12 @@ import {
   renderImage,
   renderLinkTag,
   renderNotFound,
+  renderPortListItem,
 } from "./components";
 import { el } from "./dom";
 import { mountSiteNav } from "./nav";
 import { parsePorters, parsePorts } from "./schema";
-import { portUrl } from "./slug";
 import type { Port, Porter } from "./types";
-import { STATUS_LABELS } from "./types";
 
 const ports = parsePorts(portsData);
 const porters = parsePorters(portersData);
@@ -75,23 +74,19 @@ function renderPorter(
         el("div", { class: "porter-detail-info", children: infoChildren }),
       ],
     }),
-    el("h2", { class: "detail-section", children: ["Catalogued ports"] }),
+    el("h2", {
+      class: "detail-section",
+      children: [
+        "Catalogued ports",
+        el("span", {
+          class: "n",
+          children: [String(owned.length)],
+        }),
+      ],
+    }),
     el("ul", {
       class: "porter-ports",
-      children: owned.map((p) =>
-        el("li", {
-          children: [
-            el("a", {
-              attrs: { href: portUrl(p.name) },
-              children: [p.name],
-            }),
-            el("span", {
-              class: "tag",
-              children: [STATUS_LABELS[p.status]],
-            }),
-          ],
-        }),
-      ),
+      children: owned.map((p) => renderPortListItem(p)),
     }),
   );
 }

@@ -620,14 +620,39 @@ main.wrap {
 
 /* ---------- porters page ---------- */
 
-.porter {
+.porters-grid {
   display: grid;
-  grid-template-columns: 44px 72px 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr));
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.porter {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px 1fr;
   gap: 16px;
   align-items: start;
-  border-bottom: 1px solid var(--line);
-  padding: 24px 0;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--rule);
+  background: var(--paper);
+  padding: 20px 16px 16px;
   animation: rise 0.35s ease both;
+}
+
+.porter:hover {
+  background: var(--paper-2);
+}
+
+.porter .idx {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
+
+.porter-count {
+  color: var(--accent);
+  margin-left: 8px;
 }
 
 .avatar {
@@ -880,12 +905,18 @@ main.wrap {
 }
 
 .detail-section {
+  display: flex;
+  justify-content: space-between;
   font: 600 12px / 1 var(--font-mono);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border-bottom: 2px solid var(--rule);
   margin: 40px 0 0;
   padding: 10px 0;
+}
+
+.detail-section .n {
+  color: var(--accent);
 }
 
 .detail-section + .porter-ports {
@@ -978,11 +1009,6 @@ main.wrap {
   .thumb {
     width: 72px;
     height: 56px;
-  }
-
-  .porter {
-    grid-template-columns: 32px 56px 1fr;
-    gap: 12px;
   }
 
   .avatar {
