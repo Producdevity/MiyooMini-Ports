@@ -403,7 +403,7 @@
     },
     {
       "name": "Petals Around the Rose",
-      "category": "puzzle",
+      "categories": ["puzzle"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/schizophreek/petals",
