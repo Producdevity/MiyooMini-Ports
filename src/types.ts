@@ -29,7 +29,7 @@ export type Porters = Record<string, Porter>;
 
 export interface Port {
   name: string;
-  category: Category;
+  categories: Category[];
   status: Status;
   assets: Assets;
   porter: string[];
@@ -106,5 +106,8 @@ export function labelFor(key: FilterKey, value: string): string {
 }
 
 export function sortByCategoryThenName(a: Port, b: Port): number {
-  return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
+  return (
+    a.categories[0].localeCompare(b.categories[0]) ||
+    a.name.localeCompare(b.name)
+  );
 }

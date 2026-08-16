@@ -3,7 +3,7 @@
   "ports": [
     {
       "name": "Stardew Valley",
-      "category": "rpg",
+      "categories": ["rpg", "simulation"],
       "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases",
@@ -13,7 +13,7 @@
     },
     {
       "name": "Undertale",
-      "category": "rpg",
+      "categories": ["rpg"],
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cobaltgit/Butterscotch/releases",
@@ -23,7 +23,7 @@
     },
     {
       "name": "Half-Life",
-      "category": "fps",
+      "categories": ["fps"],
       "status": "prerelease",
       "assets": "owned",
       "upstream": "https://github.com/IC-0n417/half-life-miyoo-mini-plus/releases",
@@ -33,7 +33,7 @@
     },
     {
       "name": "Quake II",
-      "category": "fps",
+      "categories": ["fps"],
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/Apaczer/quake2-miyoo/releases",
@@ -43,7 +43,7 @@
     },
     {
       "name": "POSTAL",
-      "category": "shooter",
+      "categories": ["shooter"],
       "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/bostrt/POSTAL-miyoo/releases",
@@ -53,7 +53,7 @@
     },
     {
       "name": "OpenRCT2",
-      "category": "simulation",
+      "categories": ["simulation"],
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/scheeseman486/OpenRCT2mini/releases",
@@ -63,7 +63,7 @@
     },
     {
       "name": "Elasto Mania",
-      "category": "racing",
+      "categories": ["racing", "platform"],
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/neri-rnd/elma-miyoo/releases",
@@ -73,7 +73,7 @@
     },
     {
       "name": "Frozen Bubble",
-      "category": "puzzle",
+      "categories": ["puzzle", "arcade"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/mehdisadeghi/frozen-bubble-onion/releases",
@@ -83,7 +83,7 @@
     },
     {
       "name": "SuperTux",
-      "category": "platform",
+      "categories": ["platform"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/andrigamerita/supertux/releases",
@@ -93,7 +93,7 @@
     },
     {
       "name": "Super Haxagon",
-      "category": "reflex",
+      "categories": ["reflex"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/RedTopper/Super-Haxagon/releases",
@@ -103,7 +103,7 @@
     },
     {
       "name": "joyrider3774 games",
-      "category": "arcade",
+      "categories": ["arcade", "puzzle"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/joyrider3774/miyoo_mini_games/releases",
@@ -113,7 +113,7 @@
     },
     {
       "name": "ONScripter-jh",
-      "category": "engine",
+      "categories": ["engine"],
       "status": "source-only",
       "assets": "owned",
       "upstream": "https://github.com/weimingtom/onscripter-jh-miyoo-mini-plus",
@@ -123,7 +123,7 @@
     },
     {
       "name": "FreeJ2ME",
-      "category": "engine",
+      "categories": ["engine"],
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/aweigit/freej2me-miyoomini/releases",
@@ -133,7 +133,7 @@
     },
     {
       "name": "PocketStream",
-      "category": "app",
+      "categories": ["app"],
       "status": "experimental",
       "assets": "free",
       "upstream": "https://github.com/IC-0n417/PocketStream/releases",
@@ -143,7 +143,7 @@
     },
     {
       "name": "PocketFeeds",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/IC-0n417/PocketFeeds/releases",
@@ -153,7 +153,7 @@
     },
     {
       "name": "MiyooFin",
-      "category": "app",
+      "categories": ["app"],
       "status": "experimental",
       "assets": "free",
       "upstream": "https://github.com/S3ggie/MiyooFin/releases",
@@ -163,7 +163,7 @@
     },
     {
       "name": "PocketFlex",
-      "category": "app",
+      "categories": ["app"],
       "status": "experimental",
       "assets": "free",
       "upstream": "https://github.com/jackharvest/PocketFlex/releases",
@@ -173,7 +173,7 @@
     },
     {
       "name": "dpad-chat",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/SartajBhuvaji/dpad-chat/releases",
@@ -183,7 +183,7 @@
     },
     {
       "name": "MiyooPod",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/danfragoso/miyoopod/releases",
@@ -193,7 +193,7 @@
     },
     {
       "name": "Moonlight",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/XK9274/moonlight-app-miyoo",
@@ -203,7 +203,7 @@
     },
     {
       "name": "Lynx",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/tailtwo/lynx-miyoo/releases",
@@ -213,7 +213,7 @@
     },
     {
       "name": "wthr",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/trashplusplus/wthr/releases",
@@ -223,7 +223,7 @@
     },
     {
       "name": "HYPR Radio",
-      "category": "app",
+      "categories": ["app"],
       "status": "experimental",
       "assets": "free",
       "upstream": "https://github.com/zoitrok/hypr-miyoo/releases",
@@ -233,7 +233,7 @@
     },
     {
       "name": "Miyonos",
-      "category": "app",
+      "categories": ["app"],
       "status": "experimental",
       "assets": "free",
       "upstream": "https://github.com/ElijahTowers/Miyonos/releases",
@@ -243,7 +243,7 @@
     },
     {
       "name": "retsend",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/mxmgorin/retsend/releases",
@@ -253,7 +253,7 @@
     },
     {
       "name": "Speed Test",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/josegonzalez/miyoo-speedtest/releases",
@@ -263,7 +263,7 @@
     },
     {
       "name": "guide-watch",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/djaysan/guide-watch/releases",
@@ -273,7 +273,7 @@
     },
     {
       "name": "MiyooThemeDownloader",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/SebastianMaung/MiyooThemeDownloader/releases",
@@ -283,7 +283,7 @@
     },
     {
       "name": "MiyooAudiobook",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/smonbon/MiyooAudiobook/releases",
@@ -293,7 +293,7 @@
     },
     {
       "name": "bible.sh",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/likeich/bible-sh/releases",
@@ -303,7 +303,7 @@
     },
     {
       "name": "storii",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/pcorbel/storii/releases",
@@ -313,7 +313,7 @@
     },
     {
       "name": "miyoo-htop",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/allanxp4/miyoo-htop/releases",
@@ -323,7 +323,7 @@
     },
     {
       "name": "miyoodeck",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/mkl159/miyoodeck/releases",
@@ -333,7 +333,7 @@
     },
     {
       "name": "guardianplay",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/mkl159/guardianplay-onion/releases",
@@ -343,7 +343,7 @@
     },
     {
       "name": "onion-kids-mode",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/daverad/onion-kids-mode/releases",
@@ -353,7 +353,7 @@
     },
     {
       "name": "Syncthing",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/XK9274/syncthing-app-miyoo",
@@ -363,7 +363,7 @@
     },
     {
       "name": "Cloud Saves",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/hotcereal/cloud-saves-miyoo-mini-plus",
@@ -373,7 +373,7 @@
     },
     {
       "name": "Time Quick Fix",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/hotcereal/time-quick-fix",
@@ -383,7 +383,7 @@
     },
     {
       "name": "Captain Claw",
-      "category": "platform",
+      "categories": ["platform"],
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/ArticlessCZ-Coder/captain-claw-miyoo/releases",
@@ -393,7 +393,7 @@
     },
     {
       "name": "Mini Tracker",
-      "category": "app",
+      "categories": ["app"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/k2-ant/mini-tracker/releases",

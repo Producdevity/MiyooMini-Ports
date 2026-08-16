@@ -78,10 +78,13 @@ export function renderPortListItem(port: Port): HTMLElementTagNameMap["li"] {
         attrs: { href: portUrl(port.name) },
         children: [port.name],
       }),
-      el("span", {
-        class: `tag cat-${port.category}`,
-        children: [CATEGORY_LABELS[port.category]],
-      }),
+      el("span", { class: "tag-sep" }),
+      ...port.categories.map((category) =>
+        el("span", {
+          class: `tag cat-${category}`,
+          children: [CATEGORY_LABELS[category]],
+        }),
+      ),
       el("span", {
         class: `tag st-${port.status}`,
         children: [STATUS_LABELS[port.status]],

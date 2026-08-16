@@ -36,17 +36,17 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Syncthing](https://github.com/XK9274/syncthing-app-miyoo) | App | Playable | Free | XK9274 |
 | [Time Quick Fix](https://github.com/hotcereal/time-quick-fix) | App | Playable | Free | hotcereal |
 | [wthr](https://github.com/trashplusplus/wthr/releases) | App | Playable | Free | trashplusplus |
-| [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade | Playable | Free | Willems Davy |
+| [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade, Puzzle | Playable | Free | Willems Davy |
 | [FreeJ2ME](https://github.com/aweigit/freej2me-miyoomini/releases) | Engine | Playable | Owned data | aweigit |
 | [ONScripter-jh](https://github.com/weimingtom/onscripter-jh-miyoo-mini-plus) | Engine | Source only | Owned data | weimingtom |
 | [Half-Life](https://github.com/IC-0n417/half-life-miyoo-mini-plus/releases) | FPS | Prerelease | Owned data | IC-0n417 |
 | [Quake II](https://github.com/Apaczer/quake2-miyoo/releases) | FPS | Playable | Owned data | Apaczer |
 | [Captain Claw](https://github.com/ArticlessCZ-Coder/captain-claw-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
 | [SuperTux](https://github.com/andrigamerita/supertux/releases) | Platform | Playable | Free | andrigamerita |
-| [Frozen Bubble](https://github.com/mehdisadeghi/frozen-bubble-onion/releases) | Puzzle | Playable | Free | mehdisadeghi |
-| [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing | Playable | Owned data | neri-rnd |
+| [Frozen Bubble](https://github.com/mehdisadeghi/frozen-bubble-onion/releases) | Puzzle, Arcade | Playable | Free | mehdisadeghi |
+| [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing, Platform | Playable | Owned data | neri-rnd |
 | [Super Haxagon](https://github.com/RedTopper/Super-Haxagon/releases) | Reflex | Playable | Free | RedTopper |
-| [Stardew Valley](https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases) | RPG | Experimental | Owned data | Producdevity | EmuReady |
+| [Stardew Valley](https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases) | RPG, Simulation | Experimental | Owned data | Producdevity | EmuReady |
 | [Undertale](https://github.com/cobaltgit/Butterscotch/releases) | RPG | Playable | Owned data | cobaltgit |
 | [POSTAL](https://github.com/bostrt/POSTAL-miyoo/releases) | Shooter | Experimental | Owned data | bostrt |
 | [OpenRCT2](https://github.com/scheeseman486/OpenRCT2mini/releases) | Simulation | Playable | Owned data | scheeseman486 |

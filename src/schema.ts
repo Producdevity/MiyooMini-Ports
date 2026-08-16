@@ -19,6 +19,12 @@ const isAssets = (value: string): value is Assets => ASSETS_SET.has(value);
 const isCategory = (value: string): value is Category =>
   CATEGORY_SET.has(value);
 
+const isCategoryArray = (value: unknown): value is Category[] =>
+  Array.isArray(value) &&
+  value.length > 0 &&
+  new Set(value).size === value.length &&
+  value.every(isCategory);
+
 const isObject = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null;
 
@@ -39,13 +45,15 @@ function parsePort(value: unknown, index: number): Port {
   if (!isObject(value)) {
     throw new Error(`ports.json[${index}]: expected an object`);
   }
-  const { name, category, status, assets, porter, upstream, notes, image } =
+  const { name, categories, status, assets, porter, upstream, notes, image } =
     value;
 
   if (!isNonEmptyString(name))
     throw new Error(`ports.json[${index}].name: expected non-empty string`);
-  if (!isString(category))
-    throw new Error(`ports.json[${index}].category: expected string`);
+  if (!isCategoryArray(categories))
+    throw new Error(
+      `ports.json[${index}].categories: expected a non-empty array of unique categories`,
+    );
   if (!isString(status))
     throw new Error(`ports.json[${index}].status: expected string`);
   if (!isString(assets))
@@ -59,11 +67,6 @@ function parsePort(value: unknown, index: number): Port {
   if (!isNonEmptyString(notes))
     throw new Error(`ports.json[${index}].notes: expected non-empty string`);
 
-  if (!isCategory(category)) {
-    throw new Error(
-      `ports.json[${index}].category: "${category}" is not one of ${CATEGORY_VALUES.join(", ")}`,
-    );
-  }
   if (!isStatus(status)) {
     throw new Error(
       `ports.json[${index}].status: "${status}" is not one of ${STATUS_VALUES.join(", ")}`,
@@ -80,7 +83,7 @@ function parsePort(value: unknown, index: number): Port {
 
   return {
     name,
-    category,
+    categories,
     status,
     assets,
     porter,

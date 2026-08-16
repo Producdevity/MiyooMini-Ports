@@ -34,7 +34,7 @@ function renderTable(ports: Port[], porters: Porters): string {
 
   const rows = sorted.map(
     (p) =>
-      `| [${p.name}](${p.upstream}) | ${CATEGORY_LABELS[p.category]} | ${STATUS_LABELS[p.status]} | ${ASSETS_LABELS[p.assets]} | ${porterNames(p.porter)} |`,
+      `| [${p.name}](${p.upstream}) | ${p.categories.map((c) => CATEGORY_LABELS[c]).join(", ")} | ${STATUS_LABELS[p.status]} | ${ASSETS_LABELS[p.assets]} | ${porterNames(p.porter)} |`,
   );
 
   return [

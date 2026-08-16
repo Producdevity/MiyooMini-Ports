@@ -8,8 +8,8 @@ export function matches(port: Port, state: FilterState): boolean {
   if (q) {
     const haystack = [
       port.name,
-      port.category,
-      CATEGORY_LABELS[port.category],
+      port.categories.join(" "),
+      ...port.categories.map((c) => CATEGORY_LABELS[c]),
       port.notes,
       port.porter.join(" "),
       port.status,
@@ -19,7 +19,14 @@ export function matches(port: Port, state: FilterState): boolean {
       .toLowerCase();
     if (!haystack.includes(q)) return false;
   }
+  if (
+    state.active.category.length > 0 &&
+    !port.categories.some((c) => state.active.category.includes(c))
+  ) {
+    return false;
+  }
   for (const key of FILTER_KEYS) {
+    if (key === "category") continue;
     const want = state.active[key];
     if (want.length > 0 && !want.includes(port[key])) return false;
   }

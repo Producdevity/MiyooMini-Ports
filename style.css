@@ -261,6 +261,7 @@ h1 {
 }
 
 .chips-group {
+  margin-top: 8px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -417,7 +418,15 @@ main.wrap {
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
+  align-items: center;
   margin: 8px 0 0;
+}
+
+.tag-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--line);
+  flex-shrink: 0;
 }
 
 .tag {

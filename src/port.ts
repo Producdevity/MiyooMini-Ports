@@ -81,7 +81,7 @@ function renderPort(port: Port, container: HTMLElement): void {
       el("figcaption", {
         class: "plate-cap",
         children: [
-          `Fig. ${String(catalogNumber).padStart(3, "0")} — ${CATEGORY_LABELS[port.category]}`,
+          `Fig. ${String(catalogNumber).padStart(3, "0")} — ${port.categories.map((c) => CATEGORY_LABELS[c]).join(" / ")}`,
         ],
       }),
     ],
@@ -92,7 +92,10 @@ function renderPort(port: Port, container: HTMLElement): void {
   const spec = el("div", {
     class: "spec",
     children: [
-      specRow("Category", CATEGORY_LABELS[port.category]),
+      specRow(
+        "Category",
+        port.categories.map((c) => CATEGORY_LABELS[c]).join(", "),
+      ),
       specRow("Status", STATUS_LABELS[port.status]),
       specRow("Assets", ASSETS_LABELS[port.assets]),
       specRow("Porter", porterCell),

@@ -61,9 +61,12 @@ export function renderRow(
           el("div", {
             class: "tags",
             children: [
-              renderTag(
-                CATEGORY_LABELS[port.category],
-                `tag cat-${port.category}${isHit("category", port.category, state) ? " hit" : ""}`,
+              el("span", { class: "tag-sep" }),
+              ...port.categories.map((category) =>
+                renderTag(
+                  CATEGORY_LABELS[category],
+                  `tag cat-${category}${isHit("category", category, state) ? " hit" : ""}`,
+                ),
               ),
               renderTag(
                 STATUS_LABELS[port.status],
@@ -118,9 +121,10 @@ export function renderList(
 
   const byCategory = new Map<Category, Port[]>();
   for (const p of list) {
-    const arr = byCategory.get(p.category) ?? [];
+    const primary = p.categories[0];
+    const arr = byCategory.get(primary) ?? [];
     arr.push(p);
-    byCategory.set(p.category, arr);
+    byCategory.set(primary, arr);
   }
   const sorted = [...byCategory.entries()].sort(([a], [b]) =>
     a.localeCompare(b),

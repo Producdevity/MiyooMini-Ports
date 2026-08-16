@@ -16,7 +16,7 @@
         "type": "object",
         "required": [
           "name",
-          "category",
+          "categories",
           "status",
           "assets",
           "porter",
@@ -31,22 +31,28 @@
             "minLength": 1,
             "description": "Display name."
           },
-          "category": {
-            "type": "string",
-            "enum": [
-              "app",
-              "arcade",
-              "engine",
-              "fps",
-              "platform",
-              "puzzle",
-              "racing",
-              "reflex",
-              "rpg",
-              "shooter",
-              "simulation"
-            ],
-            "description": "Genre. Reuse an existing value; add a new one only if nothing fits."
+          "categories": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "app",
+                "arcade",
+                "engine",
+                "fps",
+                "platform",
+                "puzzle",
+                "racing",
+                "reflex",
+                "rpg",
+                "shooter",
+                "simulation"
+              ],
+              "description": "Genre. Reuse an existing value; add a new one only if nothing fits."
+            },
+            "description": "First entry is the primary category (used for grouping); a port matches a category filter on any entry."
           },
           "status": {
             "type": "string",

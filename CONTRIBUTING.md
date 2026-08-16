@@ -10,7 +10,7 @@ Append an object to the `ports` array:
 ```json
 {
   "name": "Stardew Valley",
-  "category": "rpg",
+  "categories": ["simulation", "rpg"],
   "status": "experimental",
   "assets": "owned",
   "upstream": "https://github.com/.../releases",
@@ -25,7 +25,7 @@ Append an object to the `ports` array:
 | Field | Required | Value |
 | --- | --- | --- |
 | `name` | yes | Display name. |
-| `category` | yes | One of: `app` (non-game software), `arcade`, `engine`, `fps`, `platform`, `puzzle`, `racing`, `reflex`, `rpg`, `shooter`, `simulation`. The site and README show display names. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
+| `categories` | yes | At least one of: `app` (non-game software), `arcade`, `engine`, `fps`, `platform`, `puzzle`, `racing`, `reflex`, `rpg`, `shooter`, `simulation`. The first entry is the primary category (used for grouping); filters match on any entry. The site and README show display names. Add a new value to `src/types.ts` and `ports.schema.json` only if none of these fit. |
 | `status` | yes | `playable`, `experimental`, `prerelease`, or `source-only` (see below). |
 | `assets` | yes | `free` if nothing is required, `owned` if the user supplies game data. |
 | `porter` | yes | Handles of whoever built the port. Each handle needs a matching entry in `porters.json` (below). |
