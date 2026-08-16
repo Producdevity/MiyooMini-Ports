@@ -920,7 +920,7 @@ main.wrap {
 }
 
 .detail-section + .porter-ports {
-  margin-top: 4px;
+  margin-top: 16px;
 }
 
 @media (max-width: 720px) {
