@@ -390,6 +390,16 @@
       "image": "https://github.com/user-attachments/assets/4664ef2b-4eea-460b-a707-3428fea89103",
       "notes": "OpenClaw engine port. Supply your own CLAW.REZ from the original 1997 game. Levels 1-7 (all OpenClaw implements) are playable; no music, as the game's MIDI needs a synth this build deliberately omits. Hold MENU to quit.",
       "porter": ["ArticlessCZ-Coder"]
+    },
+    {
+      "name": "Mini Tracker",
+      "category": "app",
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/k2-ant/mini-tracker/releases",
+      "image": "https://raw.githubusercontent.com/k2-ant/mini-tracker/HEAD/branding/icon-hires.png",
+      "notes": "Backlog and play-time tracker that runs on the handheld; reads Onion's play activity read-only, box-art grid. All devices.",
+      "porter": ["k2-ant"]
     }
   ]
 }

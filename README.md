@@ -17,6 +17,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [guide-watch](https://github.com/djaysan/guide-watch/releases) | App | Playable | Free | djaysan |
 | [HYPR Radio](https://github.com/zoitrok/hypr-miyoo/releases) | App | Experimental | Free | zoitrok |
 | [Lynx](https://github.com/tailtwo/lynx-miyoo/releases) | App | Playable | Free | tailtwo |
+| [Mini Tracker](https://github.com/k2-ant/mini-tracker/releases) | App | Playable | Free | k2-ant |
 | [Miyonos](https://github.com/ElijahTowers/Miyonos/releases) | App | Experimental | Free | ElijahTowers |
 | [miyoo-htop](https://github.com/allanxp4/miyoo-htop/releases) | App | Playable | Free | allanxp4 |
 | [MiyooAudiobook](https://github.com/smonbon/MiyooAudiobook/releases) | App | Playable | Free | smonbon |
