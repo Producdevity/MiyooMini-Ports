@@ -407,7 +407,7 @@
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/schizophreek/petals/releases",
-      "image": "https://raw.githubusercontent.com/schizophreek/petals/main/petals_scr.png",
+      "image": "https://github.com/schizophreek/petals/blob/482b7f46197650b78fc58acad0be5755e833b93e/petals_scr.png",
       "notes": "Standalone dice logic puzzle port for Miyoo Mini and Miyoo A30.",
       "porter": ["schizophreek"]
     }
