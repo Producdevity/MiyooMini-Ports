@@ -61,13 +61,13 @@ export function renderRow(
           el("div", {
             class: "tags",
             children: [
-              el("span", { class: "tag-sep" }),
               ...port.categories.map((category) =>
                 renderTag(
                   CATEGORY_LABELS[category],
                   `tag cat-${category}${isHit("category", category, state) ? " hit" : ""}`,
                 ),
               ),
+              el("span", { class: "tag-sep" }),
               renderTag(
                 STATUS_LABELS[port.status],
                 `tag ${statusTagClass(port.status)}${isHit("status", port.status, state) ? " hit" : ""}`,
