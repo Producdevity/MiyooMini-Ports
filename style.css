@@ -193,8 +193,24 @@ h1 {
   text-decoration-color: var(--accent);
 }
 
-.site-nav .theme-toggle {
+.site-nav .nav-github {
   margin-left: auto;
+  display: inline-flex;
+  color: var(--ink);
+}
+
+.site-nav .nav-github svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.site-nav .nav-github:hover {
+  color: var(--accent);
+}
+
+.site-nav .theme-toggle {
+  margin-left: 0;
 }
 
 .nav-link {
