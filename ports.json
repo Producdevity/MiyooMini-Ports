@@ -410,6 +410,16 @@
       "image": "https://raw.githubusercontent.com/schizophreek/petals/482b7f46197650b78fc58acad0be5755e833b93e/petals_scr.png",
       "notes": "Standalone dice logic puzzle port for Miyoo Mini and Miyoo A30.",
       "porter": ["schizophreek"]
+    },
+    {
+      "name": "Jazz Jackrabbit 2",
+      "categories": ["platform"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/ArticlessCZ-Coder/jazz2-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/ArticlessCZ-Coder/jazz2-miyoo/3de963ee96dc8db505a6eae4f504659dbb24b16e/docs/screenshot.png",
+      "notes": "Jazz² Resurrection engine port. Supply your own copy of the game; a Windows converter is included in the download. Steady 30 FPS, sound, music and cinematics; single-player only, and the textured backgrounds are drawn flat because the effect cost a third of the frame.",
+      "porter": ["ArticlessCZ-Coder"]
     }
   ]
 }
