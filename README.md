@@ -44,6 +44,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Captain Claw](https://github.com/ArticlessCZ-Coder/captain-claw-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
 | [SuperTux](https://github.com/andrigamerita/supertux/releases) | Platform | Playable | Free | andrigamerita |
 | [Frozen Bubble](https://github.com/mehdisadeghi/frozen-bubble-onion/releases) | Puzzle, Arcade | Playable | Free | mehdisadeghi |
+| [Petals Around the Rose](https://github.com/schizophreek/petals/releases) | Puzzle | Playable | Free | schizophreek |
 | [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing, Platform | Playable | Owned data | neri-rnd |
 | [Super Haxagon](https://github.com/RedTopper/Super-Haxagon/releases) | Reflex | Playable | Free | RedTopper |
 | [Mines of Moria](https://github.com/mxmgorin/moria-handheld/releases) | RPG | Playable | Free | mxmgorin |
