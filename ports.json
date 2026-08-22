@@ -402,6 +402,15 @@
       "porter": ["k2-ant"]
     },
     {
+      "name": "Mines of Moria",
+      "categories": ["rpg"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/mxmgorin/moria-handheld/releases",
+      "image": "https://raw.githubusercontent.com/mxmgorin/moria-handheld/a55fabc634c8c919f20a5b3319b12bd5a1db79b5/portmaster/screenshot.png",
+      "notes": "Descend the Mines of Moria, level by level, and slay the Balrog waiting at the bottom. Rufe.org's rebuild of Umoria, itself the 1983 roguelike by Robert Alan Koeneke that Angband and much of the genre grew out of: permadeath, a randomly generated dungeon on every stairway, a town to spend your gold in between dives. This build uses the graphical client, with sprite tiles and a map that fills the screen. Press Start for the in-game menu, where the tile renderer, magnification and colours can all be changed.",
+      "porter": ["mxmgorin"]
+    }, 
       "name": "Petals Around the Rose",
       "categories": ["puzzle"],
       "status": "playable",
