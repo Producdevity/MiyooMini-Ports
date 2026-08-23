@@ -50,6 +50,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Stardew Valley](https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases) | RPG, Simulation | Experimental | Owned data | Producdevity | EmuReady |
 | [Undertale](https://github.com/cobaltgit/Butterscotch/releases) | RPG | Playable | Owned data | cobaltgit |
 | [POSTAL](https://github.com/bostrt/POSTAL-miyoo/releases) | Shooter | Experimental | Owned data | bostrt |
+| [Minecraft: Bedrock Edition 1.2](https://github.com/DankMiimer/minecraft-bedrock-miyoo-mini-plus/releases) | Simulation | Experimental | Owned data | DankMiimer |
 | [OpenRCT2](https://github.com/scheeseman486/OpenRCT2mini/releases) | Simulation | Playable | Owned data | scheeseman486 |
 
 <!-- END PORTS -->
