@@ -422,6 +422,16 @@
       "porter": ["ArticlessCZ-Coder"]
     },
     {
+      "name": "Tennis vs Zombies",
+      "categories": ["arcade"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/gutospinelli/TennisVsZombies-MiyooMini/releases",
+      "image": "https://raw.githubusercontent.com/gutospinelli/TennisVsZombies-MiyooMini/main/output/Imgs/TennisVsZombies.png",
+      "notes": "Original indie action tennis survival game running natively at 60 FPS with full studio soundtrack.",
+      "porter": ["gutospinelli"]
+    },
+    {
       "name": "Mines of Moria",
       "categories": ["rpg"],
       "status": "playable",
