@@ -49,6 +49,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Petals Around the Rose](https://github.com/schizophreek/petals/releases) | Puzzle | Playable | Free | schizophreek |
 | [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing, Platform | Playable | Owned data | neri-rnd |
 | [Super Haxagon](https://github.com/RedTopper/Super-Haxagon/releases) | Reflex | Playable | Free | RedTopper |
+| [Mines of Moria](https://github.com/mxmgorin/moria-handheld/releases) | RPG | Playable | Free | mxmgorin |
 | [Stardew Valley](https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases) | RPG, Simulation | Experimental | Owned data | Producdevity | EmuReady |
 | [Undertale](https://github.com/cobaltgit/Butterscotch/releases) | RPG | Playable | Owned data | cobaltgit |
 | [POSTAL](https://github.com/bostrt/POSTAL-miyoo/releases) | Shooter | Experimental | Owned data | bostrt |
