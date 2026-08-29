@@ -450,6 +450,16 @@
       "image": "https://raw.githubusercontent.com/mxmgorin/monktower-handheld/fe5f4a27f741c0d16eb04cd9688ce3e274f05b60/monk-tower-cover.png",
       "notes": "A simple coffee-break roguelike game. Roam through 20 levels of the cloister tower, to retrieve the lost manuscript. Carefully manage your weapons, as they get damaged quicker than you think. Separate packages for OnionOS, spruceOS and Allium.",
       "porter": ["mxmgorin"]
+    },
+    {
+      "name": "Minecraft: Bedrock Edition 1.2",
+      "categories": ["simulation"],
+      "status": "experimental",
+      "assets": "owned",
+      "upstream": "https://github.com/DankMiimer/minecraft-bedrock-miyoo-mini-plus/releases",
+      "image": "https://raw.githubusercontent.com/DankMiimer/minecraft-bedrock-miyoo-mini-plus/HEAD/docs/miyoo-mini-plus-bedrock.jpg",
+      "notes": "Bedrock 1.2.20.2 through the minecraft-linux launcher on a software GL stack. Mini Plus only. No GPU, so 6-8 fps: choose 160x120 at the launch prompt, and relaunch at 320x240 if you need the Settings or Store buttons. Supply your own Android APK.",
+      "porter": ["DankMiimer"]
     }
   ]
 }
