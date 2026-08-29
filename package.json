@@ -14,10 +14,12 @@
     "format": "biome check --write .",
     "validate": "tsx scripts/validate-ports.ts",
     "gen:readme": "tsx scripts/gen-readme.ts",
+    "gen:icons": "tsx scripts/gen-icons.ts",
     "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.8",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^26.2.0",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",

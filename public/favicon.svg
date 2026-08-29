@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Miyoo Mini, atomic purple -->
+  <rect x="24" y="3" width="208" height="250" rx="20" fill="#6A4FA8" stroke="#553D8C" stroke-width="3"/>
+  <rect x="29" y="8" width="198" height="240" rx="15" fill="#7C5FB5"/>
+
+  <!-- screen, centered, uniform 10 margins -->
+  <rect x="39" y="18" width="178" height="136" rx="7" fill="#191527"/>
+  <rect x="43" y="22" width="170" height="128" rx="4" fill="#F3EFE5"/>
+
+  <!-- shell seam, centered -->
+  <path d="M36 166H220" stroke="#6A4FA8" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- d-pad, mirrored with buttons around center x=128 -->
+  <circle cx="76" cy="210" r="21" fill="#6A4FA8"/>
+  <path d="M69 190h14v13h13v14h-13v13h-14v-13h-13v-14h13z" fill="#262130"/>
+  <circle cx="76" cy="210" r="4" fill="#3A3350"/>
+
+  <!-- power, on centerline -->
+  <circle cx="128" cy="183" r="4.5" fill="#5C4492"/>
+
+  <!-- ABXY, SNES colors -->
+  <circle cx="180" cy="194" r="10" fill="#2A4AA6"/>
+  <circle cx="180" cy="194" r="9.2" fill="#3E6BE0"/>
+  <circle cx="177.4" cy="190.4" r="2.1" fill="#FFFFFF" fill-opacity="0.55"/>
+  <circle cx="196" cy="210" r="10" fill="#A3271C"/>
+  <circle cx="196" cy="210" r="9.2" fill="#E0402E"/>
+  <circle cx="193.4" cy="206.4" r="2.1" fill="#FFFFFF" fill-opacity="0.55"/>
+  <circle cx="180" cy="226" r="10" fill="#C08A12"/>
+  <circle cx="180" cy="226" r="9.2" fill="#F2B31F"/>
+  <circle cx="177.4" cy="222.4" r="2.1" fill="#FFFFFF" fill-opacity="0.55"/>
+  <circle cx="164" cy="210" r="10" fill="#2E7A38"/>
+  <circle cx="164" cy="210" r="9.2" fill="#46A34E"/>
+  <circle cx="161.4" cy="206.4" r="2.1" fill="#FFFFFF" fill-opacity="0.55"/>
+
+  <!-- select / start, centered pair -->
+  <g transform="rotate(-30 113 241)">
+    <rect x="105" y="236.5" width="16" height="9" rx="4.5" fill="#262130"/>
+    <rect x="108" y="238.8" width="10" height="4.4" rx="2.2" fill="#4A3678"/>
+  </g>
+  <g transform="rotate(-30 143 241)">
+    <rect x="135" y="236.5" width="16" height="9" rx="4.5" fill="#262130"/>
+    <rect x="138" y="238.8" width="10" height="4.4" rx="2.2" fill="#4A3678"/>
+  </g>
+
+  <!-- speaker, corner slots -->
+  <g stroke="#262130" stroke-width="2.5" stroke-linecap="round">
+    <path d="M196 245L201 236"/>
+    <path d="M202 245L207 236"/>
+    <path d="M208 245L213 236"/>
+    <path d="M214 245L219 236"/>
+  </g>
+</svg>
