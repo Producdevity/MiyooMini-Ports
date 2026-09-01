@@ -460,6 +460,16 @@
       "image": "https://raw.githubusercontent.com/DankMiimer/minecraft-bedrock-miyoo-mini-plus/HEAD/docs/miyoo-mini-plus-bedrock.jpg",
       "notes": "Bedrock 1.2.20.2 through the minecraft-linux launcher on a software GL stack. Mini Plus only. No GPU, so 6-8 fps: choose 160x120 at the launch prompt, and relaunch at 320x240 if you need the Settings or Store buttons. Supply your own Android APK.",
       "porter": ["DankMiimer"]
+    },
+    {
+      "name": "CPU Overclock",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/LiveLoveLinux/Cpu_Overclock_Onion_OS",
+      "image": "https://raw.githubusercontent.com/LiveLoveLinux/Cpu_Overclock_Onion_OS/HEAD/icon.png",
+      "notes": "Pick a CPU clock from a simple list; the app detects Mini versus Mini Plus on its own and writes the setting into the RetroArch and NDS configs. Mini tops out at 1600 MHz, Mini Plus at 1800 MHz. The App/CpuOverclock folder on the SD card must be named exactly that or the icon will not show.",
+      "porter": ["LiveLoveLinux"]
     }
   ]
 }

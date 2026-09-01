@@ -12,6 +12,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | --- | --- | --- | --- | --- |
 | [bible.sh](https://github.com/likeich/bible-sh/releases) | App | Playable | Free | likeich |
 | [Cloud Saves](https://github.com/hotcereal/cloud-saves-miyoo-mini-plus) | App | Playable | Free | hotcereal |
+| [CPU Overclock](https://github.com/LiveLoveLinux/Cpu_Overclock_Onion_OS) | App | Playable | Free | LiveLoveLinux |
 | [dpad-chat](https://github.com/SartajBhuvaji/dpad-chat/releases) | App | Playable | Free | SartajBhuvaji |
 | [guardianplay](https://github.com/mkl159/guardianplay-onion/releases) | App | Playable | Free | mkl159 |
 | [guide-watch](https://github.com/djaysan/guide-watch/releases) | App | Playable | Free | djaysan |
