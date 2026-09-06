@@ -19,5 +19,5 @@ export function portUrl(name: string): string {
 }
 
 export function porterUrl(handle: string): string {
-  return `${SITE_BASE}porter/${handle}/`;
+  return `${SITE_BASE}porter/${encodeURIComponent(handle)}/`;
 }

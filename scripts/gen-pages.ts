@@ -129,7 +129,7 @@ function portSeo(
     `      <p class="detail-by">by ${port.porter
       .map(
         (handle) =>
-          `<a href="${SITE_BASE}porter/${handle}/">${escapeHtml(porters[handle]?.name ?? handle)}</a>`,
+          `<a href="${SITE_BASE}porter/${encodeURIComponent(handle)}/">${escapeHtml(porters[handle]?.name ?? handle)}</a>`,
       )
       .join(", ")}</p>`,
     `      <p class="detail-notes">${escapeHtml(port.notes)}</p>`,
