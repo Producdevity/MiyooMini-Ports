@@ -1,5 +1,6 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { parsePorters, parsePorts } from "../src/schema";
 import { slugify } from "../src/slug";
 import type { Port, Porters } from "../src/types";
@@ -71,7 +72,7 @@ const DESCRIPTION = /<meta\s+name="description"\s+content="[^"]*"/;
 const OG_TITLE = /<meta\s+property="og:title"\s+content="[^"]*"/;
 const OG_DESCRIPTION = /<meta\s+property="og:description"\s+content="[^"]*"/;
 
-function buildDetailPage(template: string, seo: DetailSeo): string {
+export function buildDetailPage(template: string, seo: DetailSeo): string {
   if (!template.includes(`href="${SITE_BASE}assets/`)) {
     throw new Error("detail template: vite base is not baked into asset URLs");
   }
@@ -111,7 +112,7 @@ function joinNames(names: string[]): string {
   return `${lead} and ${names.at(-1)}`;
 }
 
-function portSeo(
+export function portSeo(
   port: Port,
   porters: Porters,
 ): { slug: string; seo: DetailSeo } {
@@ -149,7 +150,7 @@ function portSeo(
   };
 }
 
-function porterSeo(
+export function porterSeo(
   handle: string,
   porter: Porters[string],
   owned: Port[],
@@ -201,6 +202,18 @@ function porterSeo(
   };
 }
 
+export function addUniqueSlug(
+  slug: string,
+  name: string,
+  seen: Set<string>,
+): void {
+  if (slug === "") throw new Error(`port "${name}" has an empty slug`);
+  if (seen.has(slug)) {
+    throw new Error(`slug collision on "${slug}" (${name})`);
+  }
+  seen.add(slug);
+}
+
 function main(): void {
   const ports = loadPorts();
   const porters = loadPorters();
@@ -212,11 +225,7 @@ function main(): void {
   const portUrls: string[] = [];
   for (const port of ports) {
     const { slug, seo } = portSeo(port, porters);
-    if (slug === "") throw new Error(`port "${port.name}" has an empty slug`);
-    if (seenSlugs.has(slug)) {
-      throw new Error(`slug collision on "${slug}" (${port.name})`);
-    }
-    seenSlugs.add(slug);
+    addUniqueSlug(slug, port.name, seenSlugs);
 
     const dir = resolve(DIST, "port", slug);
     mkdirSync(dir, { recursive: true });
@@ -301,4 +310,9 @@ function main(): void {
   );
 }
 
-main();
+if (
+  process.argv[1] !== undefined &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  main();
+}
