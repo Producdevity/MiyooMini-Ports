@@ -7,7 +7,7 @@
   "packageManager": "pnpm@11.20.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && tsx scripts/gen-pages.ts",
     "preview": "vite preview",
     "typecheck": "tsc && tsc -p scripts/tsconfig.json",
     "check": "biome check .",

@@ -13,8 +13,8 @@ import {
 } from "./components";
 import { el, querySelector } from "./dom";
 import { mountSiteNav } from "./nav";
+import { porterUrl } from "./routes";
 import { parsePorters, parsePorts } from "./schema";
-import { porterUrl } from "./slug";
 import type { Port, Porter } from "./types";
 
 const ports = parsePorts(portsData);

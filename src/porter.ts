@@ -14,6 +14,7 @@ import {
 } from "./components";
 import { el } from "./dom";
 import { mountSiteNav } from "./nav";
+import { detailSlug, SITE_BASE } from "./routes";
 import { parsePorters, parsePorts } from "./schema";
 import type { Port, Porter } from "./types";
 
@@ -25,7 +26,7 @@ const notFound = (container: HTMLElement): void =>
     container,
     "No porter matches this address.",
     "← All porters",
-    "porters.html",
+    `${SITE_BASE}porters.html`,
   );
 
 function renderPorter(
@@ -95,7 +96,7 @@ function main(): void {
   const container = document.getElementById("detail");
   if (!container) throw new Error("missing element: #detail");
 
-  const wanted = new URLSearchParams(window.location.search).get("p");
+  const wanted = detailSlug("porter");
 
   if (wanted === null || porters[wanted] === undefined) {
     notFound(container);

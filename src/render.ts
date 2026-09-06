@@ -1,6 +1,6 @@
 import { renderImage, renderTag, statusTagClass } from "./components";
 import { el } from "./dom";
-import { porterUrl, portUrl } from "./slug";
+import { porterUrl, portUrl } from "./routes";
 import type { Category, FilterKey, FilterState, Port, Porters } from "./types";
 import {
   ASSETS_LABELS,

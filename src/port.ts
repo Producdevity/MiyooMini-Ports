@@ -8,8 +8,9 @@ import portsData from "../ports.json";
 import { renderImage, renderNotFound } from "./components";
 import { el } from "./dom";
 import { mountSiteNav } from "./nav";
+import { detailSlug, porterUrl, SITE_BASE } from "./routes";
 import { parsePorters, parsePorts } from "./schema";
-import { porterUrl, slugify } from "./slug";
+import { slugify } from "./slug";
 import type { Port } from "./types";
 import {
   ASSETS_LABELS,
@@ -36,7 +37,7 @@ const notFound = (container: HTMLElement): void =>
     container,
     "No port matches this address.",
     "← All ports",
-    "index.html",
+    `${SITE_BASE}index.html`,
   );
 
 function renderPort(port: Port, container: HTMLElement): void {
@@ -133,7 +134,7 @@ function main(): void {
   const container = document.getElementById("detail");
   if (!container) throw new Error("missing element: #detail");
 
-  const wanted = new URLSearchParams(window.location.search).get("p");
+  const wanted = detailSlug("port");
   const port = ports.find((p) => slugify(p.name) === wanted);
 
   if (port === undefined) {

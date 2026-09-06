@@ -1,4 +1,5 @@
 import { el } from "./dom";
+import { SITE_BASE } from "./routes";
 import { initThemeToggle } from "./theme";
 
 export type NavPage = "ports" | "porters" | null;
@@ -50,8 +51,8 @@ export function mountSiteNav(current: NavPage): void {
   github.append(githubIcon());
 
   mount.replaceChildren(
-    link("ports", "index.html", "Ports"),
-    link("porters", "porters.html", "Porters"),
+    link("ports", `${SITE_BASE}index.html`, "Ports"),
+    link("porters", `${SITE_BASE}porters.html`, "Porters"),
     github,
     el("button", {
       class: "chip theme-toggle",

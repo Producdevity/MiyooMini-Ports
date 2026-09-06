@@ -1,5 +1,5 @@
 import { el } from "./dom";
-import { portUrl } from "./slug";
+import { portUrl } from "./routes";
 import type { Port, Porter } from "./types";
 import { CATEGORY_LABELS, STATUS_LABELS } from "./types";
 
