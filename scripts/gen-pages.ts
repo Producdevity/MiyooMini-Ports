@@ -135,6 +135,7 @@ export function portSeo(
       .join(", ")}</p>`,
     `      <p class="detail-notes">${escapeHtml(port.notes)}</p>`,
     `      <p><a class="stamp" href="${escapeHtml(port.upstream)}" rel="noopener">Get the release ↗</a></p>`,
+    `      <p><a class="nav-link" href="${SITE_BASE}">← All ports</a></p>`,
     "    </noscript>",
   ].join("\n");
 
@@ -190,6 +191,7 @@ export function porterSeo(
     items,
     "      </ul>",
     `      <p><a class="stamp" href="${escapeHtml(porter.github)}" rel="noopener">GitHub ↗</a></p>`,
+    `      <p><a class="nav-link" href="${SITE_BASE}porters.html">← All porters</a></p>`,
     "    </noscript>",
   ].join("\n");
 
