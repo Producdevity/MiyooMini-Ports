@@ -1,7 +1,8 @@
 import { execSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { slugify } from "../src/slug";
 import type { Port, Porter } from "../src/types";
 import {
   addUniqueSlug,
@@ -177,51 +178,65 @@ describe("addUniqueSlug", () => {
 });
 
 describe("build output", () => {
+  const ROOT = resolve(import.meta.dirname, "..");
+
+  // CI builds before running the tests; rebuild locally only when the
+  // generated output is older than everything that shapes it.
+  const buildIsStale = (): boolean => {
+    const marker = statSync(resolve(ROOT, "dist/sitemap.xml"), {
+      throwIfNoEntry: false,
+    });
+    if (marker === undefined) return true;
+    return [
+      "ports.json",
+      "porters.json",
+      "index.html",
+      "porters.html",
+      "port.html",
+      "porter.html",
+      "vite.config.ts",
+      "scripts/gen-pages.ts",
+    ].some((f) => statSync(resolve(ROOT, f)).mtimeMs > marker.mtimeMs);
+  };
+
   it("generates detail pages, sitemap, and robots from real data", {
     timeout: 120_000,
   }, () => {
-    execSync("pnpm build", {
-      cwd: resolve(import.meta.dirname, ".."),
-      stdio: "pipe",
-    });
+    if (buildIsStale()) {
+      execSync("pnpm build", { cwd: ROOT, stdio: "pipe" });
+    }
 
-    const ports = JSON.parse(
-      readFileSync(resolve(import.meta.dirname, "..", "ports.json"), "utf8"),
-    ).ports as unknown[];
+    const ports = JSON.parse(readFileSync(resolve(ROOT, "ports.json"), "utf8"))
+      .ports as { name: string }[];
     const porters = JSON.parse(
-      readFileSync(resolve(import.meta.dirname, "..", "porters.json"), "utf8"),
+      readFileSync(resolve(ROOT, "porters.json"), "utf8"),
     ).porters as Record<string, unknown>;
 
+    const first = ports[0];
+    const slug = slugify(first.name);
+    const handle = Object.keys(porters)[0];
+
     const page = readFileSync(
-      resolve(import.meta.dirname, "..", "dist/port/stardew-valley/index.html"),
+      resolve(ROOT, `dist/port/${slug}/index.html`),
       "utf8",
     );
-    expect(page).toContain("<title>Stardew Valley · Miyoo Mini Ports</title>");
+    expect(page).toContain(`<title>${first.name} · Miyoo Mini Ports</title>`);
     expect(page).toContain(
-      `<link rel="canonical" href="${SITE}/port/stardew-valley/" />`,
+      `<link rel="canonical" href="${SITE}/port/${slug}/" />`,
     );
     expect(page).toContain('name="twitter:card" content="summary_large_image"');
     expect(page).toMatch(/<main class="wrap" id="detail">\s*<noscript>/);
 
-    const shell = readFileSync(
-      resolve(import.meta.dirname, "..", "dist/port.html"),
-      "utf8",
-    );
+    const shell = readFileSync(resolve(ROOT, "dist/port.html"), "utf8");
     expect(shell).toContain('<meta name="robots" content="noindex" />');
 
-    const sitemap = readFileSync(
-      resolve(import.meta.dirname, "..", "dist/sitemap.xml"),
-      "utf8",
-    );
+    const sitemap = readFileSync(resolve(ROOT, "dist/sitemap.xml"), "utf8");
     const expectedCount = 2 + ports.length + Object.keys(porters).length;
     expect(sitemap.match(/<loc>/g)).toHaveLength(expectedCount);
-    expect(sitemap).toContain(`${SITE}/port/stardew-valley/`);
-    expect(sitemap).toContain(`${SITE}/porter/Producdevity/`);
+    expect(sitemap).toContain(`${SITE}/port/${slug}/`);
+    expect(sitemap).toContain(`${SITE}/porter/${handle}/`);
 
-    const robots = readFileSync(
-      resolve(import.meta.dirname, "..", "dist/robots.txt"),
-      "utf8",
-    );
+    const robots = readFileSync(resolve(ROOT, "dist/robots.txt"), "utf8");
     expect(robots).toBe(
       `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`,
     );

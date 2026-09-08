@@ -32,9 +32,6 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      - name: Tests
-        run: pnpm test
-
       # GitHub web edits can't run local hooks; regenerate the table and push
       # it to the branch. Skipped for forks, which lack push access.
       - name: Regenerate README table
@@ -56,6 +53,9 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Tests
+        run: pnpm test
 
       - uses: actions/upload-pages-artifact@v5
         with:
