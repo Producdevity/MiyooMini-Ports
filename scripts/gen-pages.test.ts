@@ -1,5 +1,5 @@
 import { execSync } from "node:child_process";
-import { readFileSync, statSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { slugify } from "../src/slug";
@@ -180,29 +180,12 @@ describe("addUniqueSlug", () => {
 describe("build output", () => {
   const ROOT = resolve(import.meta.dirname, "..");
 
-  // CI builds before running the tests; rebuild locally only when the
-  // generated output is older than everything that shapes it.
-  const buildIsStale = (): boolean => {
-    const marker = statSync(resolve(ROOT, "dist/sitemap.xml"), {
-      throwIfNoEntry: false,
-    });
-    if (marker === undefined) return true;
-    return [
-      "ports.json",
-      "porters.json",
-      "index.html",
-      "porters.html",
-      "port.html",
-      "porter.html",
-      "vite.config.ts",
-      "scripts/gen-pages.ts",
-    ].some((f) => statSync(resolve(ROOT, f)).mtimeMs > marker.mtimeMs);
-  };
-
   it("generates detail pages, sitemap, and robots from real data", {
     timeout: 120_000,
   }, () => {
-    if (buildIsStale()) {
+    // CI builds in the preceding Build step; locally always rebuild so
+    // stale output is never asserted.
+    if (process.env.GEN_PAGES_TEST_SKIP_BUILD === undefined) {
       execSync("pnpm build", { cwd: ROOT, stdio: "pipe" });
     }
 
