@@ -48,6 +48,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Captain Claw](https://github.com/ArticlessCZ-Coder/captain-claw-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
 | [Jazz Jackrabbit 2](https://github.com/ArticlessCZ-Coder/jazz2-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
 | [SuperTux](https://github.com/andrigamerita/supertux/releases) | Platform | Playable | Free | andrigamerita |
+| [Balatro](https://github.com/Producdevity/balatro-miyoo-mini-port/releases) | Puzzle | Prerelease | Owned data | Producdevity | EmuReady |
 | [Frozen Bubble](https://github.com/mehdisadeghi/frozen-bubble-onion/releases) | Puzzle, Arcade | Playable | Free | mehdisadeghi |
 | [Petals Around the Rose](https://github.com/schizophreek/petals/releases) | Puzzle | Playable | Free | schizophreek |
 | [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing, Platform | Playable | Owned data | neri-rnd |

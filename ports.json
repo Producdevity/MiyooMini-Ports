@@ -490,6 +490,16 @@
       "image": "https://github.com/XK9274/better-wifi-miyoo/assets/47260768/78de2a92-c2d6-405f-8fe3-906b11ad2c16",
       "notes": "Rebuilt WiFi manager with a simple GUI: scan, connect, and manage networks from the device. Mini Plus (WiFi).",
       "porter": ["XK9274"]
+    },
+    {
+      "name": "Balatro",
+      "categories": ["puzzle"],
+      "status": "prerelease",
+      "assets": "owned",
+      "upstream": "https://github.com/Producdevity/balatro-miyoo-mini-port/releases",
+      "image": "https://raw.githubusercontent.com/Producdevity/balatro-miyoo-mini-port/master/docs/images/gameplay.gif",
+      "notes": "Rust compatibility runtime for the LÖVE game. Supply your own Balatro.love; the first launch prepares audio. Runs at 1.5 GHz via Onion's clock helper.",
+      "porter": ["Producdevity"]
     }
   ]
 }
