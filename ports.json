@@ -500,6 +500,16 @@
       "image": "https://raw.githubusercontent.com/mxmgorin/retsurf/2793750ca6db62d0eb6098e01dcacec9d8084767/resources/images/retsurf-hints.png",
       "notes": "A web browser built on the Servo engine, designed for gamepad navigation. Features include Vimium-style link hints, an on-screen keyboard, tabs, bookmarks, reader mode, and downloads.",
       "porter": ["mxmgorin"]
+    },
+    {
+      "name": "Balatro",
+      "categories": ["puzzle"],
+      "status": "prerelease",
+      "assets": "owned",
+      "upstream": "https://github.com/Producdevity/balatro-miyoo-mini-port/releases",
+      "image": "https://raw.githubusercontent.com/Producdevity/balatro-miyoo-mini-port/master/docs/images/gameplay.gif",
+      "notes": "Rust compatibility runtime for the LÖVE game. Supply your own Balatro.love; the first launch prepares audio. Runs at 1.5 GHz via Onion's clock helper.",
+      "porter": ["Producdevity"]
     }
   ]
 }
