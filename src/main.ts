@@ -71,3 +71,5 @@ search.addEventListener("input", (event) => {
 
 mountSiteNav("ports");
 rerender();
+
+document.querySelector("search")?.removeAttribute("hidden");

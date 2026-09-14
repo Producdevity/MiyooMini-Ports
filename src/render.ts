@@ -56,7 +56,7 @@ export function renderRow(
       el("div", {
         class: "info",
         children: [
-          el("div", { class: "name", children: [nameLink] }),
+          el("h2", { class: "name", children: [nameLink] }),
           byLine,
           el("div", {
             class: "tags",
@@ -163,10 +163,18 @@ export function renderChips(
   onToggle: (key: FilterKey, value: string) => void,
   onClear: () => void,
 ): void {
+  const focused = document.activeElement;
+  const focusKey =
+    focused instanceof HTMLElement && container.contains(focused)
+      ? focused.dataset.filter
+      : undefined;
   container.replaceChildren();
 
   for (const g of groups) {
-    const row = el("div", { class: "chips-group" });
+    const row = el("div", {
+      class: "chips-group",
+      attrs: { role: "group", "aria-label": g.key },
+    });
     row.append(el("span", { class: "lbl", children: [g.key] }));
     for (const value of g.values) {
       const active = state.active[g.key].includes(value);
@@ -175,6 +183,7 @@ export function renderChips(
         attrs: {
           type: "button",
           "aria-pressed": active ? "true" : "false",
+          "data-filter": `${g.key}:${value}`,
         },
         children: [labelFor(g.key, value)],
       });
@@ -188,10 +197,15 @@ export function renderChips(
   clearRow.append(el("span", { class: "lbl" }));
   const clear = el("button", {
     class: "clear",
-    attrs: { type: "button" },
+    attrs: { type: "button", "data-filter": "clear" },
     children: ["clear filters"],
   });
   clear.addEventListener("click", onClear);
   clearRow.append(clear);
   container.append(clearRow);
+  if (focusKey) {
+    for (const button of container.querySelectorAll("button")) {
+      if (button.dataset.filter === focusKey) button.focus();
+    }
+  }
 }

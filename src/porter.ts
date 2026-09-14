@@ -5,92 +5,14 @@ import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-600.css";
 import portersData from "../porters.json";
 import portsData from "../ports.json";
-import {
-  PORTER_LINK_LABELS,
-  renderImage,
-  renderLinkTag,
-  renderNotFound,
-  renderPortListItem,
-} from "./components";
-import { el } from "./dom";
+import { enhanceImages, renderNotFound } from "./components";
 import { mountSiteNav } from "./nav";
-import { detailSlug, SITE_BASE } from "./routes";
+import { renderPorter } from "./porter-view";
+import { detailSlug, porterUrl, SITE_BASE } from "./routes";
 import { parsePorters, parsePorts } from "./schema";
-import type { Port, Porter } from "./types";
 
 const ports = parsePorts(portsData);
 const porters = parsePorters(portersData);
-
-const notFound = (container: HTMLElement): void =>
-  renderNotFound(
-    container,
-    "No porter matches this address.",
-    "← All porters",
-    `${SITE_BASE}porters.html`,
-  );
-
-function renderPorter(
-  handle: string,
-  porter: Porter,
-  owned: Port[],
-  container: HTMLElement,
-): void {
-  document.title = `${porter.name ?? handle} · Miyoo Mini Ports`;
-
-  const displayName = porter.name ?? handle;
-  const avatar = porter.image
-    ? renderImage(porter.image, "avatar avatar-lg", `Avatar of ${displayName}`)
-    : el("div", {
-        class: "avatar avatar-lg ph",
-        attrs: { "aria-hidden": "true" },
-        children: [handle.charAt(0).toUpperCase()],
-      });
-
-  const infoChildren: (Node | string)[] = [
-    el("h1", { class: "detail-title", children: [displayName] }),
-  ];
-  if (porter.name !== undefined) {
-    infoChildren.push(
-      el("p", { class: "porter-handle", children: [`@${handle}`] }),
-    );
-  }
-  if (porter.bio !== undefined) {
-    infoChildren.push(el("p", { class: "porter-bio", children: [porter.bio] }));
-  }
-  infoChildren.push(
-    el("div", {
-      class: "tags",
-      children: PORTER_LINK_LABELS.flatMap(([key, label]) => {
-        const url = porter[key];
-        return url === undefined ? [] : [renderLinkTag(label, url)];
-      }),
-    }),
-  );
-
-  container.append(
-    el("div", {
-      class: "porter-detail",
-      children: [
-        avatar,
-        el("div", { class: "porter-detail-info", children: infoChildren }),
-      ],
-    }),
-    el("h2", {
-      class: "detail-section",
-      children: [
-        "Catalogued ports",
-        el("span", {
-          class: "n",
-          children: [String(owned.length)],
-        }),
-      ],
-    }),
-    el("ul", {
-      class: "porter-ports",
-      children: owned.map((p) => renderPortListItem(p)),
-    }),
-  );
-}
 
 function main(): void {
   const container = document.getElementById("detail");
@@ -98,14 +20,27 @@ function main(): void {
 
   const wanted = detailSlug("porter");
 
-  if (wanted === null || porters[wanted] === undefined) {
-    notFound(container);
+  if (wanted === null || !Object.hasOwn(porters, wanted)) {
+    renderNotFound(
+      container,
+      "No porter matches this address.",
+      "← All porters",
+      `${SITE_BASE}porters.html`,
+    );
   } else {
+    if (window.location.pathname.endsWith("/porter.html")) {
+      window.location.replace(porterUrl(wanted) + window.location.hash);
+      return;
+    }
     const porter = porters[wanted];
     const owned = ports
       .filter((p) => p.porter.includes(wanted))
       .sort((a, b) => a.name.localeCompare(b.name));
-    renderPorter(wanted, porter, owned, container);
+    if (!container.querySelector("h1")) {
+      container.replaceChildren();
+      renderPorter(wanted, porter, owned, container);
+    }
+    enhanceImages(container);
   }
 }
 

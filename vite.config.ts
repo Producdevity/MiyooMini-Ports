@@ -1,13 +1,13 @@
 import { defineConfig, type Plugin } from "vite";
 
-const BASE = "/MiyooMini-Ports/";
+import { SITE_BASE as BASE } from "./src/site.ts";
 
 // Dev parity with the build-time pages: serve detail URLs via the shells.
 const cleanDetailUrls = (): Plugin => ({
   name: "clean-detail-urls",
   configureServer(server) {
     const pattern = new RegExp(
-      `^${BASE.replaceAll("/", "\\/")}(port|porter)/[^/?#]+/?(?:\\?.*)?$`,
+      `^${BASE.replaceAll("/", "\\/")}(port|porter)/[^/?#]+(?:/index\\.html|/)?(?:\\?.*)?$`,
     );
     server.middlewares.use((req, _res, next) => {
       const match = req.url?.match(pattern);

@@ -1,12 +1,23 @@
 import { execSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
+import { tmpdir } from "node:os";
 import { resolve } from "node:path";
-import { describe, expect, it } from "vitest";
+import { parseHTML } from "linkedom";
+import { describe, expect, it, vi } from "vitest";
+import { renderPort } from "../src/port-view";
+import { parsePorters, parsePorts } from "../src/schema";
 import { slugify } from "../src/slug";
 import type { Port, Porter } from "../src/types";
 import {
   addUniqueSlug,
   buildDetailPage,
+  generatePages,
   porterSeo,
   portSeo,
 } from "./gen-pages";
@@ -34,7 +45,6 @@ const SEO = {
   description: "Fake Port description",
   url: `${SITE}/port/fake-port/`,
   image: "https://example.com/cover.png",
-  noscript: "<noscript>by TestHandle</noscript>",
 };
 
 describe("buildDetailPage", () => {
@@ -50,7 +60,7 @@ describe("buildDetailPage", () => {
     expect(page).not.toContain("template description");
   });
 
-  it("inserts the canonical block and noscript content", () => {
+  it("inserts the canonical block", () => {
     const page = buildDetailPage(TEMPLATE, SEO);
     expect(page).toContain(`<link rel="canonical" href="${SEO.url}" />`);
     expect(page).toContain(`<meta property="og:url" content="${SEO.url}" />`);
@@ -58,7 +68,7 @@ describe("buildDetailPage", () => {
       `<meta property="og:image" content="${SEO.image}" />`,
     );
     expect(page).not.toContain("<!-- seo:canonical -->");
-    expect(page).toMatch(/<main class="wrap" id="detail">\s*<noscript>/);
+    expect(page).not.toContain("<noscript>");
   });
 
   it("escapes HTML in meta values", () => {
@@ -119,17 +129,29 @@ describe("portSeo", () => {
     ).toBe(`${SITE}/icon-512.png`);
   });
 
-  it("escapes markup in the noscript block and encodes hrefs", () => {
-    const hostile: Port = {
-      ...port,
-      porter: ['"onclick="x'],
-      upstream: "https://example.com/r?amp=1&and=2",
-    };
-    const noscript = portSeo(hostile, {}).seo.noscript;
-    expect(noscript).toContain("porter/%22onclick%3D%22x/");
-    expect(noscript).toContain("r?amp=1&amp;and=2");
-    expect(noscript).toContain("&quot;onclick=&quot;x</a>");
-    expect(noscript).not.toContain('porter/"onclick');
+  it("renders untrusted catalog text as text and encodes links", () => {
+    const { document } = parseHTML("<html><body><main></main></body></html>");
+    vi.stubGlobal("document", document);
+    try {
+      const hostile = {
+        ...port,
+        name: '<img src=x onerror="bad()">',
+        porter: ['"onclick="x'],
+      };
+      const main = document.querySelector("main");
+      if (!main) throw new Error("missing main");
+      renderPort(hostile, [hostile], {}, main as unknown as HTMLElement);
+      expect(main.querySelector("h1")?.textContent).toBe(hostile.name);
+      expect(main.querySelector("h1 img")).toBeNull();
+      expect(
+        main.querySelector(".detail-by a")?.getAttribute("href"),
+      ).toContain("porter/%22onclick%3D%22x/");
+      expect(main.querySelector(".stamp")?.getAttribute("href")).toBe(
+        port.upstream,
+      );
+    } finally {
+      vi.unstubAllGlobals();
+    }
   });
 });
 
@@ -158,6 +180,21 @@ describe("porterSeo", () => {
     expect(porterSeo("h", porter, []).description).not.toContain("porter of");
   });
 
+  it("accepts handles with spaces and encodes the canonical URL", () => {
+    const profiles = parsePorters({ porters: { "A B": porter } });
+    expect(porterSeo("A B", profiles["A B"], []).url).toBe(
+      `${SITE}/porter/A%20B/`,
+    );
+  });
+
+  it("rejects handles that could escape their output directory", () => {
+    for (const handle of ["", ".", "..", "a/b", "a\\b"]) {
+      expect(() => parsePorters({ porters: { [handle]: porter } })).toThrow(
+        "single directory name",
+      );
+    }
+  });
+
   it("uses the avatar when present and the site icon otherwise", () => {
     expect(
       porterSeo("h", { ...porter, image: "https://x/y.png" }, []).image,
@@ -177,10 +214,39 @@ describe("addUniqueSlug", () => {
   });
 });
 
+it("writes raw directory names while encoding links and sitemap URLs", () => {
+  const dir = mkdtempSync(resolve(tmpdir(), "miyoo-pages-"));
+  try {
+    const template = TEMPLATE.replace(
+      "<body>",
+      '<body><nav id="site-nav"></nav>',
+    );
+    for (const file of [
+      "index.html",
+      "porters.html",
+      "port.html",
+      "porter.html",
+    ]) {
+      writeFileSync(resolve(dir, file), template);
+    }
+    generatePages([{ ...port, porter: ["A B"] }], { "A B": porter }, dir);
+    const page = readFileSync(resolve(dir, "porter/A B/index.html"), "utf8");
+    expect(page).toContain(`${SITE}/porter/A%20B/`);
+    expect(readFileSync(resolve(dir, "sitemap.xml"), "utf8")).toContain(
+      `${SITE}/porter/A%20B/`,
+    );
+    expect(
+      readFileSync(resolve(dir, "port/fake-port/index.html"), "utf8"),
+    ).toContain('href="/MiyooMini-Ports/porter/A%20B/"');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 describe("build output", () => {
   const ROOT = resolve(import.meta.dirname, "..");
 
-  it("generates detail pages, sitemap, and robots from real data", {
+  it("generates crawlable pages and a sitemap from real data", {
     timeout: 120_000,
   }, () => {
     // CI builds in the preceding Build step; locally always rebuild so
@@ -189,29 +255,77 @@ describe("build output", () => {
       execSync("pnpm build", { cwd: ROOT, stdio: "pipe" });
     }
 
-    const ports = JSON.parse(readFileSync(resolve(ROOT, "ports.json"), "utf8"))
-      .ports as { name: string }[];
-    const porters = JSON.parse(
-      readFileSync(resolve(ROOT, "porters.json"), "utf8"),
-    ).porters as Record<string, unknown>;
-
-    const first = ports[0];
-    const slug = slugify(first.name);
+    const ports = parsePorts(
+      JSON.parse(readFileSync(resolve(ROOT, "ports.json"), "utf8")),
+    );
+    const porters = parsePorters(
+      JSON.parse(readFileSync(resolve(ROOT, "porters.json"), "utf8")),
+    );
+    const read = (file: string) =>
+      parseHTML(readFileSync(resolve(ROOT, "dist", file), "utf8")).document;
+    const catalog = read("index.html");
+    expect(catalog.querySelectorAll(".row")).toHaveLength(ports.length);
+    expect(
+      read("porters.html").querySelectorAll("article.porter"),
+    ).toHaveLength(Object.keys(porters).length);
+    for (const port of ports) {
+      const slug = slugify(port.name);
+      const page = read(`port/${slug}/index.html`);
+      expect(page.querySelectorAll("h1")).toHaveLength(1);
+      expect(page.querySelector("h1")?.textContent).toBe(port.name);
+      expect(page.querySelector(".detail-notes")?.textContent).toBe(port.notes);
+      expect(page.querySelector(".spec")?.textContent).toContain("Assets");
+      expect(page.querySelector(".stamp")?.getAttribute("href")).toBe(
+        port.upstream,
+      );
+      expect(
+        page.querySelector('link[rel="canonical"]')?.getAttribute("href"),
+      ).toBe(`${SITE}/port/${slug}/`);
+      expect(page.querySelector("noscript")).toBeNull();
+      expect(page.querySelector('meta[name="robots"]')).toBeNull();
+      expect(
+        catalog.querySelector(`a[href="/MiyooMini-Ports/port/${slug}/"]`),
+      ).not.toBeNull();
+    }
+    for (const [handle, porter] of Object.entries(porters)) {
+      const page = read(`porter/${handle}/index.html`);
+      expect(page.querySelectorAll("h1")).toHaveLength(1);
+      expect(page.querySelector("h1")?.textContent).toBe(porter.name ?? handle);
+      expect(page.querySelectorAll(".porter-ports li")).toHaveLength(
+        ports.filter((p) => p.porter.includes(handle)).length,
+      );
+      expect(
+        page.querySelector('link[rel="canonical"]')?.getAttribute("href"),
+      ).toBe(`${SITE}/porter/${handle}/`);
+    }
+    for (const file of [
+      "index.html",
+      "porters.html",
+      "port.html",
+      "porter.html",
+    ]) {
+      const page = read(file);
+      expect(page.querySelectorAll("#site-nav a")).toHaveLength(3);
+      for (const asset of page.querySelectorAll(
+        'script[src], link[rel="stylesheet"]',
+      )) {
+        const url =
+          asset.getAttribute("src") ?? asset.getAttribute("href") ?? "";
+        expect(url).toMatch(/^\/MiyooMini-Ports\/assets\//);
+        expect(
+          readFileSync(
+            resolve(ROOT, "dist", url.replace("/MiyooMini-Ports/", "")),
+          ).length,
+        ).toBeGreaterThan(0);
+      }
+    }
+    expect(
+      read("port.html")
+        .querySelector('meta[name="robots"]')
+        ?.getAttribute("content"),
+    ).toBe("noindex");
+    const slug = slugify(ports[0].name);
     const handle = Object.keys(porters)[0];
-
-    const page = readFileSync(
-      resolve(ROOT, `dist/port/${slug}/index.html`),
-      "utf8",
-    );
-    expect(page).toContain(`<title>${first.name} · Miyoo Mini Ports</title>`);
-    expect(page).toContain(
-      `<link rel="canonical" href="${SITE}/port/${slug}/" />`,
-    );
-    expect(page).toContain('name="twitter:card" content="summary_large_image"');
-    expect(page).toMatch(/<main class="wrap" id="detail">\s*<noscript>/);
-
-    const shell = readFileSync(resolve(ROOT, "dist/port.html"), "utf8");
-    expect(shell).toContain('<meta name="robots" content="noindex" />');
 
     const sitemap = readFileSync(resolve(ROOT, "dist/sitemap.xml"), "utf8");
     const expectedCount = 2 + ports.length + Object.keys(porters).length;
@@ -219,9 +333,6 @@ describe("build output", () => {
     expect(sitemap).toContain(`${SITE}/port/${slug}/`);
     expect(sitemap).toContain(`${SITE}/porter/${handle}/`);
 
-    const robots = readFileSync(resolve(ROOT, "dist/robots.txt"), "utf8");
-    expect(robots).toBe(
-      `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`,
-    );
+    expect(existsSync(resolve(ROOT, "dist/robots.txt"))).toBe(false);
   });
 });

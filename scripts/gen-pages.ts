@@ -1,20 +1,21 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { parseHTML } from "linkedom";
+import { type NavPage, renderSiteNav } from "../src/nav";
+import { renderPort } from "../src/port-view";
+import { renderPorter } from "../src/porter-view";
+import { renderPorterCard } from "../src/porters-view";
+import { renderList } from "../src/render";
+import { porterUrl, portUrl } from "../src/routes";
 import { parsePorters, parsePorts } from "../src/schema";
+import { SITE_BASE, SITE_URL } from "../src/site";
 import { slugify } from "../src/slug";
 import type { Port, Porters } from "../src/types";
-import {
-  CATEGORY_LABELS,
-  STATUS_LABELS,
-  sortByCategoryThenName,
-} from "../src/types";
+import { CATEGORY_LABELS, STATUS_LABELS } from "../src/types";
 
-const SITE_URL = "https://producdevity.github.io/MiyooMini-Ports";
-const SITE_BASE = new URL(`${SITE_URL}/`).pathname;
 const DIST = resolve(import.meta.dirname, "..", "dist");
 const CANONICAL_MARK = "<!-- seo:canonical -->";
-const DETAIL_MAIN = '<main class="wrap" id="detail"></main>';
 
 function loadPorts(): Port[] {
   const raw: unknown = JSON.parse(
@@ -56,7 +57,9 @@ function canonicalBlock(url: string, image: string): string {
 
 // Unfurl consumers (Discord, X) don't render SVG images.
 function ogImage(url: string): string {
-  return url.split("?")[0].endsWith(".svg") ? `${SITE_URL}/icon-512.png` : url;
+  return new URL(url).pathname.toLowerCase().endsWith(".svg")
+    ? `${SITE_URL}/icon-512.png`
+    : url;
 }
 
 interface DetailSeo {
@@ -64,7 +67,6 @@ interface DetailSeo {
   description: string;
   url: string;
   image: string;
-  noscript: string;
 }
 
 const TITLE = /<title>[^<]*<\/title>/;
@@ -81,7 +83,6 @@ export function buildDetailPage(template: string, seo: DetailSeo): string {
   assertOne(template, OG_TITLE, "og:title");
   assertOne(template, OG_DESCRIPTION, "og:description");
   assertOne(template, new RegExp(CANONICAL_MARK), "canonical mark");
-  assertOne(template, new RegExp(DETAIL_MAIN), "detail main");
 
   const title = escapeHtml(seo.title);
   const description = escapeHtml(seo.description);
@@ -96,12 +97,7 @@ export function buildDetailPage(template: string, seo: DetailSeo): string {
       OG_DESCRIPTION,
       () => `<meta property="og:description" content="${description}"`,
     )
-    .replace(CANONICAL_MARK, () => canonicalBlock(seo.url, seo.image))
-    .replace(
-      DETAIL_MAIN,
-      () =>
-        `<main class="wrap" id="detail">\n      ${seo.noscript}\n    </main>`,
-    );
+    .replace(CANONICAL_MARK, () => canonicalBlock(seo.url, seo.image));
 
   return page;
 }
@@ -124,29 +120,13 @@ export function portSeo(
 
   const description = `${port.name} — ${STATUS_LABELS[port.status]} ${categories} port for the Miyoo Mini by ${porterNames}. ${port.notes}`;
 
-  const noscript = [
-    "<noscript>",
-    `      <h1 class="detail-title">${escapeHtml(port.name)}</h1>`,
-    `      <p class="detail-by">by ${port.porter
-      .map(
-        (handle) =>
-          `<a href="${SITE_BASE}porter/${encodeURIComponent(handle)}/">${escapeHtml(porters[handle]?.name ?? handle)}</a>`,
-      )
-      .join(", ")}</p>`,
-    `      <p class="detail-notes">${escapeHtml(port.notes)}</p>`,
-    `      <p><a class="stamp" href="${escapeHtml(port.upstream)}" rel="noopener">Get the release ↗</a></p>`,
-    `      <p><a class="nav-link" href="${SITE_BASE}">← All ports</a></p>`,
-    "    </noscript>",
-  ].join("\n");
-
   return {
     slug,
     seo: {
       title: `${port.name} · Miyoo Mini Ports`,
       description,
-      url: `${SITE_URL}/port/${slug}/`,
+      url: new URL(portUrl(port.name), SITE_URL).href,
       image: ogImage(port.image),
-      noscript,
     },
   };
 }
@@ -169,38 +149,11 @@ export function porterSeo(
       ? `${displayName} — porter in the Miyoo Mini catalog${porter.bio ? `. ${porter.bio}` : ""}.`
       : `${displayName} — porter of ${portList} for the Miyoo Mini${porter.bio ? `. ${porter.bio}` : ""}.`;
 
-  const items = owned
-    .map(
-      (p) =>
-        `        <li><a href="${SITE_BASE}port/${slugify(p.name)}/">${escapeHtml(p.name)}</a> — ${escapeHtml(
-          `${STATUS_LABELS[p.status]}, ${p.categories.map((c) => CATEGORY_LABELS[c]).join(" / ")}`,
-        )}</li>`,
-    )
-    .join("\n");
-
-  const noscript = [
-    "<noscript>",
-    `      <h1 class="detail-title">${escapeHtml(displayName)}</h1>`,
-    ...(porter.name === undefined
-      ? []
-      : [`      <p class="porter-handle">@${handle}</p>`]),
-    ...(porter.bio === undefined
-      ? []
-      : [`      <p class="porter-bio">${escapeHtml(porter.bio)}</p>`]),
-    '      <ul class="porter-ports">',
-    items,
-    "      </ul>",
-    `      <p><a class="stamp" href="${escapeHtml(porter.github)}" rel="noopener">GitHub ↗</a></p>`,
-    `      <p><a class="nav-link" href="${SITE_BASE}porters.html">← All porters</a></p>`,
-    "    </noscript>",
-  ].join("\n");
-
   return {
     title: `${displayName} · Miyoo Mini Ports`,
     description,
-    url: `${SITE_URL}/porter/${handle}/`,
+    url: new URL(porterUrl(handle), SITE_URL).href,
     image: porter.image ? ogImage(porter.image) : `${SITE_URL}/icon-512.png`,
-    noscript,
   };
 }
 
@@ -216,12 +169,32 @@ export function addUniqueSlug(
   seen.add(slug);
 }
 
-function main(): void {
-  const ports = loadPorts();
-  const porters = loadPorters();
+function renderPage(
+  template: string,
+  current: NavPage,
+  render: (main: HTMLElement) => void,
+): string {
+  const { document } = parseHTML(template);
+  const previous = globalThis.document;
+  globalThis.document = document as unknown as Document;
+  try {
+    renderSiteNav(current);
+    const main = globalThis.document.querySelector("main");
+    if (!main) throw new Error("template: missing main");
+    render(main);
+    return document.toString();
+  } finally {
+    globalThis.document = previous;
+  }
+}
 
-  const portTemplate = readFileSync(resolve(DIST, "port.html"), "utf8");
-  const porterTemplate = readFileSync(resolve(DIST, "porter.html"), "utf8");
+export function generatePages(
+  ports: Port[],
+  porters: Porters,
+  dist = DIST,
+): void {
+  const portTemplate = readFileSync(resolve(dist, "port.html"), "utf8");
+  const porterTemplate = readFileSync(resolve(dist, "porter.html"), "utf8");
 
   const seenSlugs = new Set<string>();
   const portUrls: string[] = [];
@@ -229,34 +202,33 @@ function main(): void {
     const { slug, seo } = portSeo(port, porters);
     addUniqueSlug(slug, port.name, seenSlugs);
 
-    const dir = resolve(DIST, "port", slug);
+    const dir = resolve(dist, "port", slug);
     mkdirSync(dir, { recursive: true });
     writeFileSync(
       resolve(dir, "index.html"),
-      buildDetailPage(portTemplate, seo),
+      renderPage(buildDetailPage(portTemplate, seo), null, (main) =>
+        renderPort(port, ports, porters, main),
+      ),
     );
-    portUrls.push(`/port/${slug}/`);
+    portUrls.push(seo.url);
   }
 
   const porterUrls: string[] = [];
   for (const [handle, porter] of Object.entries(porters)) {
-    if (!/^[A-Za-z0-9-]+$/.test(handle)) {
-      throw new Error(
-        `porter handle "${handle}" is not URL-safe; the directory name must match the handle exactly`,
-      );
-    }
     const owned = ports
       .filter((p) => p.porter.includes(handle))
-      .sort(sortByCategoryThenName);
+      .sort((a, b) => a.name.localeCompare(b.name));
     const seo = porterSeo(handle, porter, owned);
 
-    const dir = resolve(DIST, "porter", handle);
+    const dir = resolve(dist, "porter", handle);
     mkdirSync(dir, { recursive: true });
     writeFileSync(
       resolve(dir, "index.html"),
-      buildDetailPage(porterTemplate, seo),
+      renderPage(buildDetailPage(porterTemplate, seo), null, (main) =>
+        renderPorter(handle, porter, owned, main),
+      ),
     );
-    porterUrls.push(`/porter/${handle}/`);
+    porterUrls.push(seo.url);
   }
 
   const icon = `${SITE_URL}/icon-512.png`;
@@ -264,18 +236,45 @@ function main(): void {
     ["index.html", "/"],
     ["porters.html", "/porters.html"],
   ] as const) {
-    let html = readFileSync(resolve(DIST, file), "utf8");
+    let html = readFileSync(resolve(dist, file), "utf8");
     if (!html.includes(CANONICAL_MARK)) {
       throw new Error(`${file}: missing ${CANONICAL_MARK}`);
     }
     html = html.replace(CANONICAL_MARK, () =>
       canonicalBlock(`${SITE_URL}${path}`, icon),
     );
-    writeFileSync(resolve(DIST, file), html);
+    html = renderPage(
+      html,
+      file === "index.html" ? "ports" : "porters",
+      (main) => {
+        if (file === "index.html") {
+          renderList(ports, main, true, porters, {
+            q: "",
+            active: { status: [], assets: [], category: [] },
+          });
+        } else {
+          const grid = document.createElement("div");
+          grid.className = "porters-grid";
+          const sorted = Object.entries(porters).sort(
+            (a, b) =>
+              ports.filter((p) => p.porter.includes(b[0])).length -
+                ports.filter((p) => p.porter.includes(a[0])).length ||
+              a[0].localeCompare(b[0]),
+          );
+          grid.append(
+            ...sorted.map(([handle, porter], index) =>
+              renderPorterCard(handle, porter, index, ports),
+            ),
+          );
+          main.append(grid);
+        }
+      },
+    );
+    writeFileSync(resolve(dist, file), html);
   }
 
   for (const file of ["port.html", "porter.html"]) {
-    let html = readFileSync(resolve(DIST, file), "utf8");
+    let html = readFileSync(resolve(dist, file), "utf8");
     if (!html.includes(CANONICAL_MARK)) {
       throw new Error(`${file}: missing ${CANONICAL_MARK}`);
     }
@@ -283,32 +282,32 @@ function main(): void {
       CANONICAL_MARK,
       () => '<meta name="robots" content="noindex" />',
     );
-    writeFileSync(resolve(DIST, file), html);
+    html = renderPage(html, null, (main) => {
+      const fallback = document.createElement("noscript");
+      fallback.textContent =
+        "Use the catalog navigation to find this port or porter.";
+      main.append(fallback);
+    });
+    writeFileSync(resolve(dist, file), html);
   }
 
-  const urls = ["/", "/porters.html", ...portUrls, ...porterUrls];
+  const urls = [
+    `${SITE_URL}/`,
+    `${SITE_URL}/porters.html`,
+    ...portUrls,
+    ...porterUrls,
+  ];
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`),
+    ...urls.map((u) => `  <url><loc>${escapeHtml(u)}</loc></url>`),
     "</urlset>",
     "",
   ].join("\n");
-  writeFileSync(resolve(DIST, "sitemap.xml"), sitemap);
-
-  writeFileSync(
-    resolve(DIST, "robots.txt"),
-    [
-      "User-agent: *",
-      "Allow: /",
-      "",
-      `Sitemap: ${SITE_URL}/sitemap.xml`,
-      "",
-    ].join("\n"),
-  );
+  writeFileSync(resolve(dist, "sitemap.xml"), sitemap);
 
   console.log(
-    `generated ${portUrls.length} port pages, ${porterUrls.length} porter pages, sitemap.xml, robots.txt`,
+    `generated ${portUrls.length} port pages, ${porterUrls.length} porter pages, sitemap.xml`,
   );
 }
 
@@ -316,5 +315,5 @@ if (
   process.argv[1] !== undefined &&
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
-  main();
+  generatePages(loadPorts(), loadPorters());
 }

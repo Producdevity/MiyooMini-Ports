@@ -1,12 +1,19 @@
+import { SITE_BASE } from "./site";
 import { slugify } from "./slug";
 
-export const SITE_BASE: string = import.meta.env.BASE_URL;
+export { SITE_BASE } from "./site";
 
 export function detailSlug(kind: "port" | "porter"): string | null {
   const match = window.location.pathname.match(
-    kind === "port" ? /\/port\/([^/]+)\/?$/ : /\/porter\/([^/]+)\/?$/,
+    kind === "port"
+      ? /\/port\/([^/]+)(?:\/index\.html|\/)?$/
+      : /\/porter\/([^/]+)(?:\/index\.html|\/)?$/,
   );
-  if (match === null) return null;
+  if (match === null) {
+    return window.location.pathname === `${SITE_BASE}${kind}.html`
+      ? new URLSearchParams(window.location.search).get("p")
+      : null;
+  }
   try {
     return decodeURIComponent(match[1]);
   } catch {
