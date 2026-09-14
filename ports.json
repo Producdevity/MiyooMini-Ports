@@ -492,6 +492,16 @@
       "porter": ["XK9274"]
     },
     {
+      "name": "retsurf",
+      "categories": ["app"],
+      "status": "experimental",
+      "assets": "free",
+      "upstream": "https://github.com/mxmgorin/retsurf/releases",
+      "image": "https://raw.githubusercontent.com/mxmgorin/retsurf/2793750ca6db62d0eb6098e01dcacec9d8084767/resources/images/retsurf-hints.png",
+      "notes": "A web browser built on the Servo engine, designed for gamepad navigation. Features include Vimium-style link hints, an on-screen keyboard, tabs, bookmarks, reader mode, and downloads.",
+      "porter": ["mxmgorin"]
+    },
+    {
       "name": "Balatro",
       "categories": ["puzzle"],
       "status": "prerelease",
