@@ -6,6 +6,9 @@ on:
   push:
     branches: [master]
 
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -13,6 +16,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - uses: pnpm/action-setup@v6
 
@@ -32,10 +37,7 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      # Forks cannot push, so their README table is enforced here; same-repo
-      # branches are fixed by the regen-readme job instead.
       - name: README in sync with ports.json
-        if: github.event_name == 'push' || github.event.pull_request.head.repo.fork == true
         run: |
           pnpm gen:readme
           git diff --exit-code README.md
@@ -51,39 +53,6 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
-
-  # GitHub web edits can't run local hooks; regenerate the table and push it
-  # to the branch. Same-repo branches only — forks lack push access.
-  regen-readme:
-    needs: check
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - uses: pnpm/action-setup@v6
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - run: pnpm install --frozen-lockfile
-
-      - name: Regenerate README table
-        run: |
-          pnpm gen:readme
-          if ! git diff --exit-code README.md; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add README.md
-            git commit -m "Regenerate README table"
-            git push
-          fi
 
   deploy:
     needs: check
