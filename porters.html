@@ -4,6 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Porters · Miyoo Mini Ports</title>
+    <meta
+      name="description"
+      content="The people behind the Miyoo Mini ports catalog, with their ports, links, and donation pages."
+    />
+    <meta property="og:title" content="Porters · Miyoo Mini Ports" />
+    <meta
+      property="og:description"
+      content="The people behind the Miyoo Mini ports catalog, with their ports, links, and donation pages."
+    />
+    <meta property="og:site_name" content="Miyoo Mini Ports" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <!-- seo:canonical -->
     <link rel="stylesheet" href="/style.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
@@ -27,14 +40,16 @@
       </div>
     </header>
 
-    <div class="bar">
-      <div class="wrap bar-inner">
-        <label class="sr-only" for="porter-search">Search porters</label>
-        <input id="porter-search" type="search" placeholder="Search porters" autocomplete="off" />
-        <span id="count" class="count" aria-live="polite"></span>
+    <search hidden>
+      <div class="bar">
+        <div class="wrap bar-inner">
+          <label class="sr-only" for="porter-search">Search porters</label>
+          <input id="porter-search" type="search" placeholder="Search porters" autocomplete="off" />
+          <span id="count" class="count" aria-live="polite"></span>
+        </div>
       </div>
-    </div>
-    <main class="wrap porters-main" id="porters"></main>
+    </search>
+    <main class="wrap porters-main" id="porters" tabindex="-1"></main>
     <footer class="site-footer">
       <div class="wrap">
         <p>

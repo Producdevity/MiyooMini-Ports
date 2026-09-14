@@ -111,6 +111,17 @@ export function parsePorts(value: unknown): Port[] {
 }
 
 function parsePorterEntry(handle: string, value: unknown): Porter {
+  if (
+    handle === "" ||
+    handle === "." ||
+    handle === ".." ||
+    /[/\\:*?"<>|]/.test(handle) ||
+    [...handle].some((character) => character.charCodeAt(0) < 32)
+  ) {
+    throw new Error(
+      `porters.json: handle "${handle}" must be a single directory name`,
+    );
+  }
   if (!isObject(value)) {
     throw new Error(`porters.json["${handle}"]: expected an object`);
   }
@@ -171,9 +182,10 @@ export function parsePorters(value: unknown): Porters {
   if (!isPortersFile(value)) {
     throw new Error('porters.json: expected an object with a "porters" map');
   }
-  const result: Porters = {};
-  for (const [handle, entry] of Object.entries(value.porters)) {
-    result[handle] = parsePorterEntry(handle, entry);
-  }
-  return result;
+  return Object.fromEntries(
+    Object.entries(value.porters).map(([handle, entry]) => [
+      handle,
+      parsePorterEntry(handle, entry),
+    ]),
+  );
 }

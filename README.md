@@ -86,7 +86,7 @@ port's release page and use its instructions.
 ```sh
 pnpm install
 pnpm dev          # vite dev server
-pnpm build        # vite build
+pnpm build        # build assets and static catalog/detail pages
 pnpm typecheck    # tsc (app + scripts)
 pnpm check        # biome lint + format
 pnpm format       # biome autofix
@@ -100,6 +100,18 @@ Node 22, pnpm 11.
 
 Catalog data lives in `ports.json`, porter profiles in `porters.json`.
 Everything else builds from those two.
+
+The site stays a Vite multi-page app. The build uses LinkeDOM to run the same
+renderers used in the browser, so catalog and detail content is present in the
+HTML before JavaScript runs. JavaScript adds search, filters, and the theme toggle.
+`src/site.ts` defines the deployed site URL and base path. Detail pages live at
+`port/<slug>/` and `porter/<handle>/`; old `port.html?p=...` and
+`porter.html?p=...` links redirect in the browser.
+
+The build writes `sitemap.xml`. Submit its deployed URL in Search Console, or
+reference it from the host's root `robots.txt`. This project lives under
+`/MiyooMini-Ports/`, where a `robots.txt` would be ignored: crawlers read
+[`robots.txt` at the host root](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt).
 
 ### Status values
 

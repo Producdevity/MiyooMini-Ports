@@ -6,13 +6,20 @@ on:
   push:
     branches: [master]
 
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    outputs:
+      readme_changed: ${{ steps.readme.outputs.changed }}
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - uses: pnpm/action-setup@v6
 
@@ -32,31 +39,51 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      # GitHub web edits can't run local hooks; regenerate the table and push
-      # it to the branch. Skipped for forks, which lack push access.
-      - name: Regenerate README table
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false
+      - name: Generate README
+        id: readme
         run: |
           pnpm gen:readme
-          if ! git diff --exit-code README.md; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add README.md
-            git commit -m "Regenerate README table"
-            git push
+          if ! git diff --quiet -- README.md; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: README in sync with ports.json
-        run: |
-          pnpm gen:readme
-          git diff --exit-code README.md
 
       - name: Build
         run: pnpm build
 
+      - name: Tests
+        run: pnpm test
+        env:
+          GEN_PAGES_TEST_SKIP_BUILD: 1
+
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
+
+      - uses: actions/upload-artifact@v7
+        if: steps.readme.outputs.changed == 'true'
+        with:
+          name: generated-readme
+          path: README.md
+          if-no-files-found: error
+
+  sync-readme:
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && needs.check.outputs.readme_changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: generated-readme
+          path: ${{ runner.temp }}/generated-readme
+
+      - name: Update generated README on master
+        run: bash .github/scripts/sync-readme.sh "$RUNNER_TEMP/generated-readme/README.md"
 
   deploy:
     needs: check

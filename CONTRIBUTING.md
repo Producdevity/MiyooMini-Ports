@@ -1,7 +1,7 @@
 # Contributing
 
 Edit `ports.json` and open a PR. The README table and the live site both build
-from it; the table regenerates on commit, so leave it alone.
+from it. You can use GitHub's web editor; the table in the README regenerates automatically, so leave it alone.
 
 ## Adding a port
 
@@ -87,8 +87,7 @@ pnpm validate   # ports.json against the schema
 ```
 
 The pre-commit hook formats staged files and regenerates the README table when
-`ports.json` is staged. Web edits skip the hook, so a web-only PR may fail CI
-on a stale table. Run `pnpm gen:readme` and push, or ask a maintainer to.
+`ports.json` is staged. For web edits, CI updates the table after merge.
 
 ## Scope
 

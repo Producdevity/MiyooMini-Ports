@@ -1,4 +1,5 @@
 import { el } from "./dom";
+import { SITE_BASE } from "./routes";
 import { initThemeToggle } from "./theme";
 
 export type NavPage = "ports" | "porters" | null;
@@ -28,7 +29,7 @@ function githubIcon(): SVGSVGElement {
   return svg;
 }
 
-export function mountSiteNav(current: NavPage): void {
+export function renderSiteNav(current: NavPage): void {
   const mount = document.getElementById("site-nav");
   if (!mount) throw new Error("missing element: #site-nav");
 
@@ -50,19 +51,24 @@ export function mountSiteNav(current: NavPage): void {
   github.append(githubIcon());
 
   mount.replaceChildren(
-    link("ports", "index.html", "Ports"),
-    link("porters", "porters.html", "Porters"),
+    link("ports", SITE_BASE, "Ports"),
+    link("porters", `${SITE_BASE}porters.html`, "Porters"),
     github,
     el("button", {
       class: "chip theme-toggle",
       attrs: {
         id: "theme-toggle",
         type: "button",
+        hidden: true,
         "aria-label": "Switch color theme",
       },
       children: ["Dark"],
     }),
   );
+}
 
+export function mountSiteNav(current: NavPage): void {
+  if (!document.querySelector("#site-nav a")) renderSiteNav(current);
+  document.getElementById("theme-toggle")?.removeAttribute("hidden");
   initThemeToggle();
 }

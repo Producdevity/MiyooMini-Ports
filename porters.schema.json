@@ -54,6 +54,10 @@
             "description": "Avatar or profile image URL."
           }
         }
+      },
+      "propertyNames": {
+        "minLength": 1,
+        "pattern": "^(?!\\.{1,2}$)[^/\\\\:*?\"<>|\\u0000-\\u001f]+$"
       }
     }
   }

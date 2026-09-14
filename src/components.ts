@@ -1,5 +1,5 @@
 import { el } from "./dom";
-import { portUrl } from "./slug";
+import { portUrl } from "./routes";
 import type { Port, Porter } from "./types";
 import { CATEGORY_LABELS, STATUS_LABELS } from "./types";
 
@@ -39,14 +39,7 @@ export function renderImage(
     class: className,
     attrs: { src: url, alt, loading: "lazy" },
   });
-  img.addEventListener("error", () => {
-    const ph = el("div", {
-      class: `${className} ph`,
-      attrs: { "aria-hidden": "true" },
-      children: ["⬚"],
-    });
-    img.replaceWith(ph);
-  });
+  attachImageFallback(img);
   return img;
 }
 
@@ -91,4 +84,23 @@ export function renderPortListItem(port: Port): HTMLElementTagNameMap["li"] {
       }),
     ],
   });
+}
+
+function attachImageFallback(img: HTMLImageElement): void {
+  img.addEventListener("error", () => {
+    const ph = el("div", {
+      class: `${img.className} ph`,
+      attrs: { "aria-hidden": "true" },
+      children: ["⬚"],
+    });
+    img.replaceWith(ph);
+  });
+}
+
+export function enhanceImages(container: HTMLElement): void {
+  for (const img of container.querySelectorAll("img")) {
+    attachImageFallback(img);
+    if (img.complete && img.naturalWidth === 0)
+      img.dispatchEvent(new Event("error"));
+  }
 }

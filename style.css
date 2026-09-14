@@ -33,6 +33,15 @@
   box-sizing: border-box;
 }
 
+search {
+  display: block;
+}
+
+search[hidden],
+.theme-toggle[hidden] {
+  display: none;
+}
+
 html {
   background: var(--paper);
 }
@@ -420,6 +429,8 @@ main.wrap {
 }
 
 .name {
+  margin: 0;
+  overflow-wrap: anywhere;
   font: 700 18px / 1.25 var(--font-display);
   letter-spacing: -0.01em;
 }
@@ -854,6 +865,7 @@ main.wrap {
 }
 
 .spec {
+  margin: 0;
   border: 1px solid var(--rule);
 }
 
@@ -878,6 +890,7 @@ main.wrap {
 }
 
 .spec-v {
+  margin: 0;
   font: 400 14px / 1.4 var(--font-display);
   word-break: break-word;
 }
