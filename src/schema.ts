@@ -115,7 +115,7 @@ function parsePorterEntry(handle: string, value: unknown): Porter {
     handle === "" ||
     handle === "." ||
     handle === ".." ||
-    /[/\\]/.test(handle) ||
+    /[/\\:*?"<>|]/.test(handle) ||
     [...handle].some((character) => character.charCodeAt(0) < 32)
   ) {
     throw new Error(

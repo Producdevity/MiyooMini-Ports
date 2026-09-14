@@ -187,8 +187,22 @@ describe("porterSeo", () => {
     );
   });
 
-  it("rejects handles that could escape their output directory", () => {
-    for (const handle of ["", ".", "..", "a/b", "a\\b"]) {
+  it("rejects path separators and Windows-invalid filename characters", () => {
+    for (const handle of [
+      "",
+      ".",
+      "..",
+      "a/b",
+      "a\\b",
+      "C:foo",
+      "D:foo",
+      "a*b",
+      "a?b",
+      'a"b',
+      "a<b",
+      "a>b",
+      "a|b",
+    ]) {
       expect(() => parsePorters({ porters: { [handle]: porter } })).toThrow(
         "single directory name",
       );
@@ -268,6 +282,13 @@ describe("build output", () => {
     expect(
       read("porters.html").querySelectorAll("article.porter"),
     ).toHaveLength(Object.keys(porters).length);
+    for (const link of read("porters.html").querySelectorAll(
+      ".porter-avatar-link",
+    )) {
+      expect(link.getAttribute("aria-hidden")).toBeNull();
+      expect(link.getAttribute("tabindex")).toBeNull();
+      expect(link.getAttribute("aria-label")).toMatch(/^View .+ profile$/);
+    }
     for (const port of ports) {
       const slug = slugify(port.name);
       const page = read(`port/${slug}/index.html`);
@@ -296,7 +317,7 @@ describe("build output", () => {
       );
       expect(
         page.querySelector('link[rel="canonical"]')?.getAttribute("href"),
-      ).toBe(`${SITE}/porter/${handle}/`);
+      ).toBe(`${SITE}/porter/${encodeURIComponent(handle)}/`);
     }
     for (const file of [
       "index.html",
@@ -331,7 +352,7 @@ describe("build output", () => {
     const expectedCount = 2 + ports.length + Object.keys(porters).length;
     expect(sitemap.match(/<loc>/g)).toHaveLength(expectedCount);
     expect(sitemap).toContain(`${SITE}/port/${slug}/`);
-    expect(sitemap).toContain(`${SITE}/porter/${handle}/`);
+    expect(sitemap).toContain(`${SITE}/porter/${encodeURIComponent(handle)}/`);
 
     expect(existsSync(resolve(ROOT, "dist/robots.txt"))).toBe(false);
   });

@@ -78,8 +78,7 @@ export function renderPorterCard(
         class: "porter-avatar-link",
         attrs: {
           href: porterUrl(handle),
-          "aria-hidden": "true",
-          tabindex: "-1",
+          "aria-label": `View ${porter.name ?? handle} profile`,
         },
         children: [avatar],
       }),
