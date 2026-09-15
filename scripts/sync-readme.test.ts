@@ -11,18 +11,25 @@ let checkout: string;
 let artifact: string;
 let sha: string;
 
+// Keep user-level git config (gpgsign, includeIf, ...) out of the fixtures.
+const HERMETIC_GIT_ENV = {
+  GIT_CONFIG_GLOBAL: "/dev/null",
+  GIT_CONFIG_NOSYSTEM: "true",
+} as const;
+
 function git(cwd: string, ...args: string[]): string {
   return execFileSync("git", args, {
     cwd,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
+    env: { ...process.env, ...HERMETIC_GIT_ENV },
   }).trim();
 }
 
 function sync(env: NodeJS.ProcessEnv = {}) {
   return spawnSync("bash", [script, artifact], {
     cwd: checkout,
-    env: { ...process.env, GITHUB_SHA: sha, ...env },
+    env: { ...process.env, ...HERMETIC_GIT_ENV, GITHUB_SHA: sha, ...env },
     encoding: "utf8",
   });
 }
