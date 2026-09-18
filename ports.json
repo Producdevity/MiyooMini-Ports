@@ -510,6 +510,36 @@
       "image": "https://raw.githubusercontent.com/Producdevity/balatro-miyoo-mini-port/master/docs/images/gameplay.gif",
       "notes": "Rust compatibility runtime for the LÖVE game. Supply your own Balatro.love; the first launch prepares audio. Runs at 1.5 GHz via Onion's clock helper.",
       "porter": ["Producdevity"]
+    },
+    {
+      "name": "Fallout",
+      "categories": ["rpg"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/cacuracaptors/fallout1-ce-miyoomini/releases",
+      "image": "https://raw.githubusercontent.com/cacuracaptors/fallout1-ce-miyoomini/7a5e5cc969a8e406afed837892e40c487524cc45/docs/images/cover.png",
+      "notes": "fallout1-ce port with a full D-pad/button control scheme. Supply your own master.dat, critter.dat, and data folder.",
+      "porter": ["cacuracaptors"]
+    },
+    {
+      "name": "Fallout 2",
+      "categories": ["rpg"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/cacuracaptors/fallout2-ce-miyoomini/releases",
+      "image": "https://raw.githubusercontent.com/cacuracaptors/fallout2-ce-miyoomini/e8b85743887c4ac0c836b4c4aa0bc13ae8c70020/docs/images/cover.png",
+      "notes": "Based on the actively maintained FOR:CE fork, not the original fallout2-ce. Native mod support, including the Restoration Project. Supply your own master.dat, critter.dat, and data folder.",
+      "porter": ["cacuracaptors"]
+    },
+    {
+      "name": "3D Pinball Space Cadet",
+      "categories": ["arcade"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases",
+      "image": "https://raw.githubusercontent.com/cacuracaptors/spacecadetpinball-miyoomini/986ea7b235bf3d7a806508dd4685016559416b1b/docs/images/cover.png",
+      "notes": "k4zmu2a decompilation. Supply PINBALL.DAT and sound files from the original Windows install.",
+      "porter": ["cacuracaptors"]
     }
   ]
 }
