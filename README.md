@@ -40,6 +40,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Syncthing](https://github.com/XK9274/syncthing-app-miyoo) | App | Playable | Free | XK9274 |
 | [Time Quick Fix](https://github.com/hotcereal/time-quick-fix) | App | Playable | Free | hotcereal |
 | [wthr](https://github.com/trashplusplus/wthr/releases) | App | Playable | Free | trashplusplus |
+| [3D Pinball Space Cadet](https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases) | Arcade | Playable | Owned data | cacuracaptors |
 | [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade, Puzzle | Playable | Free | Willems Davy |
 | [Tennis vs Zombies](https://github.com/gutospinelli/TennisVsZombies-MiyooMini/releases) | Arcade | Playable | Free | Augusto Spinelli |
 | [FreeJ2ME](https://github.com/aweigit/freej2me-miyoomini/releases) | Engine | Playable | Owned data | aweigit |
@@ -54,6 +55,8 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Petals Around the Rose](https://github.com/schizophreek/petals/releases) | Puzzle | Playable | Free | schizophreek |
 | [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing, Platform | Playable | Owned data | neri-rnd |
 | [Super Haxagon](https://github.com/RedTopper/Super-Haxagon/releases) | Reflex | Playable | Free | RedTopper |
+| [Fallout](https://github.com/cacuracaptors/fallout1-ce-miyoomini/releases) | RPG | Playable | Owned data | cacuracaptors |
+| [Fallout 2](https://github.com/cacuracaptors/fallout2-ce-miyoomini/releases) | RPG | Playable | Owned data | cacuracaptors |
 | [Mines of Moria](https://github.com/mxmgorin/moria-handheld/releases) | RPG | Playable | Free | mxmgorin |
 | [Monk Tower](https://github.com/mxmgorin/monktower-handheld/releases) | RPG | Playable | Free | mxmgorin |
 | [Stardew Valley](https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases) | RPG, Simulation | Experimental | Owned data | Producdevity | EmuReady |
