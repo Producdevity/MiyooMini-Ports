@@ -544,11 +544,11 @@
     {
       "name": "Insaniquarium Deluxe",
       "categories": ["simulation", "arcade"],
-      "status": "playable",
+      "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/RAlexander777/Insaniquarium_Miyoo_Mini_Flip/releases",
       "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/3320/header.jpg",
-      "notes": "Native port of the PopCap game. Copy data/, fishsongs/, images/, music/, properties/ and sounds/ from your own PC copy of Insaniquarium Deluxe into Roms/PORTS/Games/Insaniquarium/. Smooth on the Mini Flip, synchronized audio; Mini and Mini Plus should also work.",
+      "notes": "Native port of the PopCap game. Copy data/, fishsongs/, images/, music/, properties/ and sounds/ from your own PC copy of Insaniquarium Deluxe into Roms/PORTS/Games/Insaniquarium/. Smooth on the Mini Flip with synchronized audio; Mini and Mini Plus are untested, and the launcher's input device path is set for the Flip.",
       "porter": ["RAlexander777"]
     }
   ]
