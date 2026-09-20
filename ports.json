@@ -540,6 +540,16 @@
       "image": "https://raw.githubusercontent.com/cacuracaptors/spacecadetpinball-miyoomini/986ea7b235bf3d7a806508dd4685016559416b1b/docs/images/cover.png",
       "notes": "k4zmu2a decompilation. Supply PINBALL.DAT and sound files from the original Windows install.",
       "porter": ["cacuracaptors"]
+    },
+    {
+      "name": "Insaniquarium Deluxe",
+      "categories": ["simulation", "arcade"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/RAlexander777/Insaniquarium_Miyoo_Mini_Flip/releases",
+      "image": "https://cdn.cloudflare.steamstatic.com/steam/apps/3320/header.jpg",
+      "notes": "Native port of the PopCap game. Copy data/, fishsongs/, images/, music/, properties/ and sounds/ from your own PC copy of Insaniquarium Deluxe into Roms/PORTS/Games/Insaniquarium/. Smooth on the Mini Flip, synchronized audio; Mini and Mini Plus should also work.",
+      "porter": ["RAlexander777"]
     }
   ]
 }
