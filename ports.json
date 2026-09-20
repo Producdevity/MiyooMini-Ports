@@ -538,7 +538,7 @@
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases",
       "image": "https://raw.githubusercontent.com/cacuracaptors/spacecadetpinball-miyoomini/986ea7b235bf3d7a806508dd4685016559416b1b/docs/images/cover.png",
-      "notes": "k4zmu2a decompilation. Supply PINBALL.DAT and sound files from the original Windows install.",
+      "notes": "k4zmu2a decompilation. Supply PINBALL.DAT, FONT.DAT, and all SOUND*.WAV files from the original Windows install.",
       "porter": ["cacuracaptors"]
     }
   ]
