@@ -1,3 +1,4 @@
+import { portKind } from "./catalog";
 import { renderImage, renderTag } from "./components";
 import { el } from "./dom";
 import { icon } from "./icons";
@@ -10,25 +11,7 @@ import {
   STATUS_LABELS,
 } from "./types";
 
-export function portKind(port: Port): "game" | "app" | "engine" {
-  if (port.categories.includes("app")) return "app";
-  if (port.categories.includes("engine")) return "engine";
-  return "game";
-}
-
-export function libraryOrder(a: Port, b: Port): number {
-  const order = { game: 0, app: 1, engine: 2 };
-  return (
-    order[portKind(a)] - order[portKind(b)] || a.name.localeCompare(b.name)
-  );
-}
-
-export function renderRow(
-  port: Port,
-  _index: number,
-  porters: Porters,
-  _state: FilterState,
-): HTMLElement {
+export function renderRow(port: Port, porters: Porters): HTMLElement {
   const byline = el("p", { class: "by", children: ["Port by "] });
   port.porter.forEach((handle, index) => {
     if (index > 0) byline.append(", ");
@@ -88,9 +71,7 @@ export function renderRow(
 export function renderList(
   list: Port[],
   container: HTMLElement,
-  _grouped: boolean,
   porters: Porters,
-  state: FilterState,
 ): void {
   container.replaceChildren();
   if (list.length === 0) {
@@ -115,8 +96,7 @@ export function renderList(
     );
     return;
   }
-  const sorted = [...list].sort(libraryOrder);
-  container.append(...sorted.map((p, i) => renderRow(p, i, porters, state)));
+  container.append(...list.map((port) => renderRow(port, porters)));
 }
 
 export function renderOverview(ports: Port[], porters: Porters): void {

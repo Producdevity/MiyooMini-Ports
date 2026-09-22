@@ -2,6 +2,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { parseHTML } from "linkedom";
+import { sortCatalog } from "../src/catalog";
 import { type NavPage, renderSiteNav } from "../src/nav";
 import { renderPort } from "../src/port-view";
 import { renderPorter } from "../src/porter-view";
@@ -252,14 +253,9 @@ export function generatePages(
           const count = document.getElementById("count");
           if (count) renderCount(ports.length, ports.length, count);
           renderList(
-            ports,
+            sortCatalog(ports, "discovery"),
             document.getElementById("catalog") ?? main,
-            true,
             porters,
-            {
-              q: "",
-              active: { status: [], assets: [], category: [] },
-            },
           );
         } else {
           const grid = document.createElement("div");
