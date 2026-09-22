@@ -1,62 +1,122 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Not found · Miyoo Mini Ports</title>
-    <meta name="robots" content="noindex" />
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/MiyooMini-Ports/favicon.svg" type="image/svg+xml">
+    <script>
+    try {
+      document.documentElement.dataset.theme =
+        localStorage.getItem("theme") === "dark" ? "dark" : "light";
+    } catch {}
+    </script>
     <style>
-      :root {
-        color-scheme: light dark;
-      }
-      body {
-        display: grid;
-        place-items: center;
-        min-height: 100vh;
-        margin: 0;
-        background: #f3efe5;
-        color: #191611;
-        font: 400 16px / 1.55 system-ui, sans-serif;
-      }
-      @media (prefers-color-scheme: dark) {
-        body {
-          background: #171410;
-          color: #ece5d6;
-        }
-        a {
-          color: #ef6c33;
-        }
-      }
-      main {
-        max-width: 32rem;
-        padding: 2rem;
-      }
-      .kicker {
-        margin: 0 0 0.5rem;
-        font: 600 12px / 1 system-ui, monospace;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #c2410f;
-      }
-      h1 {
-        margin: 0 0 0.75rem;
-        font-size: 1.75rem;
-        line-height: 1.2;
-      }
-      p {
-        margin: 0 0 1.5rem;
-      }
-      a {
-        color: #c2410f;
-      }
+    :root {
+      color-scheme: light;
+      --paper: #f5f3e9;
+      --ink: #193b34;
+      --muted: #606b61;
+      --accent: #214e41;
+      --on-accent: #f8f6e9;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #162320;
+      --ink: #eef1e4;
+      --muted: #b2beb2;
+      --accent: #c5dfb2;
+      --on-accent: #18352b;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font:
+        400 15px / 1.7 system-ui,
+        sans-serif;
+    }
+    main {
+      width: min(560px, 100%);
+      padding: 36px;
+      text-align: center;
+    }
+    .device {
+      width: 72px;
+      height: 96px;
+      color: var(--accent);
+    }
+    .eyebrow {
+      margin: 20px 0 12px;
+      color: var(--muted);
+      font: 11px monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font:
+        400 clamp(36px, 8vw, 54px) / 1.08 Georgia,
+        serif;
+      letter-spacing: -0.04em;
+      margin: 0 0 22px;
+    }
+    p {
+      color: var(--muted);
+      margin: 0 0 26px;
+    }
+    a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      min-height: 48px;
+      border-radius: 5px;
+      background: var(--accent);
+      color: var(--on-accent);
+      padding: 10px 22px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+    }
     </style>
   </head>
   <body>
     <main>
-      <p class="kicker">404</p>
-      <h1>Nothing at this address</h1>
-      <p>The port or porter may have been removed from the catalog.</p>
-      <a href="/MiyooMini-Ports/">→ All ports</a>
+      <svg
+        class="device"
+        viewBox="0 0 72 96"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <rect x="6" y="3" width="60" height="88" rx="9" />
+        <rect x="14" y="13" width="44" height="36" rx="2" />
+        <path
+          d="m25 25 6 6m0-6-6 6m16-6 6 6m0-6-6 6M29 40h14M19 69h14m-7-7v14M48 64h.01m7 10h.01"
+          stroke-linecap="round"
+        />
+      </svg>
+      <p class="eyebrow">404 · Off the beaten path</p>
+      <h1>This page isn’t<br>in the library.</h1>
+      <p>
+        The address may have changed, or the port may have moved. There’s still
+        plenty to discover.
+      </p>
+      <a href="/MiyooMini-Ports/"
+        >Back to the library <span aria-hidden="true">→</span></a
+      >
     </main>
   </body>
 </html>

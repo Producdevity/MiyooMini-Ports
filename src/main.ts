@@ -5,6 +5,7 @@ import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { SORTS, selectCatalog } from "./catalog";
 import { mountKinds, renderActiveFilters } from "./catalog-controls";
+import { rememberCatalog } from "./catalog-navigation";
 import { mountDiscovery } from "./discovery";
 import { querySelector } from "./dom";
 import { icon } from "./icons";
@@ -40,6 +41,7 @@ const filterGroups = [
 
 function rerender(history: "push" | "replace" | null = null): void {
   if (history) writeFilterState(state, history);
+  rememberCatalog(state);
   const list = selectCatalog(ports, state);
   renderList(list, catalog, porters);
   renderCount(list.length, ports.length, count);

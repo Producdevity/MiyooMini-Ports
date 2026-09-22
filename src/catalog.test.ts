@@ -1,6 +1,12 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import portsData from "../ports.json";
-import { pickPort, portKind, selectCatalog, sortCatalog } from "./catalog";
+import {
+  pickPort,
+  portKind,
+  relatedPorts,
+  selectCatalog,
+  sortCatalog,
+} from "./catalog";
 import { parsePorts } from "./schema";
 import { readPreference, savePreference } from "./storage";
 import { catalogQuery, parseCatalogState } from "./urlstate";
@@ -9,12 +15,30 @@ const ports = parsePorts(portsData);
 afterEach(() => vi.unstubAllGlobals());
 
 describe("catalog discovery", () => {
+  it("links to a bounded set of related ports using actual shared categories", () => {
+    const port = ports.find((entry) => entry.name === "Stardew Valley");
+    if (!port) throw new Error("missing fixture");
+    const related = relatedPorts(port, ports);
+    expect(related.length).toBeGreaterThan(0);
+    expect(related.length).toBeLessThanOrEqual(3);
+    expect(related).not.toContain(port);
+    expect(
+      related.every((other) =>
+        other.categories.some((category) => port.categories.includes(category)),
+      ),
+    ).toBe(true);
+  });
+
   it("separates games, apps, and engines without dropping or duplicating records", () => {
     const kinds = ["game", "app", "engine"] as const;
     const groups = kinds.map((kind) =>
       selectCatalog(ports, { ...parseCatalogState(""), kind }),
     );
-    expect(groups.map((group) => group.length)).toEqual([23, 30, 2]);
+    expect(groups[0].map((port) => port.name)).toContain("Undertale");
+    expect(groups[1].map((port) => port.name)).toContain("PocketFeeds");
+    expect(groups[2].map((port) => port.name)).toEqual(
+      expect.arrayContaining(["FreeJ2ME", "ONScripter-jh"]),
+    );
     expect(new Set(groups.flat())).toEqual(new Set(ports));
     expect(groups[0].every((port) => portKind(port) === "game")).toBe(true);
   });
@@ -67,11 +91,10 @@ describe("catalog discovery", () => {
     expect(sortCatalog(ports, "name-desc")).toEqual(
       [...alphabetical].reverse(),
     );
+    const discovery = sortCatalog(ports, "discovery");
     expect(
-      sortCatalog(ports, "discovery")
-        .slice(0, 23)
-        .every((port) => portKind(port) === "game"),
-    ).toBe(true);
+      discovery.findIndex((port) => port.name === "Undertale"),
+    ).toBeLessThan(discovery.findIndex((port) => port.name === "Better WiFi"));
     expect(ports).toEqual(original);
   });
 

@@ -1,40 +1,90 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Porters · Miyoo Mini Ports</title>
     <meta
       name="description"
       content="The people behind the Miyoo Mini ports catalog, with their ports, links, and donation pages."
-    />
-    <meta property="og:title" content="Porters · Miyoo Mini Ports" />
+    >
+    <meta property="og:title" content="Porters · Miyoo Mini Ports">
     <meta
       property="og:description"
       content="The people behind the Miyoo Mini ports catalog, with their ports, links, and donation pages."
-    />
-    <meta property="og:site_name" content="Miyoo Mini Ports" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
+    >
+    <meta property="og:site_name" content="Miyoo Mini Ports">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
     <!-- seo:canonical -->
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script>
-      try {
-        const saved = localStorage.getItem("theme");
-        document.documentElement.dataset.theme = saved === "dark" || saved === "light" ? saved : "light";
-      } catch {
-        document.documentElement.dataset.theme = "light";
-      }
+    try {
+      const saved = localStorage.getItem("theme");
+      document.documentElement.dataset.theme =
+        saved === "dark" || saved === "light" ? saved : "light";
+    } catch {
+      document.documentElement.dataset.theme = "light";
+    }
     </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header"><nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav></header>
-    <main class="wrap porters-main" id="main" tabindex="-1"><section class="page-intro"><p class="eyebrow">The people behind the pixels</p><h1>Small screens.<br /><em>Shared effort.</em></h1><p>Meet the makers turning “what if?” into something you can carry in your pocket.</p></section><search class="catalog-search" hidden><div class="search-field"><span class="search-icon" aria-hidden="true"></span><label class="sr-only" for="porter-search">Search porters</label><input id="porter-search" type="search" placeholder="Find a porter or one of their ports…" autocomplete="off" /></div></search><div class="catalog-meta"><h2 class="small-title">Meet the porters</h2><p id="count" class="count" role="status"></p></div><div id="porters"></div></main>
-    <footer class="site-footer"><div class="wrap footer-inner"><div><p class="footer-brand">Miyoo Mini Ports<span class="heading-dot">.</span></p><p>An independent catalog. A shared love of small things.</p></div><div><p>For Mini, Mini Plus &amp; Mini Flip.<br />Check each port’s notes for device support.</p><a href="https://github.com/OnionUI/Ports-Collection" target="_blank" rel="noopener">Looking for Onion’s bundled ports? ↗</a></div></div></footer>
+    <header class="site-header">
+      <nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav>
+    </header>
+    <main class="wrap porters-main" id="main" tabindex="-1">
+      <section class="page-intro">
+        <p class="eyebrow">The people behind the pixels</p>
+        <h1>Small screens.<br><em>Shared effort.</em></h1>
+        <p>
+          Meet the makers turning “what if?” into something you can carry in
+          your pocket.
+        </p>
+      </section>
+      <search class="catalog-search" hidden>
+        <div class="search-field">
+          <span class="search-icon" aria-hidden="true"></span
+          ><label class="sr-only" for="porter-search">Search porters</label>
+          <input
+            id="porter-search"
+            type="search"
+            placeholder="Find a porter or one of their ports…"
+            autocomplete="off"
+          >
+        </div>
+      </search>
+      <div class="catalog-meta">
+        <h2 class="small-title">Meet the porters</h2>
+        <p id="count" class="count" role="status"></p>
+      </div>
+      <div id="porters"></div>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <p class="footer-brand">
+            Miyoo Mini Ports<span class="heading-dot">.</span>
+          </p>
+          <p>An independent catalog. A shared love of small things.</p>
+        </div>
+        <div>
+          <p>
+            For Mini, Mini Plus &amp; Mini Flip.<br>Check each port’s notes for
+            device support.
+          </p>
+          <a
+            href="https://github.com/OnionUI/Ports-Collection"
+            target="_blank"
+            rel="noopener"
+            >Looking for Onion’s bundled ports? ↗</a
+          >
+        </div>
+      </div>
+    </footer>
     <script type="module" src="/src/porters.ts"></script>
   </body>
 </html>

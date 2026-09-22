@@ -207,7 +207,7 @@ export function generatePages(
     mkdirSync(dir, { recursive: true });
     writeFileSync(
       resolve(dir, "index.html"),
-      renderPage(buildDetailPage(portTemplate, seo), null, (main) =>
+      renderPage(buildDetailPage(portTemplate, seo), "ports", (main) =>
         renderPort(port, ports, porters, main),
       ),
     );
@@ -225,7 +225,7 @@ export function generatePages(
     mkdirSync(dir, { recursive: true });
     writeFileSync(
       resolve(dir, "index.html"),
-      renderPage(buildDetailPage(porterTemplate, seo), null, (main) =>
+      renderPage(buildDetailPage(porterTemplate, seo), "porters", (main) =>
         renderPorter(handle, porter, owned, main),
       ),
     );

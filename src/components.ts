@@ -1,7 +1,8 @@
 import { el } from "./dom";
+import { icon } from "./icons";
 import { portUrl } from "./routes";
 import type { Port, Porter } from "./types";
-import { CATEGORY_LABELS, STATUS_LABELS } from "./types";
+import { ASSET_REQUIREMENTS, CATEGORY_LABELS, STATUS_LABELS } from "./types";
 
 export const PORTER_LINK_LABELS: [keyof Porter, string][] = [
   ["github", "GitHub"],
@@ -34,10 +35,11 @@ export function renderImage(
   url: string,
   className: string,
   alt = "",
+  loading: "lazy" | "eager" = "lazy",
 ): HTMLElementTagNameMap["img"] {
   const img = el("img", {
     class: className,
-    attrs: { src: url, alt, loading: "lazy" },
+    attrs: { src: url, alt, loading, decoding: "async" },
   });
   attachImageFallback(img);
   return img;
@@ -66,22 +68,39 @@ export function renderNotFound(
 
 export function renderPortListItem(port: Port): HTMLElementTagNameMap["li"] {
   return el("li", {
+    class: "credited-port",
     children: [
-      el("a", {
-        attrs: { href: portUrl(port.name) },
-        children: [port.name],
+      renderImage(port.image, "credited-image"),
+      el("div", {
+        class: "credited-info",
+        children: [
+          el("p", {
+            class: "card-category",
+            children: [
+              port.categories
+                .map((category) => CATEGORY_LABELS[category])
+                .join(" / "),
+            ],
+          }),
+          el("a", {
+            class: "credited-name",
+            attrs: { href: portUrl(port.name) },
+            children: [port.name],
+          }),
+          el("div", {
+            class: "tags",
+            children: [
+              renderTag(
+                STATUS_LABELS[port.status],
+                `tag status st-${port.status}`,
+              ),
+              renderTag(ASSET_REQUIREMENTS[port.assets], "tag asset-tag"),
+            ],
+          }),
+          el("p", { class: "notes", children: [port.notes] }),
+        ],
       }),
-      ...port.categories.map((category) =>
-        el("span", {
-          class: `tag cat-${category}`,
-          children: [CATEGORY_LABELS[category]],
-        }),
-      ),
-      el("span", { class: "tag-sep" }),
-      el("span", {
-        class: `tag st-${port.status}`,
-        children: [STATUS_LABELS[port.status]],
-      }),
+      icon("arrow"),
     ],
   });
 }
@@ -89,9 +108,14 @@ export function renderPortListItem(port: Port): HTMLElementTagNameMap["li"] {
 function attachImageFallback(img: HTMLImageElement): void {
   img.addEventListener("error", () => {
     const ph = el("div", {
-      class: `${img.className} ph`,
-      attrs: { "aria-hidden": "true" },
-      children: ["⬚"],
+      class: `${img.className} ph image-fallback`,
+      attrs: img.alt
+        ? { role: "img", "aria-label": img.alt }
+        : { "aria-hidden": "true" },
+      children: [
+        icon("handheld"),
+        el("span", { children: ["Artwork unavailable"] }),
+      ],
     });
     img.replaceWith(ph);
   });

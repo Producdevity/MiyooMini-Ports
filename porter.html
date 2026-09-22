@@ -1,40 +1,64 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Porter · Miyoo Mini Ports</title>
     <meta
       name="description"
       content="Porter profile from the Miyoo Mini ports catalog, with their ports and links."
-    />
-    <meta property="og:title" content="Porter · Miyoo Mini Ports" />
+    >
+    <meta property="og:title" content="Porter · Miyoo Mini Ports">
     <meta
       property="og:description"
       content="Porter profile from the Miyoo Mini ports catalog, with their ports and links."
-    />
-    <meta property="og:site_name" content="Miyoo Mini Ports" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    >
+    <meta property="og:site_name" content="Miyoo Mini Ports">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <!-- seo:canonical -->
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script>
-      try {
-        const saved = localStorage.getItem("theme");
-        document.documentElement.dataset.theme = saved === "dark" || saved === "light" ? saved : "light";
-      } catch {
-        document.documentElement.dataset.theme = "light";
-      }
+    try {
+      const saved = localStorage.getItem("theme");
+      document.documentElement.dataset.theme =
+        saved === "dark" || saved === "light" ? saved : "light";
+    } catch {
+      document.documentElement.dataset.theme = "light";
+    }
     </script>
   </head>
   <body>
     <a class="skip-link" href="#detail">Skip to content</a>
-    <header class="site-header"><nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav></header>
+    <header class="site-header">
+      <nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav>
+    </header>
     <main class="wrap detail-page" id="detail" tabindex="-1"></main>
-    <footer class="site-footer"><div class="wrap footer-inner"><div><p class="footer-brand">Miyoo Mini Ports<span class="heading-dot">.</span></p><p>An independent catalog. A shared love of small things.</p></div><div><p>For Mini, Mini Plus &amp; Mini Flip.<br />Check each port’s notes for device support.</p><a href="https://github.com/OnionUI/Ports-Collection" target="_blank" rel="noopener">Looking for Onion’s bundled ports? ↗</a></div></div></footer>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <p class="footer-brand">
+            Miyoo Mini Ports<span class="heading-dot">.</span>
+          </p>
+          <p>An independent catalog. A shared love of small things.</p>
+        </div>
+        <div>
+          <p>
+            For Mini, Mini Plus &amp; Mini Flip.<br>Check each port’s notes for
+            device support.
+          </p>
+          <a
+            href="https://github.com/OnionUI/Ports-Collection"
+            target="_blank"
+            rel="noopener"
+            >Looking for Onion’s bundled ports? ↗</a
+          >
+        </div>
+      </div>
+    </footer>
     <script type="module" src="/src/porter.ts"></script>
   </body>
 </html>

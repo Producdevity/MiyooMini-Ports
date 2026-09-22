@@ -38,3 +38,14 @@ export function pickPort(ports: Port[], previous?: Port): Port | undefined {
     ports.length > 1 ? ports.filter((port) => port !== previous) : ports;
   return candidates[Math.floor(Math.random() * candidates.length)];
 }
+
+export function relatedPorts(port: Port, ports: Port[]): Port[] {
+  return ports
+    .filter(
+      (other) =>
+        other.name !== port.name &&
+        other.categories.some((category) => port.categories.includes(category)),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .slice(0, 3);
+}

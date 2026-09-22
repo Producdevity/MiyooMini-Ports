@@ -1,10 +1,9 @@
 import "@fontsource/archivo/latin-400.css";
 import "@fontsource/archivo/latin-700.css";
-import "@fontsource/archivo/latin-900.css";
 import "@fontsource/ibm-plex-mono/latin-400.css";
-import "@fontsource/ibm-plex-mono/latin-600.css";
 import portersData from "../porters.json";
 import portsData from "../ports.json";
+import { libraryReturnUrl } from "./catalog-navigation";
 import { enhanceImages, renderNotFound } from "./components";
 import { mountSiteNav } from "./nav";
 import { renderPort } from "./port-view";
@@ -39,8 +38,10 @@ function main(): void {
       renderPort(port, ports, porters, container);
     }
     enhanceImages(container);
+    const back = container.querySelector<HTMLAnchorElement>(".back-link");
+    if (back) back.href = libraryReturnUrl();
   }
 }
 
-mountSiteNav(null);
+mountSiteNav("ports");
 main();
