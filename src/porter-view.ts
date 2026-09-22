@@ -64,7 +64,7 @@ export function renderPorter(
     el("div", {
       class: "section-heading profile-section-heading",
       children: [
-        el("h2", { children: ["Made for your Mini."] }),
+        el("h2", { children: ["Credited ports"] }),
         el("p", {
           class: "count",
           children: [

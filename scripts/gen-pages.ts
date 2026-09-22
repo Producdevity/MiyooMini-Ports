@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { parseHTML } from "linkedom";
 import { sortCatalog } from "../src/catalog";
+import { renderInspector } from "../src/inspector-view";
 import { type NavPage, renderSiteNav } from "../src/nav";
 import { renderPort } from "../src/port-view";
 import { renderPorter } from "../src/porter-view";
@@ -257,6 +258,15 @@ export function generatePages(
             document.getElementById("catalog") ?? main,
             porters,
           );
+          const inspector = document.querySelector<HTMLElement>(
+            "#inspector .inspector-content",
+          );
+          if (inspector)
+            renderInspector(
+              sortCatalog(ports, "discovery")[0],
+              porters,
+              inspector,
+            );
         } else {
           const grid = document.createElement("div");
           grid.className = "porters-grid";

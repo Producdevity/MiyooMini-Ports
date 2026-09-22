@@ -36,9 +36,9 @@ function writeIco(sizes: number[]): void {
 }
 
 writeIco([48, 32, 16]);
-writeFileSync("public/icon-512.png", Buffer.from(renderPng(512, "#F5F3E9")));
+writeFileSync("public/icon-512.png", Buffer.from(renderPng(512, "#202522")));
 writeFileSync(
   "public/apple-touch-icon.png",
-  Buffer.from(renderPng(180, "#F5F3E9")),
+  Buffer.from(renderPng(180, "#202522")),
 );
 console.log("icons written to public/");

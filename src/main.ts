@@ -1,18 +1,15 @@
-import "@fontsource/archivo/latin-400.css";
-import "@fontsource/archivo/latin-700.css";
-import "@fontsource/ibm-plex-mono/latin-400.css";
+import "./fonts";
 import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { SORTS, selectCatalog } from "./catalog";
 import { mountKinds, renderActiveFilters } from "./catalog-controls";
 import { rememberCatalog } from "./catalog-navigation";
-import { mountDiscovery } from "./discovery";
 import { querySelector } from "./dom";
 import { icon } from "./icons";
+import { mountInspector } from "./inspector";
 import { mountSiteNav } from "./nav";
 import { renderChips, renderCount, renderList, renderOverview } from "./render";
 import { parsePorters, parsePorts } from "./schema";
-import { readPreference, savePreference } from "./storage";
 import {
   ASSETS_VALUES,
   CATEGORY_VALUES,
@@ -32,7 +29,11 @@ const sort = querySelector<HTMLSelectElement>("#sort");
 const filterToggle = querySelector<HTMLButtonElement>("#filter-toggle");
 const surprise = querySelector<HTMLButtonElement>("#surprise");
 let state = readFilterState(search);
-let view = readPreference("catalog-view") === "list" ? "list" : "grid";
+const updateInspector = mountInspector(
+  catalog,
+  querySelector("#inspector"),
+  porters,
+);
 const filterGroups = [
   { key: "status", values: STATUS_VALUES },
   { key: "assets", values: ASSETS_VALUES },
@@ -44,6 +45,7 @@ function rerender(history: "push" | "replace" | null = null): void {
   rememberCatalog(state);
   const list = selectCatalog(ports, state);
   renderList(list, catalog, porters);
+  updateInspector(list);
   renderCount(list.length, ports.length, count);
   renderChips([...filterGroups], state, chips, onToggle, onClear);
   renderActiveFilters(activeFilters, state, onToggle);
@@ -87,23 +89,13 @@ function onClear(): void {
   rerender("push");
 }
 
-function setView(): void {
-  catalog.dataset.view = view;
-  for (const button of document.querySelectorAll<HTMLButtonElement>(
-    "[data-view]",
-  )) {
-    if (button === catalog) continue;
-    button.setAttribute("aria-pressed", String(button.dataset.view === view));
-  }
-}
-
 mountSiteNav("ports");
 renderOverview(ports, porters);
 mountKinds(querySelector("#kinds"), ports, (kind) => {
   state.kind = kind;
   rerender("push");
 });
-mountDiscovery(() => selectCatalog(ports, state));
+surprise.prepend(icon("shuffle"));
 filterToggle.prepend(icon("filters"));
 filterToggle.addEventListener("click", () => {
   chips.hidden = !chips.hidden;
@@ -117,16 +109,6 @@ sort.addEventListener("change", () => {
   state.sort = SORTS.find((value) => value === sort.value) ?? "discovery";
   rerender("push");
 });
-for (const button of document.querySelectorAll<HTMLButtonElement>(
-  "button[data-view]",
-)) {
-  button.prepend(icon(button.dataset.view === "list" ? "list" : "grid"));
-  button.addEventListener("click", () => {
-    view = button.dataset.view === "list" ? "list" : "grid";
-    savePreference("catalog-view", view);
-    setView();
-  });
-}
 catalog.addEventListener("click", (event) => {
   if (event.target instanceof Element && event.target.closest("[data-reset]")) {
     onClear();
@@ -151,7 +133,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 rerender();
-setView();
 document.querySelector("search")?.removeAttribute("hidden");
 for (const control of document.querySelectorAll("[data-enhancement]"))
   control.removeAttribute("hidden");

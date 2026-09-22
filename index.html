@@ -36,148 +36,118 @@
     <header class="site-header">
       <nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav>
     </header>
-    <main class="wrap" id="main" tabindex="-1">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
+    <main class="wrap catalog-page" id="main" tabindex="-1">
+      <div class="index-heading" id="library">
+        <div>
           <p class="eyebrow">
-            <span class="signal-dot"></span>
-            A community field guide
+            Community software / Miyoo Mini · Mini Plus · Mini Flip
           </p>
-          <h1 id="hero-title">Small console.<br><em>Big possibilities.</em></h1>
-          <p class="hero-description">
-            A whole world beyond the bundled games. Discover community-made
-            ports, curious apps, and your next pocket obsession.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#library"
-              >Explore the library <span aria-hidden="true">↘</span></a
-            ><button
-              class="text-button surprise-button"
-              id="surprise"
-              type="button"
-              hidden
+          <h1>
+            The ports index<span class="heading-cursor" aria-hidden="true"
+              >_</span
             >
-              Surprise me
+          </h1>
+        </div>
+        <p class="index-description">
+          Games, apps &amp; engines beyond the bundled collection.<br>Find a
+          port. Check its requirements. Make room on your SD.
+        </p>
+        <div class="index-totals">
+          <div><strong data-stat="ports"></strong><span>ports</span></div>
+          <a href="/MiyooMini-Ports/porters.html"
+            ><strong data-stat="porters"></strong><span>porters ↗</span></a
+          >
+        </div>
+      </div>
+      <div class="catalog-workspace">
+        <section class="index-panel" aria-label="Browse ports">
+          <search hidden>
+            <fieldset
+              class="kind-tabs"
+              id="kinds"
+              aria-label="Port type"
+            ></fieldset>
+            <div class="search-row">
+              <div class="search-field">
+                <span class="search-icon" aria-hidden="true"></span
+                ><label class="sr-only" for="search">Search ports</label>
+                <input
+                  id="search"
+                  type="search"
+                  placeholder="Find a port, app, or porter…"
+                  autocomplete="off"
+                  spellcheck="false"
+                ><kbd aria-hidden="true">/</kbd>
+              </div>
+              <button
+                type="button"
+                class="filter-toggle"
+                id="filter-toggle"
+                aria-expanded="false"
+                aria-controls="chips"
+              >
+                Filters<span
+                  class="filter-total"
+                  id="filter-total"
+                  hidden
+                ></span>
+              </button>
+            </div>
+            <div id="chips" class="chips-row" hidden></div>
+            <fieldset
+              class="active-filters"
+              id="active-filters"
+              aria-label="Active filters"
+              hidden
+            ></fieldset>
+          </search>
+          <div class="catalog-meta">
+            <p class="count" id="count" role="status"></p>
+            <div class="catalog-tools" data-enhancement hidden>
+              <label class="sr-only" for="sort">Sort ports</label
+              ><select id="sort">
+                <option value="discovery">Games first</option>
+                <option value="name">Name: A–Z</option>
+                <option value="name-desc">Name: Z–A</option>
+              </select>
+            </div>
+          </div>
+          <div class="port-index" id="catalog" tabindex="-1"></div>
+          <div class="index-bottom" data-enhancement hidden>
+            <p><kbd>↑</kbd><kbd>↓</kbd> move between Inspect buttons</p>
+            <button type="button" class="text-button" id="surprise">
+              Random port
             </button>
           </div>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <span class="art-orbit"></span>
-          <img
-            src="/images/pocket-field-guide.svg"
-            width="660"
-            height="440"
-            alt=""
-            fetchpriority="high"
-          >
-          <span class="art-caption"
-            >Little machine. <em>Lots to discover.</em></span
-          >
-        </div>
-      </section>
-      <div class="catalog-intro" id="library">
-        <div>
-          <p class="eyebrow">Made by the community</p>
-          <h2>The pocket library<span class="heading-dot">.</span></h2>
-        </div>
-        <p class="library-summary">
-          <strong data-stat="ports"></strong>
-          ports <span aria-hidden="true">/</span>
-          <strong data-stat="porters"></strong> makers
-          <span aria-hidden="true">/</span> endless curiosity
-        </p>
-      </div>
-      <search class="catalog-search" hidden>
-        <fieldset
-          class="kind-tabs"
-          id="kinds"
-          aria-label="Port type"
-        ></fieldset>
-        <div class="search-toolbar">
-          <div class="search-field">
-            <span class="search-icon" aria-hidden="true"></span
-            ><label class="sr-only" for="search">Search ports</label>
-            <input
-              id="search"
-              type="search"
-              placeholder="Find a game, app, or porter…"
-              autocomplete="off"
-            ><kbd aria-hidden="true">/</kbd>
-          </div>
-          <button
-            class="button filter-toggle"
-            type="button"
-            id="filter-toggle"
-            aria-expanded="false"
-            aria-controls="chips"
-          >
-            Filters <span id="filter-total" class="filter-total" hidden></span>
-          </button>
-        </div>
-        <div class="chips-row" id="chips" hidden></div>
-        <fieldset
-          class="active-filters"
-          id="active-filters"
-          aria-label="Active filters"
-          hidden
-        ></fieldset>
-      </search>
-      <div class="catalog-meta">
-        <p id="count" class="count" role="status"></p>
-        <div class="catalog-tools" data-enhancement hidden>
-          <label class="sort-label" for="sort">Sort</label
-          ><select id="sort">
-            <option value="discovery">Games first</option>
-            <option value="name">Name: A–Z</option>
-            <option value="name-desc">Name: Z–A</option>
-          </select>
-          <fieldset class="view-switch" aria-label="Catalog view">
-            <button
-              type="button"
-              data-view="grid"
-              aria-label="Grid view"
-              aria-pressed="true"
-            ></button><button
-              type="button"
-              data-view="list"
-              aria-label="List view"
-              aria-pressed="false"
-            ></button>
-          </fieldset>
-        </div>
-      </div>
-      <div class="catalog-grid" id="catalog"></div>
-      <aside class="community-note">
-        <div>
-          <p class="eyebrow">Small screens. Shared effort.</p>
-          <h2>Behind every port, a person.</h2>
-          <p>Meet the people bringing new possibilities to your handheld.</p>
-        </div>
-        <a class="button button-secondary" href="/MiyooMini-Ports/porters.html"
-          >Meet the porters <span aria-hidden="true">↗</span></a
+        </section>
+        <aside
+          class="inspector"
+          id="inspector"
+          aria-labelledby="inspector-title"
         >
-      </aside>
+          <div class="inspector-content"></div>
+        </aside>
+      </div>
+      <p
+        class="sr-only"
+        id="selection-status"
+        role="status"
+        aria-live="polite"
+      ></p>
     </main>
     <footer class="site-footer">
       <div class="wrap footer-inner">
-        <div>
-          <p class="footer-brand">
-            Miyoo Mini Ports<span class="heading-dot">.</span>
-          </p>
-          <p>An independent catalog. A shared love of small things.</p>
-        </div>
-        <div>
-          <p>
-            For Mini, Mini Plus &amp; Mini Flip.<br>Check each port’s notes for
-            device support.
-          </p>
-          <a
-            href="https://github.com/OnionUI/Ports-Collection"
-            target="_blank"
-            rel="noopener"
-            >Looking for Onion’s bundled ports? ↗</a
-          >
-        </div>
+        <p>
+          <strong>Miyoo Mini Ports</strong>
+          / An independent community index.
+        </p>
+        <p>Device support varies. Read the port notes.</p>
+        <a
+          href="https://github.com/OnionUI/Ports-Collection"
+          target="_blank"
+          rel="noopener"
+          >Onion’s bundled ports ↗</a
+        >
       </div>
     </footer>
     <script type="module" src="/src/main.ts"></script>

@@ -123,11 +123,11 @@ export function renderPort(
           children: [
             el("p", {
               class: "eyebrow",
-              children: [icon("handheld"), "From the library to your pocket"],
+              children: [icon("data"), "Installation / Requirements"],
             }),
             el("h2", {
               attrs: { id: "install-title" },
-              children: ["Before you install"],
+              children: ["Before installing"],
             }),
             el("div", {
               class: `status-guidance st-${port.status}`,
@@ -191,11 +191,11 @@ export function renderPort(
                 children: [
                   el("p", {
                     class: "eyebrow",
-                    children: ["A few more paths to explore"],
+                    children: ["More in this category"],
                   }),
                   el("h2", {
                     attrs: { id: "related-title" },
-                    children: ["Keep the curiosity going."],
+                    children: ["Related ports"],
                   }),
                 ],
               }),

@@ -15,107 +15,129 @@
     <style>
     :root {
       color-scheme: light;
-      --paper: #f5f3e9;
-      --ink: #193b34;
-      --muted: #606b61;
-      --accent: #214e41;
-      --on-accent: #f8f6e9;
+      --paper: #e8e8e0;
+      --ink: #222623;
+      --muted: #576158;
+      --accent: #b53c20;
+      --on-accent: #fffdf5;
+      --line: #bec2b8;
     }
     :root[data-theme="dark"] {
       color-scheme: dark;
-      --paper: #162320;
-      --ink: #eef1e4;
-      --muted: #b2beb2;
-      --accent: #c5dfb2;
-      --on-accent: #18352b;
+      --paper: #252b27;
+      --ink: #f1f1e6;
+      --muted: #b7c0b5;
+      --accent: #fa9976;
+      --on-accent: #251b15;
+      --line: #566056;
     }
     * {
       box-sizing: border-box;
     }
     body {
-      display: grid;
-      place-items: center;
-      min-height: 100svh;
       margin: 0;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr;
       background: var(--paper);
       color: var(--ink);
       font:
-        400 15px / 1.7 system-ui,
+        14px / 1.7 system-ui,
         sans-serif;
     }
-    main {
-      width: min(560px, 100%);
-      padding: 36px;
-      text-align: center;
+    header {
+      padding: 20px 6vw;
+      background: #202522;
+      color: #f4f3e8;
+      border-bottom: 3px solid #fa7953;
     }
-    .device {
-      width: 72px;
-      height: 96px;
-      color: var(--accent);
-    }
-    .eyebrow {
-      margin: 20px 0 12px;
-      color: var(--muted);
-      font: 11px monospace;
-      letter-spacing: 0.12em;
+    header a {
+      color: inherit;
+      display: inline-flex;
+      gap: 12px;
+      align-items: center;
+      text-decoration: none;
+      font: 700 18px / 1 monospace;
       text-transform: uppercase;
+    }
+    header img {
+      width: 38px;
+      height: 38px;
+    }
+    main {
+      width: min(800px, 100%);
+      margin: auto;
+      padding: 40px 24px;
+    }
+    .code {
+      display: block;
+      font:
+        900 clamp(110px, 22vw, 200px) / 0.9 Impact,
+        "Arial Narrow",
+        sans-serif;
+      color: var(--accent);
+      letter-spacing: -0.045em;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .label {
+      color: var(--muted);
+      font: 11px / 1.6 monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 24px 0 10px;
     }
     h1 {
       font:
-        400 clamp(36px, 8vw, 54px) / 1.08 Georgia,
-        serif;
+        800 clamp(32px, 5vw, 48px) / 1.1 system-ui,
+        sans-serif;
+      text-transform: uppercase;
       letter-spacing: -0.04em;
-      margin: 0 0 22px;
+      margin: 0 0 18px;
     }
     p {
       color: var(--muted);
-      margin: 0 0 26px;
+      max-width: 450px;
     }
-    a {
+    .back {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
-      gap: 20px;
-      min-height: 48px;
-      border-radius: 5px;
-      background: var(--accent);
+      gap: 35px;
       color: var(--on-accent);
-      padding: 10px 22px;
+      background: var(--accent);
+      padding: 12px 22px;
+      min-height: 48px;
+      margin-top: 20px;
       text-decoration: none;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+    }
+    .back:hover {
+      color: var(--paper);
+      background: var(--ink);
     }
     a:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 3px solid var(--accent);
       outline-offset: 5px;
     }
     </style>
   </head>
   <body>
-    <main>
-      <svg
-        class="device"
-        viewBox="0 0 72 96"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-      >
-        <rect x="6" y="3" width="60" height="88" rx="9" />
-        <rect x="14" y="13" width="44" height="36" rx="2" />
-        <path
-          d="m25 25 6 6m0-6-6 6m16-6 6 6m0-6-6 6M29 40h14M19 69h14m-7-7v14M48 64h.01m7 10h.01"
-          stroke-linecap="round"
-        />
-      </svg>
-      <p class="eyebrow">404 · Off the beaten path</p>
-      <h1>This page isn’t<br>in the library.</h1>
-      <p>
-        The address may have changed, or the port may have moved. There’s still
-        plenty to discover.
-      </p>
+    <header>
       <a href="/MiyooMini-Ports/"
-        >Back to the library <span aria-hidden="true">→</span></a
+        ><img src="/MiyooMini-Ports/favicon.svg" alt="">Miyoo Mini Ports</a
+      >
+    </header>
+    <main>
+      <span class="code" aria-hidden="true">404_</span>
+      <p class="label">Address not found</p>
+      <h1>No entry at this address.</h1>
+      <p>
+        The link may have changed, or this port may have moved. Search the index
+        for its current page.
+      </p>
+      <a class="back" href="/MiyooMini-Ports/"
+        >Back to the index <span aria-hidden="true">→</span></a
       >
     </main>
   </body>

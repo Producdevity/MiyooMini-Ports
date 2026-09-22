@@ -1,5 +1,10 @@
 import { afterEach, expect, it, vi } from "vitest";
-import { libraryReturnUrl, rememberCatalog } from "./catalog-navigation";
+import {
+  libraryReturnUrl,
+  readCatalogSelection,
+  rememberCatalog,
+  rememberCatalogSelection,
+} from "./catalog-navigation";
 import { SITE_BASE } from "./routes";
 import { parseCatalogState } from "./urlstate";
 
@@ -39,4 +44,17 @@ it("keeps navigation usable when session storage is blocked", () => {
   });
   expect(() => rememberCatalog(parseCatalogState("q=RPG"))).not.toThrow();
   expect(libraryReturnUrl()).toBe(`${SITE_BASE}#library`);
+  expect(readCatalogSelection()).toBeNull();
+  expect(() => rememberCatalogSelection("balatro")).not.toThrow();
+});
+
+it("remembers the inspected record for a return from its full port page", () => {
+  const saved = new Map<string, string>();
+  vi.stubGlobal("sessionStorage", {
+    setItem: (key: string, value: string) => saved.set(key, value),
+    getItem: (key: string) => saved.get(key) ?? null,
+  });
+  expect(readCatalogSelection()).toBeNull();
+  rememberCatalogSelection("stardew-valley");
+  expect(readCatalogSelection()).toBe("stardew-valley");
 });

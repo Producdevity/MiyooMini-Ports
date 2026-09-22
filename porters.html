@@ -37,15 +37,17 @@
       <nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav>
     </header>
     <main class="wrap porters-main" id="main" tabindex="-1">
-      <section class="page-intro">
-        <p class="eyebrow">The people behind the pixels</p>
-        <h1>Small screens.<br><em>Shared effort.</em></h1>
-        <p>
-          Meet the makers turning “what if?” into something you can carry in
-          your pocket.
-        </p>
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">02 / Community directory</p>
+          <h1>The porters<span class="heading-cursor">_</span></h1>
+          <p>
+            The people who make these ports possible. Browse their work, find
+            their source code, or support a project.
+          </p>
+        </div>
       </section>
-      <search class="catalog-search" hidden>
+      <search class="porter-search-wrap" hidden>
         <div class="search-field">
           <span class="search-icon" aria-hidden="true"></span
           ><label class="sr-only" for="porter-search">Search porters</label>
@@ -57,32 +59,25 @@
           >
         </div>
       </search>
-      <div class="catalog-meta">
-        <h2 class="small-title">Meet the porters</h2>
+      <div class="porters-meta">
+        <h2 class="small-title">Contributors</h2>
         <p id="count" class="count" role="status"></p>
       </div>
       <div id="porters"></div>
     </main>
     <footer class="site-footer">
       <div class="wrap footer-inner">
-        <div>
-          <p class="footer-brand">
-            Miyoo Mini Ports<span class="heading-dot">.</span>
-          </p>
-          <p>An independent catalog. A shared love of small things.</p>
-        </div>
-        <div>
-          <p>
-            For Mini, Mini Plus &amp; Mini Flip.<br>Check each port’s notes for
-            device support.
-          </p>
-          <a
-            href="https://github.com/OnionUI/Ports-Collection"
-            target="_blank"
-            rel="noopener"
-            >Looking for Onion’s bundled ports? ↗</a
-          >
-        </div>
+        <p>
+          <strong>Miyoo Mini Ports</strong>
+          / An independent community index.
+        </p>
+        <p>Device support varies. Read the port notes.</p>
+        <a
+          href="https://github.com/OnionUI/Ports-Collection"
+          target="_blank"
+          rel="noopener"
+          >Onion’s bundled ports ↗</a
+        >
       </div>
     </footer>
     <script type="module" src="/src/porters.ts"></script>

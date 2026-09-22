@@ -19,17 +19,20 @@ export function renderSiteNav(current: NavPage): void {
       class: "brand",
       attrs: { href: SITE_BASE, "aria-label": "Miyoo Mini Ports home" },
       children: [
-        icon("handheld", "brand-icon"),
+        icon("memory", "brand-icon"),
         el("span", {
-          children: ["Miyoo Mini", el("strong", { children: ["Ports"] })],
+          children: [
+            el("span", { class: "brand-model", children: ["Miyoo Mini"] }),
+            el("strong", { children: ["Ports"] }),
+          ],
         }),
       ],
     }),
     el("div", {
       class: "nav-pages",
       children: [
-        link("ports", SITE_BASE, "Explore"),
-        link("porters", `${SITE_BASE}porters.html`, "Porters"),
+        link("ports", SITE_BASE, "01 / Index"),
+        link("porters", `${SITE_BASE}porters.html`, "02 / Porters"),
       ],
     }),
     el("div", {

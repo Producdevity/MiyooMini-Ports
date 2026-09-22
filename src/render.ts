@@ -3,6 +3,7 @@ import { renderImage, renderTag } from "./components";
 import { el } from "./dom";
 import { icon } from "./icons";
 import { porterUrl, portUrl } from "./routes";
+import { slugify } from "./slug";
 import type { FilterKey, FilterState, Port, Porters } from "./types";
 import {
   ASSET_REQUIREMENTS,
@@ -11,7 +12,11 @@ import {
   STATUS_LABELS,
 } from "./types";
 
-export function renderRow(port: Port, porters: Porters): HTMLElement {
+export function renderRow(
+  port: Port,
+  porters: Porters,
+  position = 0,
+): HTMLElement {
   const byline = el("p", { class: "by", children: ["Port by "] });
   port.porter.forEach((handle, index) => {
     if (index > 0) byline.append(", ");
@@ -24,7 +29,13 @@ export function renderRow(port: Port, porters: Porters): HTMLElement {
   });
   return el("article", {
     class: `row port-card kind-${portKind(port)}`,
+    attrs: { "data-port": slugify(port.name) },
     children: [
+      el("span", {
+        class: "record-number",
+        attrs: { "aria-hidden": "true" },
+        children: [String(position).padStart(2, "0")],
+      }),
       el("div", {
         class: "card-art",
         children: [
@@ -64,6 +75,16 @@ export function renderRow(port: Port, porters: Porters): HTMLElement {
           byline,
         ],
       }),
+      el("button", {
+        class: "preview-button",
+        attrs: {
+          type: "button",
+          hidden: true,
+          "aria-label": `Inspect ${port.name}`,
+          "aria-pressed": "false",
+        },
+        children: [icon("inspect"), el("span", { children: ["Inspect"] })],
+      }),
     ],
   });
 }
@@ -80,7 +101,7 @@ export function renderList(
         class: "empty",
         children: [
           icon("search", "empty-icon"),
-          el("h3", { children: ["A little off the map."] }),
+          el("h3", { children: ["No matching ports"] }),
           el("p", {
             children: [
               "No ports match this combination. Try a different search or clear your filters.",
@@ -96,7 +117,9 @@ export function renderList(
     );
     return;
   }
-  container.append(...list.map((port) => renderRow(port, porters)));
+  container.append(
+    ...list.map((port, index) => renderRow(port, porters, index + 1)),
+  );
 }
 
 export function renderOverview(ports: Port[], porters: Porters): void {

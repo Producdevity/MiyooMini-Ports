@@ -11,6 +11,9 @@ importers:
       '@fontsource/archivo':
         specifier: ^5.3.0
         version: 5.3.0
+      '@fontsource/barlow-condensed':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource/ibm-plex-mono':
         specifier: ^5.3.0
         version: 5.3.0
@@ -269,6 +272,9 @@ packages:
 
   '@fontsource/archivo@5.3.0':
     resolution: {integrity: sha512-5DIMgPVJRi62OqdOVoogCFxP73EkNM/E0YVTSDIQlDEJfDbxqZduwM/YoNZwC9Sx1CDgpKinqf8ckRY1QNIecw==}
+
+  '@fontsource/barlow-condensed@5.3.0':
+    resolution: {integrity: sha512-RA7MmIx0v3eQ6Gcf74qLVLOwLB0GpPOzx+eU9iG/AmCnSJGcIWYeU8y6CEMGZ210MGwGg5CZhzLkkvyZdTTk1g==}
 
   '@fontsource/ibm-plex-mono@5.3.0':
     resolution: {integrity: sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==}
@@ -996,6 +1002,8 @@ snapshots:
     optional: true
 
   '@fontsource/archivo@5.3.0': {}
+
+  '@fontsource/barlow-condensed@5.3.0': {}
 
   '@fontsource/ibm-plex-mono@5.3.0': {}
 

@@ -10,6 +10,22 @@ export function rememberCatalog(state: CatalogState): void {
   }
 }
 
+export function readCatalogSelection(): string | null {
+  try {
+    return sessionStorage.getItem("catalog-selection");
+  } catch {
+    return null;
+  }
+}
+
+export function rememberCatalogSelection(slug: string): void {
+  try {
+    sessionStorage.setItem("catalog-selection", slug);
+  } catch {
+    // Selection still works without optional session persistence.
+  }
+}
+
 export function libraryReturnUrl(): string {
   let query = "";
   try {
