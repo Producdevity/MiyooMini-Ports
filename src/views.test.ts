@@ -1,8 +1,10 @@
 import { parseHTML } from "linkedom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { renderImage } from "./components";
+import { stillImage } from "./media";
 import { renderPort } from "./port-view";
 import { renderPorter } from "./porter-view";
+import { renderRow } from "./render";
 import type { Port } from "./types";
 
 const port: Port = {
@@ -97,4 +99,35 @@ it("replaces failed artwork without dropping its accessible description", () => 
   expect(fallback?.getAttribute("aria-label")).toBe("Example Port artwork");
   expect(fallback?.textContent).toContain("Artwork unavailable");
   expect(document.querySelectorAll("img")).toHaveLength(0);
+});
+
+it("gives artwork and title one native destination while keeping porter credits separate", () => {
+  main().append(
+    renderRow(port, {
+      maker: { name: "A Maker", github: "https://github.com/maker" },
+    }),
+  );
+  const link = document.querySelector(".card-link");
+  expect(link?.getAttribute("href")).toBe(
+    "/MiyooMini-Ports/port/example-port/",
+  );
+  expect(link?.querySelector("img")).not.toBeNull();
+  expect(link?.querySelector("h3")?.textContent).toBe(port.name);
+  expect(link?.querySelector("a")).toBeNull();
+  expect(document.querySelector(".by a")?.getAttribute("href")).toBe(
+    "/MiyooMini-Ports/porter/maker/",
+  );
+  expect(document.querySelector(".port-card")?.id).toBe("port-example-port");
+  expect(document.querySelector("button")).toBeNull();
+});
+
+it("uses a still for the known animated artwork and leaves other originals intact", () => {
+  const source =
+    "https://raw.githubusercontent.com/Producdevity/balatro-miyoo-mini-port/master/docs/images/gameplay.gif";
+  const image = renderImage(source, "card-image");
+  expect(image.getAttribute("src")).toBe(
+    "/MiyooMini-Ports/images/balatro-preview.webp",
+  );
+  expect(image.getAttribute("data-animation")).toBe(source);
+  expect(stillImage(port.image)).toBe(port.image);
 });

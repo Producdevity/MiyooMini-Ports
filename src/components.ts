@@ -1,5 +1,6 @@
 import { el } from "./dom";
 import { icon } from "./icons";
+import { stillImage } from "./media";
 import { portUrl } from "./routes";
 import type { Port, Porter } from "./types";
 import { ASSET_REQUIREMENTS, CATEGORY_LABELS, STATUS_LABELS } from "./types";
@@ -39,7 +40,13 @@ export function renderImage(
 ): HTMLElementTagNameMap["img"] {
   const img = el("img", {
     class: className,
-    attrs: { src: url, alt, loading, decoding: "async" },
+    attrs: {
+      src: stillImage(url),
+      alt,
+      loading,
+      decoding: "async",
+      "data-animation": stillImage(url) === url ? undefined : url,
+    },
   });
   attachImageFallback(img);
   return img;
@@ -106,6 +113,15 @@ export function renderPortListItem(port: Port): HTMLElementTagNameMap["li"] {
 }
 
 function attachImageFallback(img: HTMLImageElement): void {
+  const sizeArtwork = (): void => {
+    const frame = img.closest<HTMLElement>(".card-art");
+    if (!frame || !img.naturalWidth || !img.naturalHeight) return;
+    const ratio = img.naturalWidth / img.naturalHeight;
+    frame.dataset.shape =
+      ratio < 0.9 ? "portrait" : ratio > 1.2 ? "landscape" : "square";
+  };
+  img.addEventListener("load", sizeArtwork);
+  if (img.complete && img.naturalWidth) queueMicrotask(sizeArtwork);
   img.addEventListener("error", () => {
     const ph = el("div", {
       class: `${img.className} ph image-fallback`,

@@ -3,6 +3,7 @@ import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { libraryReturnUrl } from "./catalog-navigation";
 import { enhanceImages, renderNotFound } from "./components";
+import { mountAnimation } from "./media";
 import { mountSiteNav } from "./nav";
 import { renderPort } from "./port-view";
 import { detailSlug, portUrl, SITE_BASE } from "./routes";
@@ -36,6 +37,7 @@ function main(): void {
       renderPort(port, ports, porters, container);
     }
     enhanceImages(container);
+    mountAnimation(container);
     const back = container.querySelector<HTMLAnchorElement>(".back-link");
     if (back) back.href = libraryReturnUrl();
   }

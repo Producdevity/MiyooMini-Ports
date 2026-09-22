@@ -35,5 +35,10 @@ export function libraryReturnUrl(): string {
   } catch {
     // The static library link remains usable when storage is unavailable.
   }
-  return `${SITE_BASE}${query ? `?${query}` : ""}#library`;
+  const selected = readCatalogSelection();
+  const anchor =
+    selected && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(selected)
+      ? `port-${selected}`
+      : "library";
+  return `${SITE_BASE}${query ? `?${query}` : ""}#${anchor}`;
 }

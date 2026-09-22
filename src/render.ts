@@ -12,11 +12,7 @@ import {
   STATUS_LABELS,
 } from "./types";
 
-export function renderRow(
-  port: Port,
-  porters: Porters,
-  position = 0,
-): HTMLElement {
+export function renderRow(port: Port, porters: Porters): HTMLElement {
   const byline = el("p", { class: "by", children: ["Port by "] });
   port.porter.forEach((handle, index) => {
     if (index > 0) byline.append(", ");
@@ -29,62 +25,59 @@ export function renderRow(
   });
   return el("article", {
     class: `row port-card kind-${portKind(port)}`,
-    attrs: { "data-port": slugify(port.name) },
+    attrs: {
+      id: `port-${slugify(port.name)}`,
+      "data-port": slugify(port.name),
+    },
     children: [
-      el("span", {
-        class: "record-number",
-        attrs: { "aria-hidden": "true" },
-        children: [String(position).padStart(2, "0")],
-      }),
-      el("div", {
-        class: "card-art",
+      el("a", {
+        class: "card-link",
+        attrs: {
+          href: portUrl(port.name),
+          "aria-labelledby": `title-${slugify(port.name)}`,
+        },
         children: [
-          renderImage(port.image, "card-image"),
-          el("span", { class: "card-arrow", children: [icon("arrow")] }),
-        ],
-      }),
-      el("div", {
-        class: "card-body",
-        children: [
-          el("p", {
-            class: "card-category",
+          el("div", {
+            class: "card-art",
             children: [
-              port.categories.map((c) => CATEGORY_LABELS[c]).join(" / "),
-            ],
-          }),
-          el("h3", {
-            class: "name",
-            children: [
-              el("a", {
-                attrs: { href: portUrl(port.name) },
-                children: [port.name],
+              renderImage(port.image, "card-image"),
+              el("span", {
+                class: "card-arrow",
+                attrs: { "aria-hidden": "true" },
+                children: [icon("arrow")],
               }),
             ],
           }),
           el("div", {
-            class: "tags",
+            class: "card-body",
             children: [
-              renderTag(
-                STATUS_LABELS[port.status],
-                `tag status st-${port.status}`,
-              ),
-              renderTag(ASSET_REQUIREMENTS[port.assets], "tag asset-tag"),
+              el("p", {
+                class: "card-category",
+                children: [
+                  port.categories.map((c) => CATEGORY_LABELS[c]).join(" / "),
+                ],
+              }),
+              el("h3", {
+                class: "name",
+                attrs: { id: `title-${slugify(port.name)}` },
+                children: [port.name],
+              }),
+              el("div", {
+                class: "tags",
+                children: [
+                  renderTag(
+                    STATUS_LABELS[port.status],
+                    `tag status st-${port.status}`,
+                  ),
+                  renderTag(ASSET_REQUIREMENTS[port.assets], "tag asset-tag"),
+                ],
+              }),
+              el("p", { class: "notes", children: [port.notes] }),
             ],
           }),
-          el("p", { class: "notes", children: [port.notes] }),
-          byline,
         ],
       }),
-      el("button", {
-        class: "preview-button",
-        attrs: {
-          type: "button",
-          hidden: true,
-          "aria-label": `Inspect ${port.name}`,
-          "aria-pressed": "false",
-        },
-        children: [icon("inspect"), el("span", { children: ["Inspect"] })],
-      }),
+      byline,
     ],
   });
 }
@@ -93,8 +86,10 @@ export function renderList(
   list: Port[],
   container: HTMLElement,
   porters: Porters,
+  grouped = false,
 ): void {
   container.replaceChildren();
+  container.dataset.grouped = String(grouped && list.length > 0);
   if (list.length === 0) {
     container.append(
       el("div", {
@@ -117,9 +112,35 @@ export function renderList(
     );
     return;
   }
-  container.append(
-    ...list.map((port, index) => renderRow(port, porters, index + 1)),
-  );
+  if (grouped) {
+    for (const [kind, label] of [
+      ["game", "Games"],
+      ["app", "Apps & utilities"],
+      ["engine", "Engines"],
+    ] as const) {
+      const matching = list.filter((port) => portKind(port) === kind);
+      if (!matching.length) continue;
+      container.append(
+        el("section", {
+          class: "catalog-section",
+          attrs: { "aria-label": label },
+          children: [
+            el("h2", {
+              class: "catalog-group-title",
+              children: [
+                label,
+                el("span", { children: [String(matching.length)] }),
+              ],
+            }),
+            el("div", {
+              class: "catalog-grid",
+              children: matching.map((port) => renderRow(port, porters)),
+            }),
+          ],
+        }),
+      );
+    }
+  } else container.append(...list.map((port) => renderRow(port, porters)));
 }
 
 export function renderOverview(ports: Port[], porters: Porters): void {
@@ -161,6 +182,7 @@ export function renderChips(
       : undefined;
   container.replaceChildren();
   for (const group of groups) {
+    if (group.values.length === 0) continue;
     const row = el("div", {
       class: "chips-group",
       attrs: { role: "group", "aria-label": GROUP_LABELS[group.key] },

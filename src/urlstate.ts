@@ -52,7 +52,10 @@ export function writeFilterState(
   mode: "push" | "replace",
 ): void {
   const query = catalogQuery(state);
-  const url = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+  const hash = window.location.hash.startsWith("#port-")
+    ? "#library"
+    : window.location.hash;
+  const url = `${window.location.pathname}${query ? `?${query}` : ""}${hash}`;
   if (
     url ===
     `${window.location.pathname}${window.location.search}${window.location.hash}`

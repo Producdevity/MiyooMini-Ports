@@ -48,7 +48,7 @@ it("keeps navigation usable when session storage is blocked", () => {
   expect(() => rememberCatalogSelection("balatro")).not.toThrow();
 });
 
-it("remembers the inspected record for a return from its full port page", () => {
+it("returns to the opened card and rejects unsafe saved anchors", () => {
   const saved = new Map<string, string>();
   vi.stubGlobal("sessionStorage", {
     setItem: (key: string, value: string) => saved.set(key, value),
@@ -57,4 +57,7 @@ it("remembers the inspected record for a return from its full port page", () => 
   expect(readCatalogSelection()).toBeNull();
   rememberCatalogSelection("stardew-valley");
   expect(readCatalogSelection()).toBe("stardew-valley");
+  expect(libraryReturnUrl()).toBe(`${SITE_BASE}#port-stardew-valley`);
+  rememberCatalogSelection("//example.com/#bad");
+  expect(libraryReturnUrl()).toBe(`${SITE_BASE}#library`);
 });

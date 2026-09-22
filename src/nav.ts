@@ -19,7 +19,7 @@ export function renderSiteNav(current: NavPage): void {
       class: "brand",
       attrs: { href: SITE_BASE, "aria-label": "Miyoo Mini Ports home" },
       children: [
-        icon("memory", "brand-icon"),
+        icon("mark", "brand-icon"),
         el("span", {
           children: [
             el("span", { class: "brand-model", children: ["Miyoo Mini"] }),
@@ -31,8 +31,8 @@ export function renderSiteNav(current: NavPage): void {
     el("div", {
       class: "nav-pages",
       children: [
-        link("ports", SITE_BASE, "01 / Index"),
-        link("porters", `${SITE_BASE}porters.html`, "02 / Porters"),
+        link("ports", SITE_BASE, "Library"),
+        link("porters", `${SITE_BASE}porters.html`, "Porters"),
       ],
     }),
     el("div", {
@@ -46,7 +46,7 @@ export function renderSiteNav(current: NavPage): void {
             rel: "noopener",
             "aria-label": "GitHub (opens in a new tab)",
           },
-          children: [el("span", { children: ["On GitHub"] }), icon("external")],
+          children: [el("span", { children: ["GitHub"] }), icon("external")],
         }),
         el("button", {
           class: "icon-button theme-toggle",

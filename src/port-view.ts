@@ -1,7 +1,8 @@
-import { relatedPorts } from "./catalog";
+import { portKind, relatedPorts } from "./catalog";
 import { renderImage, renderTag } from "./components";
 import { el } from "./dom";
 import { icon } from "./icons";
+import { stillImage } from "./media";
 import { renderRow } from "./render";
 import { porterUrl, SITE_BASE } from "./routes";
 import type { Port, Porters, Status } from "./types";
@@ -11,7 +12,7 @@ const STATUS_GUIDANCE: Record<Status, string> = {
   playable:
     "Listed as playable. Check the notes for setup details and device-specific limitations.",
   experimental:
-    "An experimental port. Expect limitations and check device support in the notes below.",
+    "An experimental port. Expect limitations and check device support in the port notes.",
   prerelease:
     "A prerelease build. Setup and behavior may change as development continues.",
   "source-only":
@@ -70,21 +71,30 @@ export function renderPort(
       children: [
         el("p", {
           class: "eyebrow",
-          children: [
-            port.categories
-              .map((category) => CATEGORY_LABELS[category])
-              .join(" / "),
-          ],
+          children: [categories],
         }),
         el("h1", { class: "detail-title", children: [port.name] }),
         el("p", {
           class: "detail-by",
-          children: ["Brought to your handheld by ", joinLinks()],
+          children: ["Ported by ", joinLinks()],
+        }),
+        el("dl", {
+          class: "spec detail-facts",
+          children: [
+            specRow(
+              "Status",
+              renderTag(
+                STATUS_LABELS[port.status],
+                `tag status st-${port.status}`,
+              ),
+            ),
+            specRow("Assets", ASSET_REQUIREMENTS[port.assets]),
+          ],
         }),
       ],
     }),
     el("div", {
-      class: "detail-grid",
+      class: `detail-grid detail-kind-${portKind(port)}`,
       children: [
         el("div", {
           class: "detail-main",
@@ -98,21 +108,19 @@ export function renderPort(
                   `${port.name} artwork`,
                   "eager",
                 ),
-              ],
-            }),
-            el("dl", {
-              class: "spec",
-              children: [
-                specRow("Category", categories),
-                specRow(
-                  "Status",
-                  renderTag(
-                    STATUS_LABELS[port.status],
-                    `tag status st-${port.status}`,
-                  ),
-                ),
-                specRow("Assets", ASSET_REQUIREMENTS[port.assets]),
-                specRow("Porter", joinLinks()),
+                ...(stillImage(port.image) === port.image
+                  ? []
+                  : [
+                      el("button", {
+                        class: "animation-toggle",
+                        attrs: {
+                          type: "button",
+                          hidden: true,
+                          "aria-pressed": "false",
+                        },
+                        children: ["Play animation"],
+                      }),
+                    ]),
               ],
             }),
           ],
@@ -123,25 +131,13 @@ export function renderPort(
           children: [
             el("p", {
               class: "eyebrow",
-              children: [icon("data"), "Installation / Requirements"],
+              children: [icon("data"), "Setup & requirements"],
             }),
             el("h2", {
               attrs: { id: "install-title" },
-              children: ["Before installing"],
+              children: ["About this port"],
             }),
-            el("div", {
-              class: `status-guidance st-${port.status}`,
-              children: [
-                icon(port.status === "playable" ? "check" : "info"),
-                el("p", {
-                  children: [
-                    el("strong", { children: [STATUS_LABELS[port.status]] }),
-                    " ",
-                    STATUS_GUIDANCE[port.status],
-                  ],
-                }),
-              ],
-            }),
+            el("p", { class: "detail-notes", children: [port.notes] }),
             el("div", {
               class: "asset-guidance",
               children: [
@@ -155,8 +151,6 @@ export function renderPort(
                 }),
               ],
             }),
-            el("h3", { class: "notes-heading", children: ["Port notes"] }),
-            el("p", { class: "detail-notes", children: [port.notes] }),
             el("a", {
               class: "stamp",
               attrs: { href: port.upstream, target: "_blank", rel: "noopener" },
@@ -170,7 +164,22 @@ export function renderPort(
             el("p", {
               class: "release-hint",
               children: [
-                "Opens the maintainer’s page in a new tab. Follow their installation instructions.",
+                port.status === "source-only"
+                  ? "Opens the maintainer’s source repository in a new tab. No ready-to-install release is listed."
+                  : "Opens the maintainer’s page in a new tab. Follow their installation instructions.",
+              ],
+            }),
+            el("div", {
+              class: `status-guidance st-${port.status}`,
+              children: [
+                icon(port.status === "playable" ? "check" : "info"),
+                el("p", {
+                  children: [
+                    el("strong", { children: [STATUS_LABELS[port.status]] }),
+                    " ",
+                    STATUS_GUIDANCE[port.status],
+                  ],
+                }),
               ],
             }),
           ],
@@ -207,7 +216,7 @@ export function renderPort(
             ],
           }),
           el("div", {
-            class: "catalog-grid",
+            class: `catalog-grid${related.every((item) => portKind(item) !== "game") ? " utility-related" : ""}`,
             children: related.map((other) => renderRow(other, porters)),
           }),
         ],
