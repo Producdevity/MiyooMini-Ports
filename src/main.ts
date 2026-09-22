@@ -6,8 +6,9 @@ import "@fontsource/ibm-plex-mono/latin-600.css";
 import portersData from "../porters.json";
 import portsData from "../ports.json";
 import { filterPorts } from "./filter";
+import { icon } from "./icons";
 import { mountSiteNav } from "./nav";
-import { renderChips, renderCount, renderList } from "./render";
+import { renderChips, renderCount, renderList, renderOverview } from "./render";
 import { parsePorters, parsePorts } from "./schema";
 import {
   ASSETS_VALUES,
@@ -26,7 +27,7 @@ function querySelector<T extends HTMLElement>(selector: string): T {
   return el;
 }
 
-const main = querySelector<HTMLElement>("#main");
+const main = querySelector<HTMLElement>("#catalog");
 const chips = querySelector<HTMLElement>("#chips");
 const search = querySelector<HTMLInputElement>("#search");
 const count = querySelector<HTMLElement>("#count");
@@ -45,6 +46,10 @@ function rerender(): void {
   renderList(list, main, state.active.category.length === 0, porters, state);
   renderCount(list.length, ports.length, count);
   renderChips(filterGroups, state, chips, onToggle, onClear);
+  const total = Object.values(state.active).flat().length;
+  const badge = querySelector<HTMLElement>("#filter-total");
+  badge.textContent = String(total);
+  badge.hidden = total === 0;
 }
 
 function onToggle(key: FilterKey, value: string): void {
@@ -69,7 +74,32 @@ search.addEventListener("input", (event) => {
   }
 });
 
+const filterToggle = querySelector<HTMLButtonElement>("#filter-toggle");
+filterToggle.prepend(icon("filters"));
+filterToggle.addEventListener("click", () => {
+  chips.hidden = !chips.hidden;
+  filterToggle.setAttribute("aria-expanded", String(!chips.hidden));
+});
+main.addEventListener("click", (event) => {
+  if (event.target instanceof Element && event.target.closest("[data-reset]")) {
+    onClear();
+    search.focus();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  const target = event.target;
+  if (
+    target instanceof HTMLElement &&
+    (target.matches("input, textarea, select") || target.isContentEditable)
+  )
+    return;
+  if (event.key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey) {
+    event.preventDefault();
+    search.focus();
+  }
+});
 mountSiteNav("ports");
+renderOverview(ports, porters);
 rerender();
 
 document.querySelector("search")?.removeAttribute("hidden");

@@ -22,31 +22,19 @@
     <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script>
-      document.documentElement.dataset.theme =
-        localStorage.getItem("theme") ||
-        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      try {
+        const saved = localStorage.getItem("theme");
+        document.documentElement.dataset.theme = saved === "dark" || saved === "light" ? saved : "light";
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
     </script>
   </head>
   <body>
     <a class="skip-link" href="#detail">Skip to content</a>
-    <header>
-      <div class="wrap">
-        <p class="kicker">Catalog · Spec sheet</p>
-        <nav class="site-nav" id="site-nav" aria-label="Main"></nav>
-      </div>
-    </header>
-
-    <main class="wrap" id="detail" tabindex="-1"></main>
-
-    <footer class="site-footer">
-      <div class="wrap">
-        <p>
-          Install steps live on the port's release page.
-          <a href="https://github.com/Producdevity/MiyooMini-Ports">GitHub</a>.
-        </p>
-      </div>
-    </footer>
-
+    <header class="site-header"><nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav></header>
+    <main class="wrap detail-page" id="detail" tabindex="-1"></main>
+    <footer class="site-footer"><div class="wrap footer-inner"><div><p class="footer-brand">Miyoo Mini Ports<span class="heading-dot">.</span></p><p>An independent catalog. A shared love of small things.</p></div><div><p>For Mini, Mini Plus &amp; Mini Flip.<br />Check each port’s notes for device support.</p><a href="https://github.com/OnionUI/Ports-Collection" target="_blank" rel="noopener">Looking for Onion’s bundled ports? ↗</a></div></div></footer>
     <script type="module" src="/src/port.ts"></script>
   </body>
 </html>

@@ -15,6 +15,9 @@ node_modules/
 # Build output
 dist/
 
+# Local working notes and verification artifacts
+.agents/
+
 # game data / built binaries / archives
 *.wad
 *.WAD

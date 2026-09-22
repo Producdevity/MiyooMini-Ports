@@ -326,7 +326,7 @@ describe("build output", () => {
       "porter.html",
     ]) {
       const page = read(file);
-      expect(page.querySelectorAll("#site-nav a")).toHaveLength(3);
+      expect(page.querySelectorAll("#site-nav a")).toHaveLength(4);
       for (const asset of page.querySelectorAll(
         'script[src], link[rel="stylesheet"]',
       )) {

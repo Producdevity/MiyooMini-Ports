@@ -22,42 +22,47 @@
     <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script>
-      document.documentElement.dataset.theme =
-        localStorage.getItem("theme") ||
-        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      try {
+        const saved = localStorage.getItem("theme");
+        document.documentElement.dataset.theme = saved === "dark" || saved === "light" ? saved : "light";
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
     </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header>
-      <div class="wrap">
-        <p class="kicker">Catalog · SigmaStar SSD202D</p>
-        <h1>Miyoo Mini<br />Ports</h1>
-        <nav class="site-nav" id="site-nav" aria-label="Main"></nav>
-      </div>
-    </header>
-
-    <search hidden>
-      <div class="bar">
-        <div class="wrap bar-inner">
-          <label class="sr-only" for="search">Search ports</label>
-          <input id="search" type="search" placeholder="Search ports" autocomplete="off" />
-          <span id="count" class="count" aria-live="polite"></span>
+    <header class="site-header"><nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav></header>
+    <main class="wrap" id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="signal-dot"></span> A community field guide</p>
+          <h1 id="hero-title">Small console.<br /><em>Big possibilities.</em></h1>
+          <p class="hero-description">A whole world beyond the bundled games. Discover community-made ports, curious apps, and your next pocket obsession.</p>
+          <a class="button button-primary" href="#library">Explore the library <span aria-hidden="true">↘</span></a>
         </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="art-orbit"></span>
+          <img src="/images/pocket-field-guide.svg" width="660" height="440" alt="" fetchpriority="high" />
+          <span class="art-caption">Little machine. <em>Lots to discover.</em></span>
+        </div>
+      </section>
+      <div class="catalog-intro" id="library">
+        <div><p class="eyebrow">Made by the community</p><h2>The pocket library<span class="heading-dot">.</span></h2></div>
+        <p class="library-summary"><strong data-stat="ports"></strong> ports <span aria-hidden="true">/</span> <strong data-stat="porters"></strong> makers <span aria-hidden="true">/</span> endless curiosity</p>
       </div>
-      <div class="wrap chips-row" id="chips"></div>
-    </search>
-    <main class="wrap" id="main" tabindex="-1"></main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <p>
-          For the Miyoo Mini, Mini Plus, and Mini Flip. Everything here is
-          outside
-          <a href="https://github.com/OnionUI/Ports-Collection">Onion's Ports-Collection</a>.
-        </p>
-      </div>
-    </footer>
-
+      <search class="catalog-search" hidden>
+        <div class="search-toolbar">
+          <div class="search-field"><span class="search-icon" aria-hidden="true"></span><label class="sr-only" for="search">Search ports</label><input id="search" type="search" placeholder="Find a game, app, or porter…" autocomplete="off" /><kbd aria-hidden="true">/</kbd></div>
+          <button class="button filter-toggle" type="button" id="filter-toggle" aria-expanded="false" aria-controls="chips">Filters <span id="filter-total" class="filter-total" hidden></span></button>
+        </div>
+        <div class="chips-row" id="chips" hidden></div>
+      </search>
+      <div class="catalog-meta"><p id="count" class="count" role="status"></p><p class="catalog-hint">Find something worth a little screen time.</p></div>
+      <div class="catalog-grid" id="catalog"></div>
+      <aside class="community-note"><div><p class="eyebrow">Small screens. Shared effort.</p><h2>Behind every port, a person.</h2><p>Meet the people bringing new possibilities to your handheld.</p></div><a class="button button-secondary" href="/MiyooMini-Ports/porters.html">Meet the porters <span aria-hidden="true">↗</span></a></aside>
+    </main>
+    <footer class="site-footer"><div class="wrap footer-inner"><div><p class="footer-brand">Miyoo Mini Ports<span class="heading-dot">.</span></p><p>An independent catalog. A shared love of small things.</p></div><div><p>For Mini, Mini Plus &amp; Mini Flip.<br />Check each port’s notes for device support.</p><a href="https://github.com/OnionUI/Ports-Collection" target="_blank" rel="noopener">Looking for Onion’s bundled ports? ↗</a></div></div></footer>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

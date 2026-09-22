@@ -6,7 +6,7 @@ import { type NavPage, renderSiteNav } from "../src/nav";
 import { renderPort } from "../src/port-view";
 import { renderPorter } from "../src/porter-view";
 import { renderPorterCard } from "../src/porters-view";
-import { renderList } from "../src/render";
+import { renderCount, renderList, renderOverview } from "../src/render";
 import { porterUrl, portUrl } from "../src/routes";
 import { parsePorters, parsePorts } from "../src/schema";
 import { SITE_BASE, SITE_URL } from "../src/site";
@@ -248,10 +248,19 @@ export function generatePages(
       file === "index.html" ? "ports" : "porters",
       (main) => {
         if (file === "index.html") {
-          renderList(ports, main, true, porters, {
-            q: "",
-            active: { status: [], assets: [], category: [] },
-          });
+          renderOverview(ports, porters);
+          const count = document.getElementById("count");
+          if (count) renderCount(ports.length, ports.length, count);
+          renderList(
+            ports,
+            document.getElementById("catalog") ?? main,
+            true,
+            porters,
+            {
+              q: "",
+              active: { status: [], assets: [], category: [] },
+            },
+          );
         } else {
           const grid = document.createElement("div");
           grid.className = "porters-grid";
@@ -266,7 +275,9 @@ export function generatePages(
               renderPorterCard(handle, porter, index, ports),
             ),
           );
-          main.append(grid);
+          (document.getElementById("porters") ?? main).append(grid);
+          const count = document.getElementById("count");
+          if (count) count.textContent = `${sorted.length} community makers`;
         }
       },
     );

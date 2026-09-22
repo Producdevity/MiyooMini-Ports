@@ -81,6 +81,11 @@ export const ASSETS_LABELS: Record<Assets, string> = {
   owned: "Owned data",
 };
 
+export const ASSET_REQUIREMENTS: Record<Assets, string> = {
+  free: "Free assets",
+  owned: "Needs game data",
+};
+
 export const CATEGORY_LABELS: Record<Category, string> = {
   app: "App",
   arcade: "Arcade",
@@ -97,7 +102,7 @@ export const CATEGORY_LABELS: Record<Category, string> = {
 
 const LABELS: Record<FilterKey, Record<string, string>> = {
   status: STATUS_LABELS,
-  assets: ASSETS_LABELS,
+  assets: ASSET_REQUIREMENTS,
   category: CATEGORY_LABELS,
 };
 

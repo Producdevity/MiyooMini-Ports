@@ -22,43 +22,19 @@
     <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script>
-      document.documentElement.dataset.theme =
-        localStorage.getItem("theme") ||
-        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      try {
+        const saved = localStorage.getItem("theme");
+        document.documentElement.dataset.theme = saved === "dark" || saved === "light" ? saved : "light";
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#porters">Skip to content</a>
-    <header>
-      <div class="wrap">
-        <p class="kicker">Catalog · Credits</p>
-        <h1>Porters</h1>
-        <div class="header-sub">
-          <p>The people who built the ports in this catalog.</p>
-        </div>
-        <nav class="site-nav" id="site-nav" aria-label="Main"></nav>
-      </div>
-    </header>
-
-    <search hidden>
-      <div class="bar">
-        <div class="wrap bar-inner">
-          <label class="sr-only" for="porter-search">Search porters</label>
-          <input id="porter-search" type="search" placeholder="Search porters" autocomplete="off" />
-          <span id="count" class="count" aria-live="polite"></span>
-        </div>
-      </div>
-    </search>
-    <main class="wrap porters-main" id="porters" tabindex="-1"></main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <p>
-          Porters: to add or update your links and bio, edit
-          <code>porters.json</code> and open a PR.
-        </p>
-      </div>
-    </footer>
-
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><nav class="wrap site-nav" id="site-nav" aria-label="Main"></nav></header>
+    <main class="wrap porters-main" id="main" tabindex="-1"><section class="page-intro"><p class="eyebrow">The people behind the pixels</p><h1>Small screens.<br /><em>Shared effort.</em></h1><p>Meet the makers turning “what if?” into something you can carry in your pocket.</p></section><search class="catalog-search" hidden><div class="search-field"><span class="search-icon" aria-hidden="true"></span><label class="sr-only" for="porter-search">Search porters</label><input id="porter-search" type="search" placeholder="Find a porter or one of their ports…" autocomplete="off" /></div></search><div class="catalog-meta"><h2 class="small-title">Meet the porters</h2><p id="count" class="count" role="status"></p></div><div id="porters"></div></main>
+    <footer class="site-footer"><div class="wrap footer-inner"><div><p class="footer-brand">Miyoo Mini Ports<span class="heading-dot">.</span></p><p>An independent catalog. A shared love of small things.</p></div><div><p>For Mini, Mini Plus &amp; Mini Flip.<br />Check each port’s notes for device support.</p><a href="https://github.com/OnionUI/Ports-Collection" target="_blank" rel="noopener">Looking for Onion’s bundled ports? ↗</a></div></div></footer>
     <script type="module" src="/src/porters.ts"></script>
   </body>
 </html>
