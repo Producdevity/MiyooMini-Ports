@@ -141,6 +141,11 @@
     },
     "cacuracaptors": {
       "github": "https://github.com/cacuracaptors"
+    },
+    "snyderman3000": {
+      "github": "https://github.com/snyderman3000",
+      "bio": "OnionOS apps and ports for the Miyoo Mini Plus, built with Claude.",
+      "image": "https://github.com/snyderman3000.png"
     }
   }
 }

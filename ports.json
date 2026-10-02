@@ -560,6 +560,46 @@
       "image": "https://raw.githubusercontent.com/cacuracaptors/OpenLara-miyoomini/c4c3afb38ff42ab3d1853ef81505967d168c32ec/docs/images/cover.png",
       "notes": "OpenLara engine with a rebuilt dual-core software renderer; Tomb Raider 1 only. Requires the GOG version (Tomb Raider 1+2+3): supply GAME.GOG (required, the game data is extracted from it on first start) and, optionally, the 02.mp3 to 10.mp3 music files.",
       "porter": ["cacuracaptors"]
+    },
+    {
+      "name": "Mixtape",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/snyderman3000/mixtape/releases",
+      "image": "https://raw.githubusercontent.com/snyderman3000/mixtape/6583447198538c347a564ed5bdbc515c11297d8a/docs/list.png",
+      "notes": "App store for this collection: browse, install and update ports on the device. Mini Plus/Flip (WiFi).",
+      "porter": ["snyderman3000"]
+    },
+    {
+      "name": "Rewind",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/snyderman3000/rewind/releases",
+      "image": "https://raw.githubusercontent.com/snyderman3000/rewind/46f7da2a1f7620fca7d32e1cb7c0a1f3b945b5b9/docs/list.png",
+      "notes": "New-on-streaming movie guide with Rotten Tomatoes/IMDb scores and trailer QR codes; optional Radarr. Mini Plus/Flip (WiFi); needs free TMDB and OMDb API keys.",
+      "porter": ["snyderman3000"]
+    },
+    {
+      "name": "Panel Attack",
+      "categories": ["puzzle"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/snyderman3000/panelattack-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/snyderman3000/panelattack-miyoo/fde124e6e23fec8cb4cefd11d2df321a74811303/docs/cover.png",
+      "notes": "Unofficial, modified port of Panel Attack by the Panel Attack team (panelattack.com); not supported by them, so report bugs to the port's GitHub. Endless, puzzles, time attack, vs CPU. Online play is off for now. Installs to Ports.",
+      "porter": ["snyderman3000"]
+    },
+    {
+      "name": "MiniAmp",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/snyderman3000/miniamp/releases",
+      "image": "https://raw.githubusercontent.com/snyderman3000/miniamp/1dc3d24a88c49cdc407779f814dbbed8c36f190c/docs/cover.png",
+      "notes": "Classic-skin music player: MP3/FLAC/OGG/WAV, .wsz skins, EQ, visualizers. Optional music in games (swaps Onion's libpadsp.so; turning it off restores the original).",
+      "porter": ["snyderman3000"]
     }
   ]
 }

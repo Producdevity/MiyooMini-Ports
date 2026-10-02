@@ -20,6 +20,8 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [HYPR Radio](https://github.com/zoitrok/hypr-miyoo/releases) | App | Experimental | Free | zoitrok |
 | [Lynx](https://github.com/tailtwo/lynx-miyoo/releases) | App | Playable | Free | tailtwo |
 | [Mini Tracker](https://github.com/k2-ant/mini-tracker/releases) | App | Playable | Free | k2-ant |
+| [MiniAmp](https://github.com/snyderman3000/miniamp/releases) | App | Playable | Free | snyderman3000 |
+| [Mixtape](https://github.com/snyderman3000/mixtape/releases) | App | Playable | Free | snyderman3000 |
 | [Miyonos](https://github.com/ElijahTowers/Miyonos/releases) | App | Experimental | Free | ElijahTowers |
 | [miyoo-htop](https://github.com/allanxp4/miyoo-htop/releases) | App | Playable | Free | allanxp4 |
 | [MiyooAudiobook](https://github.com/smonbon/MiyooAudiobook/releases) | App | Playable | Free | smonbon |
@@ -35,6 +37,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [PocketStream](https://github.com/IC-0n417/PocketStream/releases) | App | Experimental | Free | IC-0n417 |
 | [retsend](https://github.com/mxmgorin/retsend/releases) | App | Playable | Free | mxmgorin |
 | [retsurf](https://github.com/mxmgorin/retsurf/releases) | App | Experimental | Free | mxmgorin |
+| [Rewind](https://github.com/snyderman3000/rewind/releases) | App | Playable | Free | snyderman3000 |
 | [Speed Test](https://github.com/josegonzalez/miyoo-speedtest/releases) | App | Playable | Free | josegonzalez |
 | [storii](https://github.com/pcorbel/storii/releases) | App | Playable | Free | pcorbel |
 | [Syncthing](https://github.com/XK9274/syncthing-app-miyoo) | App | Playable | Free | XK9274 |
@@ -53,6 +56,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Tomb Raider](https://github.com/cacuracaptors/OpenLara-miyoomini/releases) | Platform | Playable | Owned data | cacuracaptors |
 | [Balatro](https://github.com/Producdevity/balatro-miyoo-mini-port/releases) | Puzzle | Prerelease | Owned data | Producdevity | EmuReady |
 | [Frozen Bubble](https://github.com/mehdisadeghi/frozen-bubble-onion/releases) | Puzzle, Arcade | Playable | Free | mehdisadeghi |
+| [Panel Attack](https://github.com/snyderman3000/panelattack-miyoo/releases) | Puzzle | Playable | Free | snyderman3000 |
 | [Petals Around the Rose](https://github.com/schizophreek/petals/releases) | Puzzle | Playable | Free | schizophreek |
 | [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing, Platform | Playable | Owned data | neri-rnd |
 | [Super Haxagon](https://github.com/RedTopper/Super-Haxagon/releases) | Reflex | Playable | Free | RedTopper |
