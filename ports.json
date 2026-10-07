@@ -600,6 +600,16 @@
       "image": "https://raw.githubusercontent.com/snyderman3000/miniamp/1dc3d24a88c49cdc407779f814dbbed8c36f190c/docs/cover.png",
       "notes": "Classic-skin music player: MP3/FLAC/OGG/WAV, .wsz skins, EQ, visualizers. Optional music in games (swaps Onion's libpadsp.so; turning it off restores the original).",
       "porter": ["snyderman3000"]
+    },
+    {
+      "name": "Miyoo Better Favorites",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/Architeg/miyoo-better-favorites/releases",
+      "image": "https://raw.githubusercontent.com/Architeg/miyoo-better-favorites/5a2e26f5bd2663d602d7cfbe5b779014b7a437b7/assets/game-list.jpg",
+      "notes": "Favorites grouped by console, scrolling titles and optional Home access/GameSwitcher return. Use the included computer installer. Tested on Mini Plus with Onion 4.3.1-1; other devices unverified.",
+      "porter": ["Architeg"]
     }
   ]
 }
