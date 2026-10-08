@@ -600,6 +600,16 @@
       "image": "https://raw.githubusercontent.com/snyderman3000/miniamp/1dc3d24a88c49cdc407779f814dbbed8c36f190c/docs/cover.png",
       "notes": "Classic-skin music player: MP3/FLAC/OGG/WAV, .wsz skins, EQ, visualizers. Optional music in games (swaps Onion's libpadsp.so; turning it off restores the original).",
       "porter": ["snyderman3000"]
+    },
+    {
+      "name": "SkiFree",
+      "categories": ["arcade"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/cacuracaptors/skifree-miyoomini/releases",
+      "image": "https://raw.githubusercontent.com/cacuracaptors/skifree-miyoomini/35e547a4b3a157073daf2aa9d9a737f54a0ad150/docs/images/cover.png",
+      "notes": "Based on the SkiFree decompilation and Slayer366's SDL2 source port. Ready to run: extract the zip to the SD card root, nothing to supply. 60 fps at the original game speed (Menu+Start switches to the original 25 fps); High Scores with name entry (Menu+Select).",
+      "porter": ["cacuracaptors"]
     }
   ]
 }
