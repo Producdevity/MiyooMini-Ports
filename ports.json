@@ -537,7 +537,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/spacecadetpinball-miyoomini/986ea7b235bf3d7a806508dd4685016559416b1b/docs/images/cover.png",
+      "image": "https://raw.githubusercontent.com/cacuracaptors/spacecadetpinball-miyoomini/570f37d26eb32936689c248b3f32ec8df108f971/docs/images/cover.png",
       "notes": "k4zmu2a decompilation. Supply PINBALL.DAT, FONT.DAT, and all SOUND*.WAV files from the original Windows install.",
       "porter": ["cacuracaptors"]
     },
@@ -600,6 +600,16 @@
       "image": "https://raw.githubusercontent.com/snyderman3000/miniamp/1dc3d24a88c49cdc407779f814dbbed8c36f190c/docs/cover.png",
       "notes": "Classic-skin music player: MP3/FLAC/OGG/WAV, .wsz skins, EQ, visualizers. Optional music in games (swaps Onion's libpadsp.so; turning it off restores the original).",
       "porter": ["snyderman3000"]
+    },
+    {
+      "name": "Hexen II",
+      "categories": ["fps"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/cacuracaptors/uhexen2-miyoomini/releases",
+      "image": "https://raw.githubusercontent.com/cacuracaptors/uhexen2-miyoomini/6ac865077583482c9c8216f27aba0822db77fabf/docs/images/cover.png",
+      "notes": "uHexen2 (Hammer of Thyrion) with the original software renderer spread over both cores; 640x480 3D view, 50-60 FPS. Requires the GOG version: supply everything in its data1 folder (required) and, optionally, its music folder (Track02.ogg to Track17.ogg) for the CD soundtrack.",
+      "porter": ["cacuracaptors"]
     }
   ]
 }
