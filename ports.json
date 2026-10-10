@@ -600,6 +600,16 @@
       "image": "https://raw.githubusercontent.com/snyderman3000/miniamp/1dc3d24a88c49cdc407779f814dbbed8c36f190c/docs/cover.png",
       "notes": "Classic-skin music player: MP3/FLAC/OGG/WAV, .wsz skins, EQ, visualizers. Optional music in games (swaps Onion's libpadsp.so; turning it off restores the original).",
       "porter": ["snyderman3000"]
+    },
+    {
+      "name": "Zuma Deluxe",
+      "categories": ["puzzle"],
+      "status": "experimental",
+      "assets": "owned",
+      "upstream": "https://github.com/Fnava1/zuma-deluxe-miyoo",
+      "image": "https://raw.githubusercontent.com/Fnava1/zuma-deluxe-miyoo/master/packaging/Roms/PORTS/Imgs/cover.png",
+      "notes": "Untested on MM no plus. Supply PC assets via the included GUI builder or provide main.pak.",
+      "porter": ["Fnava1"]
     }
   ]
 }
