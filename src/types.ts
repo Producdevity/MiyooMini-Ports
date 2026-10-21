@@ -13,7 +13,8 @@ export type Category =
   | "reflex"
   | "rpg"
   | "shooter"
-  | "simulation";
+  | "simulation"
+  | "strategy";
 
 export interface Porter {
   name?: string;
@@ -67,6 +68,7 @@ export const CATEGORY_VALUES = [
   "rpg",
   "shooter",
   "simulation",
+  "strategy",
 ] as const;
 
 export const STATUS_LABELS: Record<Status, string> = {
@@ -93,6 +95,7 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   rpg: "RPG",
   shooter: "Shooter",
   simulation: "Simulation",
+  strategy: "Strategy",
 };
 
 const LABELS: Record<FilterKey, Record<string, string>> = {

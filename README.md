@@ -62,7 +62,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Frozen Bubble](https://github.com/mehdisadeghi/frozen-bubble-onion/releases) | Puzzle, Arcade | Playable | Free | mehdisadeghi |
 | [Panel Attack](https://github.com/snyderman3000/panelattack-miyoo/releases) | Puzzle | Playable | Free | snyderman3000 |
 | [Petals Around the Rose](https://github.com/schizophreek/petals/releases) | Puzzle | Playable | Free | schizophreek |
-| [Zuma Deluxe](https://github.com/Fnava1/zuma-deluxe-miyoo) | Puzzle | Experimental | Owned data | Fnava1 |
+| [Zuma Deluxe](https://github.com/Fnava1/zuma-deluxe-miyoo/releases) | Puzzle | Playable | Owned data | Fnava1 |
 | [Elasto Mania](https://github.com/neri-rnd/elma-miyoo/releases) | Racing, Platform | Playable | Owned data | neri-rnd |
 | [Mario Kart 64](https://github.com/cacuracaptors/mk64-miyoomini/releases) | Racing | Playable | Owned data | cacuracaptors |
 | [Super Haxagon](https://github.com/RedTopper/Super-Haxagon/releases) | Reflex | Playable | Free | RedTopper |
@@ -76,6 +76,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Insaniquarium Deluxe](https://github.com/RAlexander777/Insaniquarium_Miyoo_Mini_Flip/releases) | Simulation, Arcade | Experimental | Owned data | RAlexander777 |
 | [Minecraft: Bedrock Edition 1.2](https://github.com/DankMiimer/minecraft-bedrock-miyoo-mini-plus/releases) | Simulation | Experimental | Owned data | DankMiimer |
 | [OpenRCT2](https://github.com/scheeseman486/OpenRCT2mini/releases) | Simulation | Playable | Owned data | scheeseman486 |
+| [Plants vs. Zombies GOTY Edition](https://github.com/Fnava1/pvz-portable-miyoo-/releases) | Strategy | Playable | Owned data | Fnava1 |
 
 <!-- END PORTS -->
 

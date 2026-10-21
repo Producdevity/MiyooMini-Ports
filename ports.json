@@ -644,11 +644,11 @@
     {
       "name": "Zuma Deluxe",
       "categories": ["puzzle"],
-      "status": "experimental",
+      "status": "playable",
       "assets": "owned",
-      "upstream": "https://github.com/Fnava1/zuma-deluxe-miyoo",
+      "upstream": "https://github.com/Fnava1/zuma-deluxe-miyoo/releases",
       "image": "https://raw.githubusercontent.com/Fnava1/zuma-deluxe-miyoo/9f5ffddfd7085119c487e9e062bd16fd2bfaa54f/packaging/Roms/PORTS/Imgs/cover.png",
-      "notes": "Untested on the original Mini. Supply your PC assets through the GUI builder, or prepare main.pak and the converted music/zuma.it soundtrack manually.",
+      "notes": "Untested on the original Mini. Copy your PC assets to Roms/PORTS/Games/Zuma Deluxe/ or use the launcher.py on PC.",
       "porter": ["Fnava1"]
     },
     {
@@ -660,6 +660,16 @@
       "image": "https://raw.githubusercontent.com/cacuracaptors/mk64-miyoomini/19a74afb49488f2430a9c0d8a3e08d561e8bb104/docs/images/cover.png",
       "notes": "jnmartin84's mk64-dc (Dreamcast port of the Mario Kart 64 decompilation) with a dual-core software renderer: 640x480, 60 FPS single-player races, no overclock. Supply your own Mario Kart 64 (USA) ROM (.z64, .n64, .v64 or zipped); the game data is built from it on the first start. Save states and Game Switcher.",
       "porter": ["cacuracaptors"]
+    },
+    {
+      "name": "Plants vs. Zombies GOTY Edition",
+      "categories": ["strategy"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/Fnava1/pvz-portable-miyoo-/releases",
+      "image": "https://raw.githubusercontent.com/Fnava1/pvz-portable-miyoo-/main/packaging/Roms/PORTS/Imgs/Plants%20vs.%20Zombies.png",
+      "notes": "Untested on the original Mini. Extract the release, then copy your PC main.pak to Roms/PORTS/Games/Plants vs. Zombies/, keeping the bundled properties/ folder. Or use Launcher.py on PC.",
+      "porter": ["Fnava1"]
     }
   ]
 }

@@ -48,7 +48,8 @@
                 "reflex",
                 "rpg",
                 "shooter",
-                "simulation"
+                "simulation",
+                "strategy"
               ],
               "description": "Genre. Reuse an existing value; add a new one only if nothing fits."
             },

@@ -525,6 +525,10 @@ main.wrap {
   --c: #334155;
 }
 
+.cat-strategy {
+  --c: #0e7490;
+}
+
 :root[data-theme="dark"] .cat-app {
   --c: #53c4b4;
 }
@@ -563,6 +567,10 @@ main.wrap {
 
 :root[data-theme="dark"] .cat-shooter {
   --c: #94a3b8;
+}
+
+:root[data-theme="dark"] .cat-strategy {
+  --c: #67c9df;
 }
 
 .tag.st-playable,
