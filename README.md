@@ -29,6 +29,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [miyoodeck](https://github.com/mkl159/miyoodeck/releases) | App | Playable | Free | mkl159 |
 | [MiyooFin](https://github.com/S3ggie/MiyooFin/releases) | App | Experimental | Free | S3ggie |
 | [MiyooPod](https://github.com/danfragoso/miyoopod/releases) | App | Playable | Free | danfragoso |
+| [MiYooSDR](https://github.com/uncannyowly/MiYooSDR/releases) | App | Experimental | Free | uncannyowly |
 | [MiyooThemeDownloader](https://github.com/SebastianMaung/MiyooThemeDownloader/releases) | App | Playable | Free | SebastianMaung |
 | [Moonlight](https://github.com/XK9274/moonlight-app-miyoo) | App | Playable | Free | XK9274 |
 | [onion-kids-mode](https://github.com/daverad/onion-kids-mode/releases) | App | Playable | Free | daverad |
@@ -45,6 +46,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Time Quick Fix](https://github.com/hotcereal/time-quick-fix) | App | Playable | Free | hotcereal |
 | [wthr](https://github.com/trashplusplus/wthr/releases) | App | Playable | Free | trashplusplus |
 | [3D Pinball Space Cadet](https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases) | Arcade | Playable | Owned data | cacuracaptors |
+| [Grand Theft Auto](https://github.com/uncannyowly/gta-emiyoolator/releases) | Arcade | Experimental | Owned data | uncannyowly |
 | [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade, Puzzle | Playable | Free | Willems Davy |
 | [SkiFree](https://github.com/cacuracaptors/skifree-miyoomini/releases) | Arcade | Playable | Free | cacuracaptors |
 | [Tennis vs Zombies](https://github.com/gutospinelli/TennisVsZombies-MiyooMini/releases) | Arcade | Playable | Free | Augusto Spinelli |
@@ -77,6 +79,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Minecraft: Bedrock Edition 1.2](https://github.com/DankMiimer/minecraft-bedrock-miyoo-mini-plus/releases) | Simulation | Experimental | Owned data | DankMiimer |
 | [OpenRCT2](https://github.com/scheeseman486/OpenRCT2mini/releases) | Simulation | Playable | Owned data | scheeseman486 |
 | [Plants vs. Zombies GOTY Edition](https://github.com/Fnava1/pvz-portable-miyoo-/releases) | Strategy | Playable | Owned data | Fnava1 |
+| [Scorched Earth](https://github.com/uncannyowly/scorched-emiyoolator/releases) | Strategy | Playable | Free | uncannyowly |
 
 <!-- END PORTS -->
 
