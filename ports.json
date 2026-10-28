@@ -700,6 +700,26 @@
       "image": "https://raw.githubusercontent.com/uncannyowly/gta-emiyoolator/39695c95be0942e61628c1b1db9b6712bb938687/docs/screenshot.png",
       "notes": "The original 1997 Windows exe, run by box86 and a shell that stands in for the Windows parts it calls. Copy WINO, GTADATA and Music from Rockstar's 2002 freeware release. No intro movie or network play. Tested on a Mini Plus; untested on the original Mini.",
       "porter": ["uncannyowly"]
+    },
+    {
+      "name": "Bible",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/retroshelf64nmore/miyoo-bible/releases",
+      "image": "https://raw.githubusercontent.com/retroshelf64nmore/miyoo-bible/main/screenshots/reader.png",
+      "notes": "Bible reader with button controls: KJV + WEB, red letters, adjustable text size, night mode, remembers your place. The International download on the release page includes all 60 translations.",
+      "porter": ["retroshelf64nmore"]
+    },
+    {
+      "name": "Overclock",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/retroshelf64nmore/miyoo-overclock/releases",
+      "image": "https://raw.githubusercontent.com/retroshelf64nmore/miyoo-overclock/main/screenshots/main.png",
+      "notes": "CPU clock for all systems or per system, with green/yellow/orange zones from Onion's limits and one-button restore. Overclocking can cause crashes and freezes; use at your own risk.",
+      "porter": ["retroshelf64nmore"]
     }
   ]
 }
