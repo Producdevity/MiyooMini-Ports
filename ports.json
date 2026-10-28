@@ -708,7 +708,7 @@
       "assets": "free",
       "upstream": "https://github.com/retroshelf64nmore/miyoo-bible/releases",
       "image": "https://raw.githubusercontent.com/retroshelf64nmore/miyoo-bible/main/screenshots/reader.png",
-      "notes": "Bible reader with button controls: KJV + WEB, red letters, adjustable text size, night mode, remembers your place. The International download on the release page adds 58 more languages.",
+      "notes": "Bible reader with button controls: KJV + WEB, red letters, adjustable text size, night mode, remembers your place. The International download on the release page includes all 60 translations.",
       "porter": ["retroshelf64nmore"]
     },
     {
