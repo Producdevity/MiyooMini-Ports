@@ -702,12 +702,12 @@
       "porter": ["uncannyowly"]
     },
     {
-      "name": "Broforce lite",
-      "categories": ["shooter","arcade"],
+      "name": "Broforce Lite",
+      "categories": ["shooter", "arcade"],
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/jajarom82/broforce-lite/releases",
-      "image": "https://github.com/jajarom82/broforce-lite/blob/main/preview/01_title.png",
+      "image": "https://raw.githubusercontent.com/jajarom82/broforce-lite/main/preview/01_title.png",
       "notes": "AI demake of Broforce. Tested on a Mini Plus, 60 fps average.",
       "porter": ["jajarom82"]
     }
