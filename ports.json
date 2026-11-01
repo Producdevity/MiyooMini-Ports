@@ -720,6 +720,16 @@
       "image": "https://raw.githubusercontent.com/retroshelf64nmore/miyoo-overclock/main/screenshots/main.png",
       "notes": "CPU clock for all systems or per system, with green/yellow/orange zones from Onion's limits and one-button restore. Overclocking can cause crashes and freezes; use at your own risk.",
       "porter": ["retroshelf64nmore"]
+    },
+    {
+      "name": "Kingdom: New Lands",
+      "categories": ["strategy", "simulation"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/devarshi16/kingdom-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/devarshi16/kingdom-miyoo/main/media/gameplay.gif",
+      "notes": "Native clean-room port running at 60 FPS. BYOD: requires Kingdom_Data from Steam, GOG, or Epic Games. Built for OnionOS on Miyoo Mini and Mini Plus.",
+      "porter": ["devarshi16"]
     }
   ]
 }
