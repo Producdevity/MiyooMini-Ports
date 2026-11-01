@@ -11,6 +11,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | Port | Category | Status | Assets | Porter |
 | --- | --- | --- | --- | --- |
 | [Better WiFi](https://github.com/XK9274/better-wifi-miyoo/releases) | App | Playable | Free | XK9274 |
+| [Bible](https://github.com/retroshelf64nmore/miyoo-bible/releases) | App | Playable | Free | retroshelf64nmore |
 | [bible.sh](https://github.com/likeich/bible-sh/releases) | App | Playable | Free | likeich |
 | [Cloud Saves](https://github.com/hotcereal/cloud-saves-miyoo-mini-plus) | App | Playable | Free | hotcereal |
 | [CPU Overclock](https://github.com/LiveLoveLinux/Cpu_Overclock_Onion_OS) | App | Playable | Free | LiveLoveLinux |
@@ -33,6 +34,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [MiyooThemeDownloader](https://github.com/SebastianMaung/MiyooThemeDownloader/releases) | App | Playable | Free | SebastianMaung |
 | [Moonlight](https://github.com/XK9274/moonlight-app-miyoo) | App | Playable | Free | XK9274 |
 | [onion-kids-mode](https://github.com/daverad/onion-kids-mode/releases) | App | Playable | Free | daverad |
+| [Overclock](https://github.com/retroshelf64nmore/miyoo-overclock/releases) | App | Playable | Free | retroshelf64nmore |
 | [Pico-8 Wrapper](https://github.com/XK9274/pico-8-wrapper-miyoo/releases) | App | Playable | Owned data | XK9274 |
 | [PocketFeeds](https://github.com/IC-0n417/PocketFeeds/releases) | App | Playable | Free | IC-0n417 |
 | [PocketFlex](https://github.com/jackharvest/PocketFlex/releases) | App | Experimental | Free | jackharvest |
