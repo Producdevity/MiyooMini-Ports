@@ -720,6 +720,16 @@
       "image": "https://raw.githubusercontent.com/retroshelf64nmore/miyoo-overclock/main/screenshots/main.png",
       "notes": "CPU clock for all systems or per system, with green/yellow/orange zones from Onion's limits and one-button restore. Overclocking can cause crashes and freezes; use at your own risk.",
       "porter": ["retroshelf64nmore"]
+    },
+    {
+      "name": "Broforce Lite",
+      "categories": ["arcade", "shooter"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/jajarom82/broforce-lite/releases",
+      "image": "https://raw.githubusercontent.com/jajarom82/broforce-lite/main/preview/01_title.png",
+      "notes": "demake of broforce gun-runner by a fan. Tested on MM+ only",
+      "porter": ["jajarom82"]
     }
   ]
 }
