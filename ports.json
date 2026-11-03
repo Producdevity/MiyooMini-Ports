@@ -720,6 +720,16 @@
       "image": "https://raw.githubusercontent.com/retroshelf64nmore/miyoo-overclock/main/screenshots/main.png",
       "notes": "CPU clock for all systems or per system, with green/yellow/orange zones from Onion's limits and one-button restore. Overclocking can cause crashes and freezes; use at your own risk.",
       "porter": ["retroshelf64nmore"]
+    },
+    {
+      "name": "Risk of Rain (2013)",
+      "categories": ["platform","fps"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/Fnava1/risk-of-rain-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/Fnava1/risk-of-rain-miyoo/master/dist/Roms/PORTS/Imgs/Risk%20of%20Rain.png",
+      "notes": "Untested on the original Mini. Extract the release, then copy your PC data.win, save.ini and all the .ogg sound files to Roms/PORTS/Games/Risk of Rain/",
+      "porter": ["Fnava1"]
     }
   ]
 }
