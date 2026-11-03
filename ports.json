@@ -702,6 +702,15 @@
       "porter": ["uncannyowly"]
     },
     {
+      "name": "Broforce Lite",
+      "categories": ["shooter", "arcade"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/jajarom82/broforce-lite/releases",
+      "image": "https://raw.githubusercontent.com/jajarom82/broforce-lite/main/preview/01_title.png",
+      "notes": "AI demake of Broforce. Tested on a Mini Plus, 60 fps average.",
+      "porter": ["jajarom82"]
+    },
       "name": "Bible",
       "categories": ["app"],
       "status": "playable",
