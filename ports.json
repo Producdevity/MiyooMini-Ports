@@ -722,6 +722,16 @@
       "porter": ["retroshelf64nmore"]
     },
     {
+      "name": "Kingdom: New Lands",
+      "categories": ["strategy", "simulation"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/devarshi16/kingdom-miyoo/releases",
+      "image": "https://raw.githubusercontent.com/devarshi16/kingdom-miyoo/main/media/gameplay.gif",
+      "notes": "Native clean-room port running at 60 FPS. BYOD: requires Kingdom_Data from Steam, GOG, or Epic Games. Built for OnionOS on Miyoo Mini and Mini Plus.",
+      "porter": ["devarshi16"]
+    },
+    {
       "name": "Risk of Rain (2013)",
       "categories": ["platform"],
       "status": "playable",
