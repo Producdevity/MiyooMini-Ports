@@ -60,6 +60,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Quake II](https://github.com/Apaczer/quake2-miyoo/releases) | FPS | Playable | Owned data | Apaczer |
 | [Captain Claw](https://github.com/ArticlessCZ-Coder/captain-claw-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
 | [Jazz Jackrabbit 2](https://github.com/ArticlessCZ-Coder/jazz2-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
+| [Risk of Rain (2013)](https://github.com/Fnava1/risk-of-rain-miyoo/releases) | Platform | Playable | Owned data | Fnava1 |
 | [SuperTux](https://github.com/andrigamerita/supertux/releases) | Platform | Playable | Free | andrigamerita |
 | [Tomb Raider](https://github.com/cacuracaptors/OpenLara-miyoomini/releases) | Platform | Playable | Owned data | cacuracaptors |
 | [Balatro](https://github.com/Producdevity/balatro-miyoo-mini-port/releases) | Puzzle | Prerelease | Owned data | Producdevity | EmuReady |
