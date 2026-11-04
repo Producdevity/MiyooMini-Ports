@@ -48,6 +48,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Time Quick Fix](https://github.com/hotcereal/time-quick-fix) | App | Playable | Free | hotcereal |
 | [wthr](https://github.com/trashplusplus/wthr/releases) | App | Playable | Free | trashplusplus |
 | [3D Pinball Space Cadet](https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases) | Arcade | Playable | Owned data | cacuracaptors |
+| [Broforce Lite](https://github.com/jajarom82/broforce-lite/releases) | Arcade, Shooter | Playable | Free | jajarom82 |
 | [Grand Theft Auto](https://github.com/uncannyowly/gta-emiyoolator/releases) | Arcade | Experimental | Owned data | uncannyowly |
 | [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade, Puzzle | Playable | Free | Willems Davy |
 | [SkiFree](https://github.com/cacuracaptors/skifree-miyoomini/releases) | Arcade | Playable | Free | cacuracaptors |

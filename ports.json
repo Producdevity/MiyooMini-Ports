@@ -730,6 +730,16 @@
       "image": "https://raw.githubusercontent.com/Fnava1/risk-of-rain-miyoo/master/dist/Roms/PORTS/Imgs/Risk%20of%20Rain.png",
       "notes": "Untested on the original Mini. Extract the release, then copy your PC data.win and all .ogg sound files to Roms/PORTS/Games/Risk of Rain/.",
       "porter": ["Fnava1"]
+    },
+    {
+      "name": "Broforce Lite",
+      "categories": ["arcade", "shooter"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/jajarom82/broforce-lite/releases",
+      "image": "https://raw.githubusercontent.com/jajarom82/broforce-lite/main/preview/01_title.png",
+      "notes": "Fan demake of Broforce. Tested on Miyoo Mini Plus only.",
+      "porter": ["jajarom82"]
     }
   ]
 }
