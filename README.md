@@ -48,6 +48,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Time Quick Fix](https://github.com/hotcereal/time-quick-fix) | App | Playable | Free | hotcereal |
 | [wthr](https://github.com/trashplusplus/wthr/releases) | App | Playable | Free | trashplusplus |
 | [3D Pinball Space Cadet](https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases) | Arcade | Playable | Owned data | cacuracaptors |
+| [Broforce Lite](https://github.com/jajarom82/broforce-lite/releases) | Arcade, Shooter | Playable | Free | jajarom82 |
 | [Grand Theft Auto](https://github.com/uncannyowly/gta-emiyoolator/releases) | Arcade | Experimental | Owned data | uncannyowly |
 | [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade, Puzzle | Playable | Free | Willems Davy |
 | [SkiFree](https://github.com/cacuracaptors/skifree-miyoomini/releases) | Arcade | Playable | Free | cacuracaptors |
@@ -60,6 +61,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Quake II](https://github.com/Apaczer/quake2-miyoo/releases) | FPS | Playable | Owned data | Apaczer |
 | [Captain Claw](https://github.com/ArticlessCZ-Coder/captain-claw-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
 | [Jazz Jackrabbit 2](https://github.com/ArticlessCZ-Coder/jazz2-miyoo/releases) | Platform | Playable | Owned data | ArticlessCZ-Coder |
+| [Risk of Rain (2013)](https://github.com/Fnava1/risk-of-rain-miyoo/releases) | Platform | Playable | Owned data | Fnava1 |
 | [SuperTux](https://github.com/andrigamerita/supertux/releases) | Platform | Playable | Free | andrigamerita |
 | [Tomb Raider](https://github.com/cacuracaptors/OpenLara-miyoomini/releases) | Platform | Playable | Owned data | cacuracaptors |
 | [Balatro](https://github.com/Producdevity/balatro-miyoo-mini-port/releases) | Puzzle | Prerelease | Owned data | Producdevity | EmuReady |
