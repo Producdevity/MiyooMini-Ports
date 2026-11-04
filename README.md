@@ -80,6 +80,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Insaniquarium Deluxe](https://github.com/RAlexander777/Insaniquarium_Miyoo_Mini_Flip/releases) | Simulation, Arcade | Experimental | Owned data | RAlexander777 |
 | [Minecraft: Bedrock Edition 1.2](https://github.com/DankMiimer/minecraft-bedrock-miyoo-mini-plus/releases) | Simulation | Experimental | Owned data | DankMiimer |
 | [OpenRCT2](https://github.com/scheeseman486/OpenRCT2mini/releases) | Simulation | Playable | Owned data | scheeseman486 |
+| [Kingdom: New Lands](https://github.com/devarshi16/kingdom-miyoo/releases) | Strategy, Simulation | Playable | Owned data | devarshi16 |
 | [Plants vs. Zombies GOTY Edition](https://github.com/Fnava1/pvz-portable-miyoo-/releases) | Strategy | Playable | Owned data | Fnava1 |
 | [Scorched Earth](https://github.com/uncannyowly/scorched-emiyoolator/releases) | Strategy | Playable | Free | uncannyowly |
 
