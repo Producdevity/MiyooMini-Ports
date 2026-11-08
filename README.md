@@ -77,6 +77,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Mines of Moria](https://github.com/mxmgorin/moria-handheld/releases) | RPG | Playable | Free | mxmgorin |
 | [Monk Tower](https://github.com/mxmgorin/monktower-handheld/releases) | RPG | Playable | Free | mxmgorin |
 | [Stardew Valley](https://github.com/Producdevity/stardew-valley-miyoo-mini-port/releases) | RPG, Simulation | Experimental | Owned data | Producdevity | EmuReady |
+| [The Legend of Zelda: Ocarina of Time](https://github.com/cacuracaptors/oot-miyoomini/releases) | RPG, Platform | Playable | Owned data | cacuracaptors |
 | [Undertale](https://github.com/cobaltgit/Butterscotch/releases) | RPG | Playable | Owned data | cobaltgit |
 | [POSTAL](https://github.com/bostrt/POSTAL-miyoo/releases) | Shooter | Experimental | Owned data | bostrt |
 | [Insaniquarium Deluxe](https://github.com/RAlexander777/Insaniquarium_Miyoo_Mini_Flip/releases) | Simulation, Arcade | Experimental | Owned data | RAlexander777 |
