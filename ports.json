@@ -517,7 +517,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/fallout1-ce-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/fallout1-ce-miyoomini/7a5e5cc969a8e406afed837892e40c487524cc45/docs/images/cover.png",
+      "image": "https://github.com/user-attachments/assets/0214c398-e544-4cfe-b499-f5bfc20ecb51",
       "notes": "fallout1-ce port with a full D-pad/button control scheme. Supply your own master.dat, critter.dat, and data folder.",
       "porter": ["cacuracaptors"]
     },
@@ -527,7 +527,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/fallout2-ce-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/fallout2-ce-miyoomini/e8b85743887c4ac0c836b4c4aa0bc13ae8c70020/docs/images/cover.png",
+      "image": "https://github.com/user-attachments/assets/4ec40f25-2b69-4395-af69-c50c6a97ef87",
       "notes": "Based on the actively maintained FOR:CE fork, not the original fallout2-ce. Native mod support, including the Restoration Project. Supply your own master.dat, critter.dat, and data folder.",
       "porter": ["cacuracaptors"]
     },
@@ -537,7 +537,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/spacecadetpinball-miyoomini/570f37d26eb32936689c248b3f32ec8df108f971/docs/images/cover.png",
+      "image": "https://github.com/user-attachments/assets/07fd8c58-e452-43f3-be5c-d1b75149a563",
       "notes": "k4zmu2a decompilation. Supply PINBALL.DAT, FONT.DAT, and all SOUND*.WAV files from the original Windows install.",
       "porter": ["cacuracaptors"]
     },
@@ -557,7 +557,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/OpenLara-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/OpenLara-miyoomini/c4c3afb38ff42ab3d1853ef81505967d168c32ec/docs/images/cover.png",
+      "image": "https://github.com/user-attachments/assets/082c6607-84d6-4ae0-8333-ce1473b554d8",
       "notes": "OpenLara engine with a rebuilt dual-core software renderer; Tomb Raider 1 only. Requires the GOG version (Tomb Raider 1+2+3): supply GAME.GOG (required, the game data is extracted from it on first start) and, optionally, the 02.mp3 to 10.mp3 music files.",
       "porter": ["cacuracaptors"]
     },
@@ -627,7 +627,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/uhexen2-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/uhexen2-miyoomini/6ac865077583482c9c8216f27aba0822db77fabf/docs/images/cover.png",
+      "image": "https://github.com/user-attachments/assets/67f81b26-3ccb-4996-8534-b470c924714b",
       "notes": "uHexen2 (Hammer of Thyrion) with the original software renderer spread over both cores; 640x480 3D view, 50-60 FPS. Requires the GOG version: supply everything in its data1 folder (required) and, optionally, its music folder (Track02.ogg to Track17.ogg) for the CD soundtrack.",
       "porter": ["cacuracaptors"]
     },
@@ -637,7 +637,7 @@
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/cacuracaptors/skifree-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/skifree-miyoomini/35e547a4b3a157073daf2aa9d9a737f54a0ad150/docs/images/cover.png",
+      "image": "https://github.com/user-attachments/assets/a3d3468b-2df6-4577-93d9-4431e547da63",
       "notes": "Based on the SkiFree decompilation and Slayer366's SDL2 source port. Ready to run: extract the zip to the SD card root, nothing to supply. 60 fps at the original game speed (Menu+Start switches to the original 25 fps); High Scores with name entry (Menu+Select).",
       "porter": ["cacuracaptors"]
     },
@@ -657,7 +657,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/mk64-miyoomini/releases",
-      "image": "https://raw.githubusercontent.com/cacuracaptors/mk64-miyoomini/19a74afb49488f2430a9c0d8a3e08d561e8bb104/docs/images/cover.png",
+      "image": "https://github.com/user-attachments/assets/98a96592-1408-4140-a426-519dcb4edcc7",
       "notes": "jnmartin84's mk64-dc (Dreamcast port of the Mario Kart 64 decompilation) with a dual-core software renderer: 640x480, 60 FPS single-player races, no overclock. Supply your own Mario Kart 64 (USA) ROM (.z64, .n64, .v64 or zipped); the game data is built from it on the first start. Save states and Game Switcher.",
       "porter": ["cacuracaptors"]
     },
@@ -750,6 +750,16 @@
       "image": "https://raw.githubusercontent.com/jajarom82/broforce-lite/main/preview/01_title.png",
       "notes": "Fan demake of Broforce. Tested on Miyoo Mini Plus only.",
       "porter": ["jajarom82"]
+    },
+    {
+      "name": "The Legend of Zelda: Ocarina of Time",
+      "categories": ["rpg", "platform"],
+      "status": "playable",
+      "assets": "owned",
+      "upstream": "https://github.com/cacuracaptors/oot-miyoomini/releases",
+      "image": "https://github.com/user-attachments/assets/256b665d-f72e-4e85-87ff-43f912fe5cb5",
+      "notes": "zeldaret/oot decompilation with a dual-core software renderer: dynamic resolution up to 640x480, the game's 20 FPS interpolated to 30 FPS, Ship of Harkinian enhancements, in-game options menu and save states. Supply your own Ocarina of Time USA 1.1 (Rev A) ROM (.z64, .n64, .v64 or zipped); the game data is built from it on the first start. Your European ROM optionally adds German and French.",
+      "porter": ["cacuracaptors"]
     }
   ]
 }
