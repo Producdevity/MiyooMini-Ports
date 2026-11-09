@@ -757,7 +757,7 @@
       "status": "playable",
       "assets": "owned",
       "upstream": "https://github.com/cacuracaptors/oot-miyoomini/releases",
-      "image": "https://github.com/user-attachments/assets/256b665d-f72e-4e85-87ff-43f912fe5cb5",
+      "image": "https://raw.githubusercontent.com/cacuracaptors/oot-miyoomini/d5f4ced4214ba495b13738a2aab441b4abecfdc0/docs/screenshot.png",
       "notes": "zeldaret/oot decompilation with a dual-core software renderer: dynamic resolution up to 640x480, the game's 20 FPS interpolated to 30 FPS, Ship of Harkinian enhancements, customizable buttons, in-game options menu and save states. Supply your own Ocarina of Time USA 1.1 (Rev A) ROM (.z64, .n64, .v64 or zipped); the game data is built from it on the first start. English, Japanese, Brazilian Portuguese, Italian and Spanish included; the Europe (En,Fr,De) (Rev A) ROM optionally adds German and French.",
       "porter": ["cacuracaptors"]
     }
