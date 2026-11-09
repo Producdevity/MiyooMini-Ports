@@ -766,7 +766,7 @@
       "categories": ["arcade"],
       "status": "playable",
       "assets": "free",
-      "upstream": "https://github.com/yughias/Ikachan-Recomp",
+      "upstream": "https://github.com/yughias/Ikachan-Recomp/releases",
       "image": "https://raw.githubusercontent.com/yughias/Ikachan-Recomp/refs/heads/master/Resource/icon.bmp",
       "notes": "Ikachan recompiled with sdl2 and savestate support",
       "porter": ["yughias"]
