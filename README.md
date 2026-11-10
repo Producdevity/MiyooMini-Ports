@@ -50,7 +50,9 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [3D Pinball Space Cadet](https://github.com/cacuracaptors/spacecadetpinball-miyoomini/releases) | Arcade | Playable | Owned data | cacuracaptors |
 | [Broforce Lite](https://github.com/jajarom82/broforce-lite/releases) | Arcade, Shooter | Playable | Free | jajarom82 |
 | [Grand Theft Auto](https://github.com/uncannyowly/gta-emiyoolator/releases) | Arcade | Experimental | Owned data | uncannyowly |
+| [Ikachan](https://github.com/yughias/Ikachan-Recomp/releases) | Arcade | Playable | Free | yughias |
 | [joyrider3774 games](https://github.com/joyrider3774/miyoo_mini_games/releases) | Arcade, Puzzle | Playable | Free | Willems Davy |
+| [Minit](https://github.com/devarshi16/minit-miyoo/releases) | Arcade | Experimental | Owned data | devarshi16 |
 | [SkiFree](https://github.com/cacuracaptors/skifree-miyoomini/releases) | Arcade | Playable | Free | cacuracaptors |
 | [Tennis vs Zombies](https://github.com/gutospinelli/TennisVsZombies-MiyooMini/releases) | Arcade | Playable | Free | Augusto Spinelli |
 | [UFO 50](https://github.com/Producdevity/ufo50-miyoo-mini-port/releases) | Arcade, Platform, Puzzle, RPG | Prerelease | Owned data | Producdevity | EmuReady |
