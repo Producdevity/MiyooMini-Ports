@@ -767,18 +767,18 @@
       "status": "playable",
       "assets": "free",
       "upstream": "https://github.com/yughias/Ikachan-Recomp/releases",
-      "image": "https://raw.githubusercontent.com/yughias/Ikachan-Recomp/refs/heads/master/Resource/icon.bmp",
-      "notes": "Ikachan recompiled with sdl2 and savestate support",
+      "image": "https://raw.githubusercontent.com/yughias/Ikachan-Recomp/bda7c317e2cfe0837daf12c3b3942542e7861174/Resource/icon.bmp",
+      "notes": "Ikachan recompiled with SDL2 and autosave support for OnionOS. Extract the Miyoo release ZIP to the root of your SD card.",
       "porter": ["yughias"]
     },
     {
       "name": "Minit",
       "categories": ["arcade"],
-      "status": "playable",
+      "status": "experimental",
       "assets": "owned",
       "upstream": "https://github.com/devarshi16/minit-miyoo/releases",
-      "image": "https://github.com/devarshi16/minit-miyoo/blob/main/docs/media/gameplay.gif?raw=true",
-      "notes": "Sixty seconds at a time, on OnionOS. Bring the files from your own PC copy of Minit.",
+      "image": "https://raw.githubusercontent.com/devarshi16/minit-miyoo/cf08b5f12a7c586ae5feed0116bc1e3ef1b9c3c3/docs/media/gameplay.gif",
+      "notes": "Supply data.win, minit_loc.csv and all .ogg files from your PC copy. Upstream tested early areas on Mini Plus (OnionOS); this contributor also reports Mini v4 testing. Later areas, the ending and Mini Flip remain unverified. Short frame drops can occur.",
       "porter": ["devarshi16"]
     }
   ]
