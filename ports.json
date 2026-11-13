@@ -788,7 +788,7 @@
       "assets": "free",
       "upstream": "https://github.com/cacuracaptors/claude-agent-miyoo/releases",
       "image": "https://raw.githubusercontent.com/cacuracaptors/claude-agent-miyoo/4e47f1f119a9c6ee66e3615b48dad523f4c9a6a7/docs/screenshot.png",
-      "notes": "Lets Claude (from the Claude app on your phone or computer) check, fix and set up the device through a custom connector. Asks on the device before each kind of action, shows its plan first, and backs up every file it changes. Developer tools: launch builds, replay input, timed screenshots, crash reports. Needs a Claude account. Mini Plus / Mini Flip (WiFi).",
+      "notes": "Lets Claude (from the Claude app on your phone or computer) check, fix and set up the device through a custom connector. Asks on the device before each kind of action, shows its plan first, and backs up every file it changes. Developer tools: launch builds, replay input, timed screenshots, crash reports. Needs a Claude account and WiFi. Tested on Mini Plus; Mini Flip untested.",
       "porter": ["cacuracaptors"]
     }
   ]
