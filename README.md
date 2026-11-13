@@ -13,6 +13,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Better WiFi](https://github.com/XK9274/better-wifi-miyoo/releases) | App | Playable | Free | XK9274 |
 | [Bible](https://github.com/retroshelf64nmore/miyoo-bible/releases) | App | Playable | Free | retroshelf64nmore |
 | [bible.sh](https://github.com/likeich/bible-sh/releases) | App | Playable | Free | likeich |
+| [Claude Agent](https://github.com/cacuracaptors/claude-agent-miyoo/releases) | App | Playable | Free | cacuracaptors |
 | [Cloud Saves](https://github.com/hotcereal/cloud-saves-miyoo-mini-plus) | App | Playable | Free | hotcereal |
 | [CPU Overclock](https://github.com/LiveLoveLinux/Cpu_Overclock_Onion_OS) | App | Playable | Free | LiveLoveLinux |
 | [dpad-chat](https://github.com/SartajBhuvaji/dpad-chat/releases) | App | Playable | Free | SartajBhuvaji |
