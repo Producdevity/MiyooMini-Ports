@@ -89,6 +89,7 @@ Live site: <https://producdevity.github.io/MiyooMini-Ports/>
 | [Kingdom: New Lands](https://github.com/devarshi16/kingdom-miyoo/releases) | Strategy, Simulation | Playable | Owned data | devarshi16 |
 | [Plants vs. Zombies GOTY Edition](https://github.com/Fnava1/pvz-portable-miyoo-/releases) | Strategy | Playable | Owned data | Fnava1 |
 | [Scorched Earth](https://github.com/uncannyowly/scorched-emiyoolator/releases) | Strategy | Playable | Free | uncannyowly |
+| [Slay the Spire](https://github.com/devarshi16/slay-the-spire-miyoo/releases) | Strategy, RPG | Prerelease | Owned data | devarshi16 |
 
 <!-- END PORTS -->
 
