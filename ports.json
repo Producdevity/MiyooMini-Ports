@@ -800,6 +800,16 @@
       "image": "https://raw.githubusercontent.com/devarshi16/slay-the-spire-miyoo/521772858163d2b03d29f353ae4478f8c497ae30/docs/media/gameplay.gif",
       "notes": "Native ARMv7 runtime for OnionOS (1600 MHz via cpuclock). Supply base.apk and split_InstallPack.apk from your legally owned ARMv7 Android copy (PC/iOS builds unsupported); first boot extracts assets and downscales textures on-device (~1-2 min, ~1.6 GB free required). Tested on Miyoo Mini Plus (OnionOS); Mini v4 and Mini Flip unverified, new profiles default to Miyoo, and CJK glyph rendering is unsupported.",
       "porter": ["devarshi16"]
+    },
+    {
+      "name": "ArchiveTV",
+      "categories": ["app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/mroxfordyazuka/ArchiveTV/releases",
+      "image": "https://raw.githubusercontent.com/mroxfordyazuka/ArchiveTV/HEAD/docs/guide.png",
+      "notes": "Internet Archive video browser. The stable release requires Onion OS 4.2+. On Mini Plus, use Wi-Fi to search, watch while downloading, and queue videos. For offline playback, copy videos into App/ArchiveTV/videos. The spruceOS and sprigUI build is an untested beta.",
+      "porter": ["mroxfordyazuka"]
     }
   ]
 }
