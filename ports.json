@@ -808,7 +808,7 @@
       "assets": "free",
       "upstream": "https://github.com/mroxfordyazuka/ArchiveTV/releases",
       "image": "https://raw.githubusercontent.com/mroxfordyazuka/ArchiveTV/HEAD/docs/guide.png",
-      "notes": "Internet Archive video browser. Mini Plus/Flip (WiFi): search, watch while downloading, queue, playlists.",
+      "notes": "Internet Archive video browser. The stable release requires Onion OS 4.2+. On Mini Plus, use Wi-Fi to search, watch while downloading, and queue videos. For offline playback, copy videos into App/ArchiveTV/videos. The spruceOS and sprigUI build is an untested beta.",
       "porter": ["mroxfordyazuka"]
     }
   ]
