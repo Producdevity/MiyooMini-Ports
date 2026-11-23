@@ -810,6 +810,16 @@
       "image": "https://raw.githubusercontent.com/mroxfordyazuka/ArchiveTV/HEAD/docs/guide.png",
       "notes": "Internet Archive video browser. The stable release requires Onion OS 4.2+. On Mini Plus, use Wi-Fi to search, watch while downloading, and queue videos. For offline playback, copy videos into App/ArchiveTV/videos. The spruceOS and sprigUI build is an untested beta.",
       "porter": ["mroxfordyazuka"]
+    },
+    {
+      "name": "Playload",
+      "categories": ["engine", "app"],
+      "status": "playable",
+      "assets": "free",
+      "upstream": "https://github.com/mroxfordyazuka/Playload-Miyoo/releases",
+      "image": "https://raw.githubusercontent.com/mroxfordyazuka/Playload-Miyoo/HEAD/docs/game.png",
+      "notes": "Unofficial port of Takashi Kitao's Playload, the tiny game engine whose games fit in a link. The Playload Arcade games are included. On Mini Plus, use Wi-Fi to get new Arcade games, send game links from a phone, and write games from a browser with the dev panel. Tested on Mini Plus with Onion OS 4.2+; other Minis, spruceOS and sprigUI are untested. A few 3D games run slowly.",
+      "porter": ["mroxfordyazuka"]
     }
   ]
 }
